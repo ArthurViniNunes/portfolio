@@ -74,6 +74,17 @@ function applyTranslations() {
 
   });
 
+  /* Placeholders específicos */
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+
+    const key = el.dataset.i18nPlaceholder;
+    const value = getTranslation(key);
+
+    if (value) {
+      el.placeholder = value;
+    }
+
+  });
 
   /* ALT */
   document.querySelectorAll("[data-i18n-alt]").forEach(el => {

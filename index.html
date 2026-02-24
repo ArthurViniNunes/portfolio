@@ -31,8 +31,8 @@
   <meta name="twitter:image"
     content="https://apenasumsonhador.github.io/portfolio/assets/image-light.webp" />
 
-  <!-- Apple / Mobile -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!-- Mobile -->
+  <meta name="mobile-web-app-capable" content="yes" />
 
   <!-- Bootstrap 5 -->
   <link 
@@ -102,6 +102,7 @@
           <li class="nav-item"><a class="nav-link fade-up" href="#stacks" data-i18n="nav.stacks"></a></li>
           <li class="nav-item"><a class="nav-link fade-up" href="#projects" data-i18n="nav.projects"></a></li>
           <li class="nav-item"><a class="nav-link fade-up" href="#about" data-i18n="nav.about"></a></li>
+          <li class="nav-item"><a class="nav-link fade-up" href="#contact" data-i18n="nav.contact"></a></li>
           <li class="nav-item">
             <a class="nav-link fade-up" target="_blank" rel="noopener noreferrer"
               href="https://apenasumsonhador.github.io/Curriculum-Vitae/"
@@ -158,7 +159,7 @@
               rel="noopener noreferrer"
               href="https://www.linkedin.com/in/arthurvininunes/"
             >
-              LinkedIn
+              <i class="bi bi-linkedin"></i> LinkedIn
             </a>
             <a 
               class="btn btn-outline-gold btn-lg"
@@ -167,7 +168,7 @@
               rel="noopener noreferrer"
               href="https://github.com/ApenasUmSonhador"
             >
-              GitHub
+              <i class="bi bi-github"></i> GitHub
             </a>
           </div>
         </div>
@@ -794,6 +795,113 @@
       </div>
     </div>
   </section>
+
+  <!-- CONTACT -->
+<section id="contact" class="py-5">
+  <div class="container">
+
+    <header class="text-center fade-up">
+      <h2 class="" data-i18n="contact.title"></h2>
+      <p class="mb-5" data-i18n="contact.subtitle"></p>
+    </header>
+
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-lg-8 fade-up">
+        <div class="card p-4 p-md-5">
+
+          <form action="https://formspree.io/f/mojnylnw" method="POST" novalidate>
+
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label" data-i18n="contact.form.name.label"></label>
+              <input 
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                required
+                data-i18n-placeholder="contact.form.name.placeholder"
+              >
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label" data-i18n="contact.form.email.label"></label>
+              <input 
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                required
+                data-i18n-placeholder="contact.form.email.placeholder"
+              >
+            </div>
+
+            <!-- Message -->
+            <div class="mb-4">
+              <label for="message" class="form-label" data-i18n="contact.form.message.label"></label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                class="form-control"
+                required
+                data-i18n-placeholder="contact.form.message.placeholder"
+              ></textarea>
+            </div>
+
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+
+              <button 
+                type="submit"
+                class="btn btn-outline-gold btn-lg"
+                data-i18n="contact.form.submit"
+              >
+              </button>
+
+              <div class="d-flex gap-3">
+
+                <a 
+                  href="mailto:arthurvininunes@gmail.com"
+                  class="btn btn-outline-gold btn-sm"
+                  aria-label="Email"
+                >
+                  <i class="bi bi-envelope"></i>
+                </a>
+
+                <a 
+                  href="https://www.linkedin.com/in/arthurvininunes/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline-gold btn-sm"
+                  aria-label="LinkedIn"
+                >
+                  <i class="bi bi-linkedin"></i>
+                </a>
+
+                <a 
+                  href="https://github.com/ApenasUmSonhador"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline-gold btn-sm"
+                  aria-label="GitHub"
+                >
+                  <i class="bi bi-github"></i>
+                </a>
+
+              </div>
+
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 </main>
 

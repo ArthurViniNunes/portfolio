@@ -39,7 +39,8 @@
     "stacks": "Stacks",
     "projects": "Projects",
     "about": "About",
-    "resume": "Resume"
+    "resume": "Resume",
+    "contact": "Contato"
   },
 
   "hero": {
@@ -269,6 +270,26 @@
     "study": {
       "title": "Currently Studying",
       "list": "Vim Motions • C++ • Data Structures and Algorithms"
+    }
+  },
+
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let’s discuss opportunities, projects, or collaborations.",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your full name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Your best email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Write your message here..."
+      },
+      "submit": "Send message"
     }
   },
 
