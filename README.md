@@ -25,7 +25,7 @@ Antes de executar este projeto, certifique-se de ter as seguintes ferramentas in
 
 - Nome: Arthur Nunes
 - LinkedIn: [Arthur Vinicius Carneiro Nunes](https://www.linkedin.com/in/arthurvininunes/)
-- GitHub: [Apenas Um Sonhador](https://github.com/ApenasUmSonhador)
+- GitHub: [ArthurViniNunes](https://github.com/arthurvininunes)
 
 ## Licença
 
