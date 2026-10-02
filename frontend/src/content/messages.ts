@@ -1,0 +1,511 @@
+import type { Locale } from "./locale";
+
+const pt = {
+	meta: {
+		home: [
+			"Desenvolvimento Full Stack",
+			"Arthur Nunes: produtos web, decisões de engenharia e projetos em diferentes stacks.",
+		],
+		work: [
+			"Projetos",
+			"Explore produtos, contexto, decisões técnicas e código de Arthur Nunes.",
+		],
+		about: [
+			"Sobre",
+			"Conheça Arthur Nunes pelo seu trabalho, interesses técnicos e projetos.",
+		],
+		resume: [
+			"Currículos",
+			"Currículos de Arthur Nunes para DevOps, desenvolvimento Full Stack e Engenharia de Software.",
+		],
+		contact: [
+			"Contato",
+			"Converse com Arthur Nunes sobre projetos e oportunidades por e-mail ou LinkedIn.",
+		],
+		engineering: [
+			"Engenharia",
+			"Decisões arquiteturais e documentação do portfólio de Arthur Nunes.",
+		],
+		learning: [
+			"Aprendizado",
+			"Estudos técnicos e resolução de problemas de Arthur Nunes.",
+		],
+		search: [
+			"Busca",
+			"Encontre projetos, decisões de engenharia e currículos neste portfólio.",
+		],
+		notFound: [
+			"Página não encontrada",
+			"Encontre seu caminho pelos projetos, pela busca ou pela página inicial.",
+		],
+	},
+	nav: {
+		home: "Início",
+		work: "Projetos",
+		engineering: "Engenharia",
+		learning: "Aprendizado",
+		about: "Sobre",
+		resume: "Currículos",
+		contact: "Contato",
+		search: "Buscar",
+		menu: "Menu",
+		close: "Fechar",
+		main: "Navegação principal",
+		mobile: "Navegação móvel",
+	},
+	common: {
+		skip: "Pular para o conteúdo",
+		newTab: "(abre em nova aba)",
+		role: "Desenvolvedor Full Stack",
+		portrait: "Retrato de Arthur Nunes",
+		readProject: "Explorar projeto",
+		allProjects: "Ver todos os projetos",
+		projectTopics: "Tecnologias e temas",
+		next: "Continue explorando",
+		back: "Voltar ao início",
+		path: "Caminho",
+		open: "Abrir conteúdo",
+		all: "Todos",
+		project: "projeto",
+		projects: "projetos",
+		source: "Abrir repositório",
+		talk: "Entrar em contato",
+		theme: "Ativar modo escuro",
+		lightTheme: "Ativar modo claro",
+		footer: "Da primeira ideia às decisões que sustentam o produto.",
+	},
+	motion: {
+		pause: "Pausar animações",
+		play: "Ativar animações",
+		reduced: "Movimento reduzido pelo sistema",
+	},
+	recommendations: {
+		label: "Comentários",
+		title: "Quem já trabalhou comigo.",
+		intro:
+			"Experiências compartilhadas, nas palavras de quem esteve no mesmo time.",
+		source: "Recomendações no LinkedIn",
+		author: "Ver perfil de",
+		full: "Ler recomendação completa",
+		translated: "Tradução do depoimento original em português.",
+		original: "Ver texto original",
+		date: "Recomendação de",
+		initials: "Iniciais de",
+	},
+	home: {
+		title: "Produtos web, da interface à arquitetura.",
+		description:
+			"Sou Arthur. Construo experiências na web e exploro as decisões que conectam interface, dados e produto.",
+		work: "Conhecer projetos",
+		resume: "Meus currículos",
+		selected: "Projetos selecionados",
+		workTitle: "Ideias que viraram produto.",
+		featured: "Produto em destaque",
+		explore: "Explore por interesse.",
+		engineering: "Decisões e documentação técnica",
+		learning: "Estudos e resolução de problemas",
+		about: "A pessoa por trás dos projetos",
+		resumeDescription: "DevOps, Full Stack e Engenharia de Software",
+		contact: "Vamos construir a próxima ideia?",
+		pause: "Pausar movimento",
+		play: "Ativar movimento",
+		graphic: "Interface, lógica e dados",
+	},
+	work: {
+		title: "Trabalhos com decisões à vista.",
+		description:
+			"Do primeiro fluxo às escolhas de arquitetura. Conheça o que foi construído e explore as fontes de cada projeto.",
+		filter: "Filtrar por tecnologia",
+	},
+	project: {
+		overview: "Visão geral",
+		problem: "O problema",
+		solution: "A solução",
+		engineering: "Decisões de engenharia",
+		result: "Resultado e fontes",
+		toc: "Neste projeto",
+		documented: "Documentado",
+		review: "Em revisão",
+		team: "Projeto desenvolvido em equipe",
+		demo: "Ver demonstração em vídeo",
+		source: "Conferir código e documentação",
+		missing: "Projeto não encontrado",
+		missingText: "Este endereço não corresponde a um projeto publicado.",
+		historical:
+			"Captura do portfólio anterior. A interface pode ter mudado desde então.",
+		repositoryImage: "Captura publicada no README do projeto.",
+		scope: "Participação e contexto",
+	},
+	about: {
+		title: "Prazer, Arthur.",
+		intro:
+			"Gosto de entender como as partes de um produto se conectam. Este portfólio é um espaço para mostrar o que construo e o raciocínio por trás das decisões.",
+		caption: "Arthur Vinicius Carneiro Nunes",
+		storyTitle: "O código conta parte da história.",
+		story:
+			"Meus projetos passam por interfaces React, APIs e organização de dados. No smash-or-pass, participo de um produto desenvolvido em equipe para descobrir e compartilhar receitas. No Home Expense Control e no Kanban, os desafios mudam: regras de negócio, acesso e organização de informações.",
+		story2:
+			"Aqui você pode entrar pela experiência de uso e avançar até a documentação técnica. É assim que prefiro apresentar meu trabalho: com contexto e algo concreto para explorar.",
+		focusTitle: "Três perspectivas sobre o mesmo produto.",
+		focus: [
+			{
+				title: "A experiência",
+				text: "Interfaces, fluxos e feedback que ajudam a entender o que fazer.",
+				link: "/work/smash-or-pass",
+				action: "Explorar smash-or-pass",
+			},
+			{
+				title: "As regras",
+				text: "Dados e operações coerentes com o problema que a aplicação resolve.",
+				link: "/work/home-expense-control",
+				action: "Ver Home Expense Control",
+			},
+			{
+				title: "As decisões",
+				text: "Escolhas documentadas para tornar o sistema compreensível e permitir sua evolução.",
+				link: "/engineering",
+				action: "Ler sobre engenharia",
+			},
+		],
+		career: "Trajetória em construção",
+		careerText:
+			"O histórico profissional e a formação serão adicionados aqui. Enquanto isso, os projetos apresentam o trabalho disponível e os currículos estão organizados por área de atuação.",
+		careerAction: "Explorar currículos",
+		contact: "Quer saber mais sobre meu trabalho?",
+	},
+	resume: {
+		title: "Um perfil. Diferentes perspectivas.",
+		description:
+			"Escolha o currículo mais próximo da oportunidade: infraestrutura, desenvolvimento de produto ou engenharia de software.",
+		download: "Abrir PDF",
+		pending: "PDF ainda não adicionado — link provisório.",
+		note: "Os três documentos estão sendo preparados. Para conversar sobre uma oportunidade, entre em contato.",
+		focus: "Foco do currículo",
+	},
+	contact: {
+		title: "Uma boa conversa pode virar um bom produto.",
+		description:
+			"Tem um projeto em mente ou uma oportunidade para compartilhar? Conte um pouco sobre a ideia.",
+		email: "Vamos começar por e-mail",
+		send: "Escrever mensagem",
+		copy: "Copiar e-mail",
+		copied: "E-mail copiado.",
+		copyError:
+			"Não foi possível copiar. Selecione o endereço e copie manualmente.",
+		network: "Conexões profissionais",
+		code: "Projetos e código",
+		resume: "Procurando meu currículo?",
+		resumeLink: "Escolher uma versão",
+		hint: "Um pouco de contexto sobre o projeto, o time ou a oportunidade já ajuda a começar.",
+		subject: "Vamos conversar sobre um projeto",
+	},
+	learning: {
+		title: "Estudos com problema, caminho e solução.",
+		description:
+			"Um espaço para algoritmos e notas técnicas, com explicações e código próprio.",
+		empty: "Nenhum estudo publicado ainda",
+		emptyText:
+			"As primeiras resoluções serão publicadas com problema, abordagem, solução e referências.",
+		action: "Explorar decisões de engenharia",
+	},
+	engineering: {
+		title: "Decisões que sustentam o produto.",
+		description:
+			"Contexto, escolhas e consequências. Um olhar por dentro da construção deste portfólio.",
+		portfolio: "Este portfólio",
+		read: "Ler decisão",
+		context: "Contexto",
+		choice: "Escolha",
+		consequences: "Consequências",
+		evidence: "Referências",
+		toc: "Nesta decisão",
+		decision: "Decisão de arquitetura",
+		evidenceText:
+			"A implementação e as ADRs completas estão no repositório do portfólio.",
+		source: "Abrir código-fonte",
+	},
+	search: {
+		title: "Encontre o conteúdo no contexto.",
+		description:
+			"Pesquise títulos, tecnologias e textos de projetos, documentos e currículos.",
+		label: "O que você procura?",
+		placeholder: "Ex.: testes, React, arquitetura",
+		button: "Buscar",
+		filter: "Filtrar por tipo",
+		kinds: {
+			project: "Projetos",
+			engineering: "Engenharia",
+			career: "Carreira",
+		},
+		count: "resultados para",
+		none: "Nenhum resultado encontrado",
+		noneText:
+			"Tente outra palavra ou selecione Todos. Você também pode navegar diretamente pelos projetos.",
+		start: "Comece com uma palavra ou tema",
+		startText: "A busca encontra o conteúdo publicado neste idioma.",
+		clear: "Limpar busca",
+		noJs: "Ative JavaScript para pesquisar ou explore os projetos pelos links de navegação.",
+	},
+	error: {
+		title: "Esta página não foi encontrada.",
+		description:
+			"O endereço pode ter mudado. Volte ao início ou use a busca para continuar.",
+		failure: "Não foi possível carregar esta página.",
+		retry: "Volte ao início para continuar a navegação.",
+	},
+};
+
+const en: typeof pt = {
+	meta: {
+		home: [
+			"Full Stack Development",
+			"Arthur Nunes: web products, engineering decisions and projects across different stacks.",
+		],
+		work: [
+			"Projects",
+			"Explore Arthur Nunes's products, context, technical decisions and source code.",
+		],
+		about: [
+			"About",
+			"Get to know Arthur Nunes through his work, technical interests and projects.",
+		],
+		resume: [
+			"Résumés",
+			"Arthur Nunes's résumés for DevOps, Full Stack development and Software Engineering.",
+		],
+		contact: [
+			"Contact",
+			"Talk to Arthur Nunes about projects and opportunities by email or LinkedIn.",
+		],
+		engineering: [
+			"Engineering",
+			"Architectural decisions and documentation behind Arthur Nunes's portfolio.",
+		],
+		learning: [
+			"Learning",
+			"Technical studies and problem solving by Arthur Nunes.",
+		],
+		search: [
+			"Search",
+			"Find projects, engineering decisions and résumés in this portfolio.",
+		],
+		notFound: [
+			"Page not found",
+			"Find your way through projects, search or the home page.",
+		],
+	},
+	nav: {
+		home: "Home",
+		work: "Projects",
+		engineering: "Engineering",
+		learning: "Learning",
+		about: "About",
+		resume: "Résumés",
+		contact: "Contact",
+		search: "Search",
+		menu: "Menu",
+		close: "Close",
+		main: "Main navigation",
+		mobile: "Mobile navigation",
+	},
+	common: {
+		skip: "Skip to content",
+		newTab: "(opens in a new tab)",
+		role: "Full Stack Developer",
+		portrait: "Portrait of Arthur Nunes",
+		readProject: "Explore project",
+		allProjects: "View all projects",
+		projectTopics: "Technologies and topics",
+		next: "Keep exploring",
+		back: "Back to home",
+		path: "Breadcrumb",
+		open: "Open content",
+		all: "All",
+		project: "project",
+		projects: "projects",
+		source: "Open repository",
+		talk: "Get in touch",
+		theme: "Enable dark mode",
+		lightTheme: "Enable light mode",
+		footer: "From the first idea to the decisions that support the product.",
+	},
+	motion: {
+		pause: "Pause animations",
+		play: "Enable animations",
+		reduced: "Reduced motion set by your system",
+	},
+	recommendations: {
+		label: "Testimonials",
+		title: "People I've worked with.",
+		intro:
+			"Shared experiences, in the words of people who were on the same team.",
+		source: "LinkedIn recommendations",
+		author: "View profile of",
+		full: "Read full recommendation",
+		translated: "Translation of the original Portuguese testimonial.",
+		original: "Read original text",
+		date: "Recommendation from",
+		initials: "Initials of",
+	},
+	home: {
+		title: "Web products, from interface to architecture.",
+		description:
+			"I'm Arthur. I build experiences on the web and explore the decisions that connect interfaces, data and products.",
+		work: "Explore projects",
+		resume: "My résumés",
+		selected: "Selected projects",
+		workTitle: "Ideas turned into products.",
+		featured: "Featured product",
+		explore: "Explore by interest.",
+		engineering: "Decisions and technical documentation",
+		learning: "Studies and problem solving",
+		about: "The person behind the projects",
+		resumeDescription: "DevOps, Full Stack and Software Engineering",
+		contact: "Let's build the next idea.",
+		pause: "Pause motion",
+		play: "Enable motion",
+		graphic: "Interface, logic and data",
+	},
+	work: {
+		title: "Work with the decisions in view.",
+		description:
+			"From the first flow to architecture choices. Explore what was built and the sources behind each project.",
+		filter: "Filter by technology",
+	},
+	project: {
+		overview: "Overview",
+		problem: "The problem",
+		solution: "The solution",
+		engineering: "Engineering decisions",
+		result: "Outcome and sources",
+		toc: "In this project",
+		documented: "Documented",
+		review: "Under review",
+		team: "Built as a team project",
+		demo: "Watch the video demo",
+		source: "Explore code and documentation",
+		missing: "Project not found",
+		missingText: "This address does not match a published project.",
+		historical:
+			"Screenshot from the previous portfolio. The interface may have changed since then.",
+		repositoryImage: "Screenshot published in the project's README.",
+		scope: "Contribution and context",
+	},
+	about: {
+		title: "Hi, I'm Arthur.",
+		intro:
+			"I like understanding how the pieces of a product connect. This portfolio is a place to share what I build and the thinking behind the decisions.",
+		caption: "Arthur Vinicius Carneiro Nunes",
+		storyTitle: "Code tells part of the story.",
+		story:
+			"My projects span React interfaces, APIs and data organization. In smash-or-pass, I contribute to a team-built product for discovering and sharing recipes. Home Expense Control and Kanban bring different challenges: business rules, access and organizing information.",
+		story2:
+			"Here, you can start with the user experience and go deeper into technical documentation. That is how I prefer to present my work: with context and something concrete to explore.",
+		focusTitle: "Three perspectives on the same product.",
+		focus: [
+			{
+				title: "The experience",
+				text: "Interfaces, flows and feedback that help people understand what to do.",
+				link: "/work/smash-or-pass",
+				action: "Explore smash-or-pass",
+			},
+			{
+				title: "The rules",
+				text: "Data and operations that fit the problem the application solves.",
+				link: "/work/home-expense-control",
+				action: "View Home Expense Control",
+			},
+			{
+				title: "The decisions",
+				text: "Documented choices that make the system understandable and allow it to evolve.",
+				link: "/engineering",
+				action: "Read about engineering",
+			},
+		],
+		career: "A growing professional story",
+		careerText:
+			"Professional experience and education will be added here. For now, the projects show the available work, and résumés are organized by area of focus.",
+		careerAction: "Explore résumés",
+		contact: "Want to know more about my work?",
+	},
+	resume: {
+		title: "One profile. Different perspectives.",
+		description:
+			"Choose the résumé that fits the opportunity: infrastructure, product development or software engineering.",
+		download: "Open PDF",
+		pending: "PDF not added yet — temporary link.",
+		note: "The three documents are being prepared. Get in touch to discuss an opportunity.",
+		focus: "Résumé focus",
+	},
+	contact: {
+		title: "A good conversation can become a good product.",
+		description:
+			"Have a project in mind or an opportunity to share? Tell me a little about the idea.",
+		email: "Let's start with an email",
+		send: "Write a message",
+		copy: "Copy email",
+		copied: "Email copied.",
+		copyError: "Could not copy. Select the address and copy it manually.",
+		network: "Professional connections",
+		code: "Projects and code",
+		resume: "Looking for my résumé?",
+		resumeLink: "Choose a version",
+		hint: "A little context about the project, team or opportunity is a good place to start.",
+		subject: "Let's talk about a project",
+	},
+	learning: {
+		title: "Studies with a problem, a path and a solution.",
+		description:
+			"A place for algorithms and technical notes, with explanations and original code.",
+		empty: "No studies published yet",
+		emptyText:
+			"The first solutions will include the problem, approach, solution and references.",
+		action: "Explore engineering decisions",
+	},
+	engineering: {
+		title: "Decisions that support the product.",
+		description:
+			"Context, choices and consequences. A look inside the making of this portfolio.",
+		portfolio: "This portfolio",
+		read: "Read decision",
+		context: "Context",
+		choice: "Choice",
+		consequences: "Consequences",
+		evidence: "References",
+		toc: "In this decision",
+		decision: "Architecture decision",
+		evidenceText:
+			"The implementation and full ADRs are available in the portfolio repository.",
+		source: "Open source code",
+	},
+	search: {
+		title: "Find content in context.",
+		description:
+			"Search titles, technologies and text across projects, documents and résumés.",
+		label: "What are you looking for?",
+		placeholder: "E.g. testing, React, architecture",
+		button: "Search",
+		filter: "Filter by type",
+		kinds: {
+			project: "Projects",
+			engineering: "Engineering",
+			career: "Career",
+		},
+		count: "results for",
+		none: "No results found",
+		noneText:
+			"Try another word or select All. You can also browse projects directly.",
+		start: "Start with a word or topic",
+		startText: "Search finds content published in this language.",
+		clear: "Clear search",
+		noJs: "Enable JavaScript to search, or explore projects using the navigation links.",
+	},
+	error: {
+		title: "This page could not be found.",
+		description:
+			"The address may have changed. Go back home or use search to continue.",
+		failure: "This page could not be loaded.",
+		retry: "Go back home to continue browsing.",
+	},
+};
+export const messages: Record<Locale, typeof pt> = { pt, en };
