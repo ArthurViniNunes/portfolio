@@ -1,6 +1,7 @@
 import { recommendations } from "../content/recommendations";
 import { site } from "../content/site";
 import { useCopy, useLocale } from "../i18n";
+import { imageUrl } from "./ui";
 
 export function Recommendations() {
 	const c = useCopy();
@@ -35,9 +36,13 @@ export function Recommendations() {
 							<p className="translation-note">{c.recommendations.translated}</p>
 						)}
 						<div className="reviewer">
-							<span className="reviewer-initials" aria-hidden="true">
-								{item.initials}
-							</span>
+							<img
+								className="reviewer-avatar"
+								src={imageUrl(item.avatar)}
+								alt={`${c.recommendations.author} ${item.name}`}
+								width="48"
+								height="48"
+							/>
 							<div>
 								<a
 									href={item.profileUrl}

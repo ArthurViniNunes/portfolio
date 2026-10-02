@@ -4,6 +4,7 @@ export type Recommendation = {
 	id: string;
 	name: string;
 	initials: string;
+	avatar: string;
 	profileUrl: string;
 	date: string;
 	role: Record<Locale, string>;
@@ -13,12 +14,13 @@ export type Recommendation = {
 	source: "provided-by-author";
 };
 
-// Texts supplied verbatim by Arthur on 2026-10-01. Photos are intentionally absent.
+// Texts supplied verbatim by Arthur on 2026-10-01. Avatar files were supplied locally.
 export const recommendations: Recommendation[] = [
 	{
 		id: "rhyan-andrade",
 		name: "Rhyan Dos Anjos Andrade",
 		initials: "RA",
+		avatar: "rhyan-linkedin-profile.jpg",
 		profileUrl: "https://www.linkedin.com/in/rhyan-dos-anjos-andrade/",
 		date: "2026-09-29",
 		role: {
@@ -43,6 +45,7 @@ export const recommendations: Recommendation[] = [
 		id: "marcos-antonio",
 		name: "Marcos Antônio",
 		initials: "MA",
+		avatar: "marcus-linkedin-profile.jpg",
 		profileUrl: "https://www.linkedin.com/in/marcos-ant%C3%B4nio-67496139b/",
 		date: "2026-07-30",
 		role: {

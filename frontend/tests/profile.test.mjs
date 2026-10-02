@@ -8,6 +8,7 @@ test("depoimentos usam excertos literais, fonte individual e data válida nos do
   for (const item of recommendations) {
     assert.equal(new URL(item.profileUrl).hostname, "www.linkedin.com");
     assert(item.profileUrl.includes("/in/"));
+    assert.match(item.avatar, /\.(?:jpg|jpeg|png|webp)$/i);
     assert(!Number.isNaN(Date.parse(item.date)));
     for (const locale of ["pt", "en"]) {
       assert(item.quote[locale].includes(item.excerpt[locale]), `Excerto alterado: ${item.id}/${locale}`);

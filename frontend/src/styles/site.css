@@ -1310,16 +1310,14 @@ main:focus {
 	align-items: center;
 	gap: 14px;
 }
-.reviewer-initials {
-	display: grid;
-	place-items: center;
+.reviewer-avatar {
 	flex: none;
 	width: 48px;
 	height: 48px;
 	border-radius: 50%;
+	object-fit: cover;
+	border: 1px solid var(--line);
 	background: var(--soft);
-	color: var(--plum);
-	font-weight: 700;
 }
 .reviewer a {
 	font-weight: 700;
