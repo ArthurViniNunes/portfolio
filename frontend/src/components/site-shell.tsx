@@ -1,71 +1,95 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
+import { localizedPath } from "../content/locale";
 import { site } from "../content/site";
+import { Link, useCopy, useLocale } from "../i18n";
+import { BrandMark } from "./brand";
+import { MotionToggle } from "./motion";
+import { Preferences } from "./preferences";
 
 const navigation = [
-	{ to: "/", label: "Início", end: true },
-	{ to: "/work", label: "Projetos" },
-	{ to: "/engineering", label: "Engenharia" },
-	{ to: "/learning", label: "Aprendizado" },
-	{ to: "/about", label: "Sobre" },
-	{ to: "/resume", label: "Currículo" },
-	{ to: "/contact", label: "Contato" },
+	{ to: "/", key: "home" },
+	{ to: "/work", key: "work" },
+	{ to: "/engineering", key: "engineering" },
+	{ to: "/learning", key: "learning" },
+	{ to: "/about", key: "about" },
+	{ to: "/resume", key: "resume" },
+	{ to: "/contact", key: "contact" },
 ] as const;
-
 function NavigationLinks({ onNavigate }: { onNavigate?: () => void }) {
-	return navigation.map(({ to, label, ...rest }) => (
+	const c = useCopy();
+	const locale = useLocale();
+	return navigation.map(({ to, key }) => (
 		<NavLink
 			key={to}
-			to={to}
-			end={"end" in rest ? rest.end : false}
+			to={localizedPath(to, locale)}
+			end={to === "/"}
 			onClick={onNavigate}
 			className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
 		>
-			{label}
+			{c.nav[key]}
 		</NavLink>
 	));
 }
-
 export function SiteHeader() {
+	const c = useCopy();
 	const [open, setOpen] = useState(false);
 	const toggleRef = useRef<HTMLButtonElement>(null);
 	useEffect(() => {
 		if (!open) return;
-		const onKeyDown = (event: KeyboardEvent) => {
+		const onKey = (event: KeyboardEvent) => {
 			if (event.key === "Escape") {
 				setOpen(false);
 				toggleRef.current?.focus();
 			}
 		};
-		window.addEventListener("keydown", onKeyDown);
-		return () => window.removeEventListener("keydown", onKeyDown);
+		window.addEventListener("keydown", onKey);
+		return () => window.removeEventListener("keydown", onKey);
 	}, [open]);
 	useEffect(() => {
-		const desktop = window.matchMedia("(min-width: 1121px)");
-		const closeOnDesktop = (event: MediaQueryListEvent) => {
+		const desktop = window.matchMedia("(min-width: 1281px)");
+		const close = (event: MediaQueryListEvent) => {
 			if (event.matches) setOpen(false);
 		};
-		desktop.addEventListener("change", closeOnDesktop);
-		return () => desktop.removeEventListener("change", closeOnDesktop);
+		desktop.addEventListener("change", close);
+		return () => desktop.removeEventListener("change", close);
 	}, []);
-
 	return (
 		<header className="site-header">
 			<div className="shell header-inner">
-				<Link className="wordmark" to="/" aria-label="Arthur Nunes, início">
-					Arthur Nunes<span aria-hidden="true">.</span>
+				<Link
+					className="wordmark"
+					to="/"
+					aria-label={`Arthur Nunes, ${c.nav.home}`}
+				>
+					<BrandMark />
+					<span className="brand-name">Arthur Nunes</span>
 				</Link>
-				<nav className="desktop-nav" aria-label="Navegação principal">
+				<nav className="desktop-nav" aria-label={c.nav.main}>
 					<NavigationLinks />
 				</nav>
 				<div className="header-tools">
 					<Link
 						className="search-trigger"
 						to="/search"
-						aria-label="Buscar conteúdo"
+						aria-label={c.nav.search}
 					>
-						<span aria-hidden="true">⌕</span> <span>Buscar</span>
+						<svg
+							viewBox="0 0 24 24"
+							width="20"
+							height="20"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth="1.7"
+							aria-hidden="true"
+						>
+							<circle cx="10.5" cy="10.5" r="6.5" />
+							<path d="m16 16 5 5" />
+						</svg>
+						<span>{c.nav.search}</span>
 					</Link>
+					<Preferences />
+					<MotionToggle compact />
 					<button
 						ref={toggleRef}
 						className="menu-toggle"
@@ -74,14 +98,14 @@ export function SiteHeader() {
 						aria-controls="mobile-nav"
 						onClick={() => setOpen((value) => !value)}
 					>
-						{open ? "Fechar" : "Menu"}
+						{open ? c.nav.close : c.nav.menu}
 					</button>
 				</div>
 			</div>
 			<nav
 				className="mobile-nav"
 				id="mobile-nav"
-				aria-label="Navegação móvel"
+				aria-label={c.nav.mobile}
 				hidden={!open}
 			>
 				<NavigationLinks onNavigate={() => setOpen(false)} />
@@ -89,22 +113,25 @@ export function SiteHeader() {
 		</header>
 	);
 }
-
 export function SiteFooter() {
+	const c = useCopy();
 	return (
 		<footer className="site-footer">
 			<div className="shell footer-inner">
 				<div>
-					<strong>{site.name}</strong>
-					<p>Projetos, decisões e aprendizado em um só lugar.</p>
+					<Link className="footer-brand" to="/">
+						<BrandMark />
+						<strong>{site.name}</strong>
+					</Link>
+					<p>{c.common.footer}</p>
 				</div>
 				<div className="footer-links">
-					<Link to="/contact">Contato</Link>
+					<Link to="/contact">{c.nav.contact}</Link>
 					<a href={site.github} target="_blank" rel="noopener noreferrer">
-						GitHub <span className="sr-only">(abre em nova aba)</span>
+						GitHub <span className="sr-only">{c.common.newTab}</span>
 					</a>
 					<a href={site.linkedin} target="_blank" rel="noopener noreferrer">
-						LinkedIn <span className="sr-only">(abre em nova aba)</span>
+						LinkedIn <span className="sr-only">{c.common.newTab}</span>
 					</a>
 				</div>
 			</div>
