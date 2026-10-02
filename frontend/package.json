@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "react-router dev",
-    "build": "react-router build && node scripts/finalize-build.mjs",
+    "build": "node scripts/generate-brand.mjs && react-router build && node scripts/finalize-build.mjs",
     "typecheck": "react-router typegen && tsc --noEmit",
     "lint": "biome check src scripts react-router.config.ts vite.config.ts",
     "format": "biome check --write src scripts react-router.config.ts vite.config.ts",

@@ -9,17 +9,31 @@ import {
 	useLocation,
 	useRouteError,
 } from "react-router";
+import { MotionEffects } from "./components/motion";
 import { SiteFooter, SiteHeader } from "./components/site-shell";
+import { localizedPath } from "./content/locale";
+import { motionScript } from "./content/motion";
+import { themeScript } from "./content/theme";
+import { useCopy, useLocale } from "./i18n";
 import "./styles/site.css";
 
 export function Layout({ children }: { children: ReactNode }) {
+	const locale = useLocale();
+	const location = useLocation();
 	return (
-		<html lang="pt-BR">
+		<html
+			lang={locale === "pt" ? "pt-BR" : "en"}
+			data-theme="light"
+			data-motion="paused"
+			suppressHydrationWarning
+		>
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<meta name="color-scheme" content="light" />
-				<link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
+				<meta name="color-scheme" content="light dark" />
+				<script>{themeScript}</script>
+				<script>{motionScript}</script>
+				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link
 					rel="preconnect"
@@ -29,6 +43,16 @@ export function Layout({ children }: { children: ReactNode }) {
 				<link
 					href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&display=swap"
 					rel="stylesheet"
+				/>
+				<link
+					rel="alternate"
+					hrefLang="pt-BR"
+					href={localizedPath(location.pathname, "pt")}
+				/>
+				<link
+					rel="alternate"
+					hrefLang="en"
+					href={localizedPath(location.pathname, "en")}
 				/>
 				<Meta />
 				<Links />
@@ -41,37 +65,38 @@ export function Layout({ children }: { children: ReactNode }) {
 		</html>
 	);
 }
-
 export default function Root() {
+	const c = useCopy();
 	const location = useLocation();
 	return (
 		<>
+			<MotionEffects />
 			<a className="skip-link" href="#main">
-				Pular para o conteúdo
+				{c.common.skip}
 			</a>
 			<SiteHeader key={location.pathname} />
-			<main id="main">
+			<main id="main" tabIndex={-1}>
 				<Outlet />
 			</main>
 			<SiteFooter />
 		</>
 	);
 }
-
 export function ErrorBoundary() {
 	const error = useRouteError();
-	const message =
-		isRouteErrorResponse(error) && error.status === 404
-			? "Esta página não foi encontrada."
-			: "Não foi possível carregar esta página.";
-
+	const c = useCopy();
+	const locale = useLocale();
 	return (
-		<div className="shell page-wrap">
-			<h1>{message}</h1>
-			<p>Use o menu para continuar a navegação ou volte ao início.</p>
-			<a className="text-link" href={import.meta.env.BASE_URL}>
-				Voltar ao início
+		<main className="shell page-wrap" id="main">
+			<h1>
+				{isRouteErrorResponse(error) && error.status === 404
+					? c.error.title
+					: c.error.failure}
+			</h1>
+			<p>{c.error.retry}</p>
+			<a className="text-link" href={localizedPath("/", locale)}>
+				{c.common.back}
 			</a>
-		</div>
+		</main>
 	);
 }
