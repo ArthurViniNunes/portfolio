@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Arthur Nunes desenvolve produtos web da interface à arquitetura. Conheça projetos, decisões técnicas e formas de contato."
+    />
+    <title>Arthur Nunes — Desenvolvimento Full Stack</title>
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="wordmark" href="index.html" aria-label="Arthur Nunes, início"
+          >Arthur Nunes<span aria-hidden="true">.</span></a
+        >
+        <nav class="desktop-nav" aria-label="Navegação principal">
+          <a href="#work">Projetos</a>
+          <a href="#engineering">Engenharia</a>
+          <a href="#learning">Aprendizado</a>
+          <a href="#about">Sobre</a>
+          <a href="#contact">Contato</a>
+        </nav>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          Menu <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+      <nav
+        class="mobile-nav"
+        id="mobile-nav"
+        aria-label="Navegação móvel"
+        hidden
+      >
+        <a href="#work">Projetos</a>
+        <a href="#engineering">Engenharia</a>
+        <a href="#learning">Aprendizado</a>
+        <a href="#about">Sobre</a>
+        <a href="#contact">Contato</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-atmosphere" aria-hidden="true">
+          <div class="atmosphere-sheet"></div>
+          <div class="atmosphere-orbit atmosphere-orbit-outer"></div>
+          <div class="atmosphere-orbit atmosphere-orbit-inner"></div>
+          <div class="atmosphere-trace atmosphere-trace-one"></div>
+          <div class="atmosphere-trace atmosphere-trace-two"></div>
+        </div>
+        <div class="hero-copy">
+          <p class="intro">
+            Arthur Nunes <span aria-hidden="true">/</span> Desenvolvedor Full
+            Stack
+          </p>
+          <h1 id="hero-title">Produtos web, da interface à arquitetura.</h1>
+          <p class="hero-description">
+            Construo aplicações com atenção à experiência de quem usa e às
+            decisões que sustentam o produto. Aqui você encontra projetos,
+            código e o raciocínio por trás deles.
+          </p>
+          <div class="actions">
+            <a class="button button-primary" href="#work">Conhecer projetos</a>
+            <a class="button button-text" href="#contact"
+              >Entrar em contato <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <aside class="profile" aria-label="Perfil de Arthur Nunes">
+          <img
+            src="assets/foto-perfil.webp"
+            alt="Retrato de Arthur Nunes"
+            width="339"
+            height="346"
+            fetchpriority="high"
+          />
+          <div class="profile-details">
+            <div>
+              <strong>Arthur Nunes</strong>
+              <span>Desenvolvedor Full Stack</span>
+            </div>
+            <div class="profile-links">
+              <a
+                href="https://github.com/arthurvininunes"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub <span class="sr-only">(abre em nova aba)</span></a
+              >
+              <a
+                href="https://www.linkedin.com/in/arthurvininunes/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn <span class="sr-only">(abre em nova aba)</span></a
+              >
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section shell" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">Trabalhos selecionados</p>
+            <h2 id="work-title">Projetos com decisões à vista.</h2>
+          </div>
+          <p>
+            Três projetos com estágios diferentes de documentação. O conteúdo
+            técnico do Plateia ainda está em revisão.
+          </p>
+        </div>
+
+        <article class="featured-project" aria-labelledby="plateia-title">
+          <a
+            class="featured-media"
+            href="plateia.html"
+            aria-label="Abrir estudo de caso do Plateia Ingressos"
+          >
+            <img
+              src="assets/plateia.webp"
+              alt="Tela de seleção de assentos do Plateia Ingressos"
+              width="1919"
+              height="1031"
+              loading="lazy"
+            />
+          </a>
+          <div class="featured-details">
+            <div>
+              <p class="project-kind">Projeto apresentado no portfólio anterior · Em revisão</p>
+              <h3 id="plateia-title">Plateia Ingressos</h3>
+              <p>
+                A captura histórica sugere uma interface para eventos e
+                assentos. Escopo, implementação e resultados aguardam verificação.
+              </p>
+            </div>
+            <div class="featured-actions">
+              <span class="tech-list">Conteúdo técnico em revisão</span>
+              <a class="text-link" href="plateia.html"
+                >Ler estudo de caso <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+        </article>
+
+        <div class="project-grid">
+          <article class="project" aria-labelledby="kanban-title">
+            <a
+              class="project-media"
+              href="https://github.com/ArthurViniNunes/kanban-realtime"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir repositório do Kanban Realtime em nova aba"
+            >
+              <img
+                src="assets/kanban-realtime.webp"
+                alt="Board colaborativo do Kanban Realtime"
+                width="1902"
+                height="879"
+                loading="lazy"
+              />
+            </a>
+            <div class="project-content">
+              <p class="project-kind">Organização de trabalho · Evolução planejada</p>
+              <h3 id="kanban-title">Kanban Realtime</h3>
+              <p>
+                Boards, listas e cards para organizar tarefas. A sincronização
+                em tempo real aparece no planejamento do projeto.
+              </p>
+              <a
+                class="text-link"
+                href="https://github.com/ArthurViniNunes/kanban-realtime"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Ver código <span class="sr-only">(abre em nova aba)</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+          <article class="project" aria-labelledby="expense-title">
+            <a
+              class="project-media"
+              href="https://github.com/ArthurViniNunes/home-expense-control"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir repositório do Home Expense Control em nova aba"
+            >
+              <img
+                src="assets/home-expense.webp"
+                alt="Painel de controle de gastos residenciais"
+                width="1902"
+                height="880"
+                loading="lazy"
+              />
+            </a>
+            <div class="project-content">
+              <p class="project-kind">Finanças residenciais</p>
+              <h3 id="expense-title">Home Expense Control</h3>
+              <p>
+                Cadastro de moradores, receitas e despesas com uma visão
+                consolidada da residência.
+              </p>
+              <a
+                class="text-link"
+                href="https://github.com/ArthurViniNunes/home-expense-control"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Ver código <span class="sr-only">(abre em nova aba)</span
+                ><span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section shell" aria-labelledby="explore-title">
+        <div class="section-heading section-heading-compact">
+          <div>
+            <p class="section-index">Além da vitrine</p>
+            <h2 id="explore-title">Explore o processo.</h2>
+          </div>
+        </div>
+        <div class="explore-list">
+          <article id="engineering">
+            <span class="explore-number">01</span>
+            <div>
+              <h3>Engenharia</h3>
+              <p>
+                Espaço para decisões técnicas documentadas e verificadas do
+                Plateia Ingressos.
+              </p>
+            </div>
+            <a
+              href="plateia.html#engineering"
+              aria-label="Ler decisões de engenharia do Plateia Ingressos"
+              >Ler decisões <span aria-hidden="true">↗</span></a
+            >
+          </article>
+          <article id="learning">
+            <span class="explore-number">02</span>
+            <div>
+              <h3>Aprendizado</h3>
+              <p>
+                Espaço para aprendizados e trade-offs escritos a partir da
+                experiência do autor.
+              </p>
+            </div>
+            <a
+              href="plateia.html#learning"
+              aria-label="Ler aprendizados do Plateia Ingressos"
+              >Ler notas <span aria-hidden="true">↗</span></a
+            >
+          </article>
+          <article id="about">
+            <span class="explore-number">03</span>
+            <div>
+              <h3>Trajetória</h3>
+              <p>
+                Atuação em interfaces, APIs e dados, com foco no ecossistema
+                JavaScript e TypeScript.
+              </p>
+            </div>
+            <a href="#contact" aria-label="Ir para contato com Arthur"
+              >Conversar <span aria-hidden="true">↗</span></a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="contact-section"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="shell contact-inner">
+          <div>
+            <p class="section-index">Contato</p>
+            <h2 id="contact-title">Vamos conversar sobre o próximo produto.</h2>
+          </div>
+          <div class="contact-actions">
+            <a
+              class="button button-primary"
+              href="mailto:arthurvininunes@gmail.com"
+              >Enviar e-mail</a
+            >
+            <a
+              class="text-link"
+              href="https://www.linkedin.com/in/arthurvininunes/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn <span class="sr-only">(abre em nova aba)</span
+              ><span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer shell">
+      <p>© 2026 Arthur Nunes</p>
+      <a
+        href="https://github.com/arthurvininunes"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GitHub <span class="sr-only">(abre em nova aba)</span></a
+      >
+    </footer>
+  </body>
+</html>
