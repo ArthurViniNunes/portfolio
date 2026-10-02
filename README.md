@@ -1,20 +1,42 @@
 # Portfólio de Arthur Nunes
 
-Portfólio em React e TypeScript com páginas públicas pré-renderizadas. Node.js é usado no desenvolvimento e no build; não há API ou servidor de aplicação em produção. A [ADR-002](docs/architecture/adr/ADR-002-static-react-router-and-hosting.md) registra rotas, geração estática e hospedagem prevista. O [POM](docs/pom/README.md) é a especificação do produto, e a [auditoria de conformidade](docs/design/auditoria-pom.md) mostra o que já está implementado e o que permanece pendente.
+Este é o repositório do meu portfólio pessoal.
 
-## Executar localmente
+Eu sou Arthur Nunes, desenvolvedor Full Stack e estudante de Ciência da Computação na UFC. Uso este projeto para mostrar o que construo, explicar as decisões por trás de cada produto e compartilhar um pouco de como gosto de trabalhar em equipe.
 
-Requer Node.js 22.22 ou superior. No Windows, use `npm.cmd` se a política do PowerShell impedir `npm.ps1`.
+O portfólio está sendo construído com React e TypeScript. A primeira versão tem português e inglês, tema claro e escuro, busca local, páginas de projetos, documentação de arquitetura e uma Home com movimento controlável.
 
-```sh
+## O que você encontra aqui
+
+- **Projetos:** casos com problema, solução, decisões técnicas, fontes e estado editorial.
+- **Engenharia:** ADRs e documentos que explicam como o próprio portfólio foi construído.
+- **Sobre:** trajetória profissional e acadêmica, interesses e comentários de pessoas com quem trabalhei.
+- **Currículos:** entradas para as versões DevOps, Full Stack e Engenharia de Software.
+- **Contato:** e-mail, GitHub e LinkedIn, sem formulário ou API intermediária.
+
+O projeto em destaque é o [Smash or Pass](https://github.com/ArthurViniNunes/smash-or-pass/), uma aplicação para descobrir e compartilhar receitas. Ele reúne interface, regras de negócio, autenticação, moderação e uma API documentada. Também há uma [demonstração em vídeo](https://youtu.be/u6gNtyVILso).
+
+## Como executar
+
+Você precisa de Node.js 22.22 ou superior.
+
+```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-## Verificar
+Depois, abra o endereço exibido pelo React Router no terminal. No Windows, use `npm.cmd` caso o PowerShell bloqueie `npm.ps1`:
 
-```sh
+```powershell
+npm.cmd run dev
+```
+
+## Como verificar
+
+Os comandos abaixo devem ser executados dentro de `frontend/`:
+
+```bash
 npm run lint
 npm run typecheck
 npm test
@@ -22,12 +44,55 @@ npm run build
 npm run verify:html
 ```
 
-Execute as verificações dentro de `frontend/`. O build gera `frontend/build/client`, com HTML para as versões portuguesa e inglesa das rotas públicas. Na Cloudflare Pages, o diretório raiz do projeto deve ser `frontend`, o comando `npm run build` e a saída `build/client`. O projeto não foi publicado por este fluxo.
+Essas verificações cobrem formatação e lint, tipos, comportamento dos catálogos, idioma, tema, movimento, busca, contraste e HTML pré-renderizado. O build gera `frontend/build/client` com as páginas públicas em português e inglês.
 
-Projetos e outros textos editáveis ficam em `frontend/src/content/`, separados das páginas e dos componentes. O catálogo usa português e inglês; o botão de idioma conserva a página atual. Tema claro é o padrão e o modo escuro pode ser ativado e persistido. Smash or Pass é o produto em destaque, com contexto de equipe e fontes no caso.
+## Decisões técnicas
 
-O caso Plateia ainda precisa de revisão técnica; Learning permanece sem estudos fornecidos. Sobre apresenta a trajetória profissional e acadêmica com base nas memórias enviadas pelo autor. Currículos indexa DevOps, Full Stack e Engenharia de Software. Por solicitação do autor, os três links de PDF são provisórios e quebrados até receberem arquivos em `frontend/public/resumes/`; a interface informa essa condição.
+O navegador recebe arquivos estáticos gerados no build. Node.js participa do desenvolvimento, da geração e das verificações; não existe uma API Node.js em produção.
 
-O [índice de ADRs](docs/architecture/adr/README.md) reúne as decisões de stack, hospedagem, conteúdo, idiomas, temas, movimento, currículos, organização e contato. O [planejamento de telas](docs/design/planejamento-de-telas.md) registra a evolução visual. A composição animada da Home tem pausa e respeita movimento reduzido; a revisão do [POM-044](docs/pom/08-visual-design-system/POM-044-motion-system.md) registra a exceção autorizada pelo autor.
+React Router pré-renderiza as rotas públicas para que projetos, documentos e metadados estejam disponíveis antes da hidratação. O português usa as URLs existentes e o inglês usa o prefixo `/en`.
 
-A [identidade visual](docs/design/identidade-e-movimento.md) inclui um símbolo AN contínuo, favicon e variantes SVG geradas da mesma geometria. O controle de movimento é global e persistido. Comentários de Rhyan e Marcos aparecem na Home e em Sobre, com originais, contexto e traduções identificadas. As [fontes do perfil](docs/content/fontes-do-perfil.md) e as [recomendações para evolução do produto](docs/design/recomendacoes-de-produto.md) documentam conteúdo e próximos passos.
+O conteúdo fica separado dos componentes em `frontend/src/content/`. Isso permite revisar projetos, traduções, currículos e depoimentos sem misturar dados editoriais com a composição visual.
+
+A marca visual é um símbolo vetorial que conecta as letras A e N. A mesma geometria gera o componente SVG, o favicon e as variantes exportáveis. A Home usa contornos, planos translúcidos e o retrato com movimento; o visitante pode pausar as animações, e `prefers-reduced-motion` tem prioridade.
+
+As decisões completas estão no [índice de ADRs](docs/architecture/adr/README.md). A [fundação técnica](docs/architecture/fundacao-tecnica.md) descreve os limites da aplicação e a [identidade visual](docs/design/identidade-e-movimento.md) registra a direção de marca e movimento.
+
+## Organização do repositório
+
+```text
+docs/
+  architecture/          decisões técnicas e fundação do sistema
+  content/                fontes e limites do conteúdo editorial
+  design/                 planejamento, auditoria e revisão visual
+  pom/                    Product Operating Model
+frontend/
+  public/                 imagens, marca, favicon e destinos de currículo
+  src/components/         shell, navegação e componentes visuais
+  src/content/            projetos, perfil, traduções e preferências
+  src/routes/              páginas públicas do portfólio
+  src/styles/             tokens, temas e layout responsivo
+  scripts/                 build final e verificação de HTML
+  tests/                   testes de idioma, conteúdo, tema e movimento
+```
+
+O diretório `docs/design/estudo-visual-estatico/` é uma exploração visual independente. Ele documenta ideias de composição, mas não é a base da aplicação React.
+
+## Estado atual
+
+O portfólio está funcional para desenvolvimento local e revisão de conteúdo. Ainda há algumas pendências conscientes:
+
+- os três PDFs de currículo são links provisórios até que os arquivos finais sejam adicionados;
+- Learning continua com estado vazio até haver estudos autorais prontos para publicação;
+- Plateia ainda precisa de revisão técnica antes de receber um estudo de caso completo;
+- a revisão visual foi feita em navegador conectado, mas Lighthouse em produção, leitor de tela e testes em aparelhos físicos continuam pendentes.
+
+Essas lacunas aparecem na [auditoria do POM](docs/design/auditoria-pom.md), em vez de serem preenchidas com métricas ou experiências inventadas. As próximas melhorias estão organizadas em [recomendações de produto](docs/design/recomendacoes-de-produto.md).
+
+## Links
+
+- [Portfólio](https://arthurvininunes.github.io/portfolio/)
+- [GitHub](https://github.com/ArthurViniNunes)
+- [LinkedIn](https://www.linkedin.com/in/arthurvininunes/)
+
+Se você encontrou um problema, quer conversar sobre uma decisão técnica ou tem uma sugestão para o portfólio, pode abrir uma issue ou entrar em contato pelo LinkedIn.
