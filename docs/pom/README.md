@@ -40,3 +40,4 @@ O POM não descreve detalhes de implementação. Esses aspectos são tratados pe
 - Architecture / System Design
 - Architecture / Repository Architecture
 - Architecture Decision Records (ADR)
+- [Auditoria da implementação React em relação aos POM-000 a POM-046](../design/auditoria-pom.md)
