@@ -1,86 +1,80 @@
-import { Link } from "react-router";
+import { useParams } from "react-router";
 import { ReadingProgress } from "../components/ui";
-import { engineeringDocuments } from "../content/site";
-
-const document = engineeringDocuments[0];
-
-export function meta() {
-	return [
-		{ title: `${document.title} — Arthur Nunes` },
-		{ name: "description", content: document.summary },
-	];
+import { localeFromPath } from "../content/locale";
+import { getEngineering } from "../content/site";
+import { Link, pageMeta, useCopy, useLocale } from "../i18n";
+import NotFound from "./not-found";
+export function meta(
+	args: Parameters<typeof pageMeta>[1] & { params: { doc?: string } },
+) {
+	const doc = getEngineering(localeFromPath(args.location.pathname)).find(
+		(item) => item.slug === args.params.doc,
+	);
+	return doc
+		? [
+				{ title: `${doc.title} — Arthur Nunes` },
+				{ name: "description", content: doc.summary },
+			]
+		: [...pageMeta("notFound", args), { name: "robots", content: "noindex" }];
 }
-
 export default function EngineeringDocument() {
+	const c = useCopy();
+	const params = useParams();
+	const doc = getEngineering(useLocale()).find(
+		(item) => item.slug === params.doc,
+	);
+	if (!doc) return <NotFound />;
 	return (
 		<article className="shell page-wrap document-page">
 			<ReadingProgress />
-			<nav className="breadcrumbs" aria-label="Caminho">
-				<Link to="/engineering">Engenharia</Link>
+			<nav className="breadcrumbs" aria-label={c.common.path}>
+				<Link to="/engineering">{c.nav.engineering}</Link>
 				<span aria-hidden="true">/</span>
-				<span aria-current="page">Geração estática</span>
+				<span aria-current="page">{doc.title}</span>
 			</nav>
 			<header className="case-intro">
-				<p className="eyebrow">Decisão de arquitetura / Este portfólio</p>
-				<h1>{document.title}</h1>
-				<p className="lead">{document.summary}</p>
+				<p className="eyebrow">
+					{c.engineering.decision} / {c.engineering.portfolio}
+				</p>
+				<h1>{doc.title}</h1>
+				<p className="lead">{doc.summary}</p>
 			</header>
 			<div className="reading-layout">
-				<nav className="reading-nav" aria-label="Nesta decisão">
-					<strong>Nesta decisão</strong>
-					<a href="#context">Contexto</a>
-					<a href="#choice">Escolha</a>
-					<a href="#tradeoffs">Consequências</a>
-					<a href="#evidence">Evidência</a>
+				<nav className="reading-nav" aria-label={c.engineering.toc}>
+					<strong>{c.engineering.toc}</strong>
+					{(["context", "choice", "consequences", "evidence"] as const).map(
+						(key) => (
+							<a key={key} href={`#${key}`}>
+								{c.engineering[key]}
+							</a>
+						),
+					)}
 				</nav>
 				<div className="prose">
-					<section id="context">
-						<h2>Contexto</h2>
-						<p>{document.body[0]}</p>
-					</section>
-					<section id="choice">
-						<h2>Escolha</h2>
-						<p>{document.body[1]}</p>
-						<p>{document.body[2]}</p>
-					</section>
-					<section id="tradeoffs">
-						<h2>Consequências</h2>
-						<p>
-							Cada página pública conhecida entra na lista de pré-renderização.
-							Ao adicionar um projeto ou estudo, o build precisa incluir sua
-							URL. Esse custo explícito evita páginas públicas vazias até a
-							hidratação.
-						</p>
-						<p>
-							Sem servidor em execução, a busca é local e o conteúdo depende de
-							um novo build para ser atualizado.
-						</p>
-					</section>
+					{(["context", "choice", "consequences"] as const).map((key) => (
+						<section id={key} key={key}>
+							<h2>{c.engineering[key]}</h2>
+							<p>{doc[key]}</p>
+						</section>
+					))}
 					<section id="evidence">
-						<h2>Evidência</h2>
+						<h2>{c.engineering.evidence}</h2>
+						<p>{c.engineering.evidenceText}</p>
 						<p>
-							A configuração está em <code>react-router.config.ts</code>; a
-							decisão completa está em{" "}
-							<code>
-								docs/architecture/adr/ADR-002-static-react-router-and-hosting.md
-							</code>{" "}
-							no repositório do portfólio.
+							<code>{doc.adr}</code>
 						</p>
 						<a
 							href="https://github.com/ArthurViniNunes/portfolio"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							Abrir código-fonte{" "}
-							<span className="sr-only">(abre em nova aba)</span>
+							{c.engineering.source}
+							<span className="sr-only">{c.common.newTab}</span>
 						</a>
 					</section>
-					<div className="case-next">
-						<span>Próximo passo</span>
-						<Link className="text-link" to="/work">
-							Explorar projetos ↗
-						</Link>
-					</div>
+					<Link className="text-link" to="/engineering">
+						{c.nav.engineering}
+					</Link>
 				</div>
 			</div>
 		</article>

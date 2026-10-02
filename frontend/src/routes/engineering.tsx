@@ -1,48 +1,39 @@
-import { Link } from "react-router";
 import { PageIntro } from "../components/ui";
-import { engineeringDocuments } from "../content/site";
-
-export function meta() {
-	return [
-		{ title: "Engenharia — Arthur Nunes" },
-		{
-			name: "description",
-			content:
-				"Decisões técnicas e documentação contextual dos projetos e deste portfólio.",
-		},
-	];
-}
-
+import { getEngineering } from "../content/site";
+import { Link, pageMeta, useCopy, useLocale } from "../i18n";
+export const meta = (args: Parameters<typeof pageMeta>[1]) =>
+	pageMeta("engineering", args);
 export default function Engineering() {
+	const c = useCopy();
+	const documents = getEngineering(useLocale());
 	return (
 		<div className="shell page-wrap">
 			<PageIntro
-				eyebrow="Engenharia"
-				title="Decisões que sustentam o produto."
-				description="Documentação técnica conectada ao contexto em que cada decisão foi tomada."
+				eyebrow={c.nav.engineering}
+				title={c.engineering.title}
+				description={c.engineering.description}
 			/>
 			<div className="index-list">
-				{engineeringDocuments.map((document) => (
-					<article key={document.slug}>
+				{documents.map((doc) => (
+					<article key={doc.slug}>
 						<div>
-							<p className="eyebrow">Este portfólio / Arquitetura</p>
+							<p className="eyebrow">{c.engineering.portfolio}</p>
 							<h2>
-								<Link to={`/engineering/${document.slug}`}>
-									{document.title}
-								</Link>
+								<Link to={`/engineering/${doc.slug}`}>{doc.title}</Link>
 							</h2>
-							<p>{document.summary}</p>
+							<p>{doc.summary}</p>
+							<ul className="tag-list" aria-label={c.common.projectTopics}>
+								{doc.tags.map((tag) => (
+									<li key={tag}>{tag}</li>
+								))}
+							</ul>
 						</div>
-						<Link className="text-link" to={`/engineering/${document.slug}`}>
-							Ler decisão ↗
+						<Link className="text-link" to={`/engineering/${doc.slug}`}>
+							{c.engineering.read}
 						</Link>
 					</article>
 				))}
 			</div>
-			<p className="section-note">
-				Documentos de outros projetos serão incluídos após revisão de suas
-				fontes.
-			</p>
 		</div>
 	);
 }

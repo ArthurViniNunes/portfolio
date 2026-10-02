@@ -1,32 +1,26 @@
-import { Link } from "react-router";
 import { PageIntro } from "../components/ui";
-
-export function meta() {
+import { Link, pageMeta, useCopy } from "../i18n";
+export function meta(args: Parameters<typeof pageMeta>[1]) {
 	return [
-		{ title: "Página não encontrada — Arthur Nunes" },
-		{
-			name: "description",
-			content:
-				"Este endereço não corresponde a uma página do portfólio. Use a busca ou navegue pelos projetos.",
-		},
+		...pageMeta("notFound", args),
 		{ name: "robots", content: "noindex" },
 	];
 }
-
 export default function NotFound() {
+	const c = useCopy();
 	return (
 		<div className="shell page-wrap">
 			<PageIntro
 				eyebrow="404"
-				title="Esta página não foi encontrada."
-				description="O endereço pode ter mudado. Use a busca ou retome a navegação pelos projetos."
+				title={c.error.title}
+				description={c.error.description}
 			/>
 			<div className="actions">
-				<Link className="button primary" to="/search">
-					Buscar conteúdo
+				<Link to="/" className="button primary">
+					{c.common.back}
 				</Link>
-				<Link className="button quiet" to="/work">
-					Ver projetos
+				<Link to="/search" className="button quiet">
+					{c.nav.search}
 				</Link>
 			</div>
 		</div>

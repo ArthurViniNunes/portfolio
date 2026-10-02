@@ -1,114 +1,136 @@
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import { EmptyState, imageUrl, ReadingProgress } from "../components/ui";
-import { getProject, projects } from "../content/projects";
-
-export function meta({ params }: { params: { slug?: string } }) {
-	const project = getProject(params.slug);
-	return [
-		{
-			title: project
-				? `${project.title} — Arthur Nunes`
-				: "Projeto não encontrado — Arthur Nunes",
-		},
-		{
-			name: "description",
-			content: project?.summary ?? "Explore os projetos de Arthur Nunes.",
-		},
-	];
+import { localeFromPath } from "../content/locale";
+import { messages } from "../content/messages";
+import { getProject, getProjects } from "../content/projects";
+import { Link, type pageMeta, useCopy, useLocale } from "../i18n";
+export function meta(
+	args: Parameters<typeof pageMeta>[1] & { params: { slug?: string } },
+) {
+	const locale = localeFromPath(args.location.pathname);
+	const project = getProject(args.params.slug, locale);
+	return project
+		? [
+				{ title: `${project.title} — Arthur Nunes` },
+				{ name: "description", content: project.summary },
+			]
+		: [
+				{ title: `${messages[locale].project.missing} — Arthur Nunes` },
+				{ name: "robots", content: "noindex" },
+			];
 }
-
 export default function ProjectPage() {
 	const { slug } = useParams();
-	const project = getProject(slug);
-	if (!project) {
+	const locale = useLocale();
+	const c = useCopy();
+	const projects = getProjects(locale);
+	const project = getProject(slug, locale);
+	if (!project)
 		return (
 			<div className="shell page-wrap">
 				<EmptyState
-					title="Projeto não encontrado"
-					description="Este endereço não corresponde a um projeto publicado."
+					title={c.project.missing}
+					description={c.project.missingText}
 					to="/work"
-					action="Ver projetos"
+					action={c.common.allProjects}
 				/>
 			</div>
 		);
-	}
-
 	const next =
 		projects[
 			(projects.findIndex((item) => item.slug === project.slug) + 1) %
 				projects.length
 		];
-
 	return (
 		<article className="shell case-page page-wrap">
 			<ReadingProgress />
-			<nav className="breadcrumbs" aria-label="Caminho">
-				<Link to="/work">Projetos</Link>
+			<nav className="breadcrumbs" aria-label={c.common.path}>
+				<Link to="/work">{c.nav.work}</Link>
 				<span aria-hidden="true">/</span>
 				<span aria-current="page">{project.title}</span>
 			</nav>
 			<header className="case-intro">
 				<p className="eyebrow">
-					{project.kind} / {project.status}
+					{project.kind} /{" "}
+					{project.status === "documentado"
+						? c.project.documented
+						: c.project.review}
 				</p>
 				<h1>{project.title}</h1>
 				<p className="lead">{project.summary}</p>
-				<ul className="tag-list" aria-label="Tecnologias e temas">
+				<ul className="tag-list" aria-label={c.common.projectTopics}>
 					{project.tags.map((tag) => (
 						<li key={tag}>{tag}</li>
 					))}
 				</ul>
-				{project.repository && (
-					<a
-						className="button primary"
-						href={project.repository}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Abrir repositório{" "}
-						<span className="sr-only">(abre em nova aba)</span>
-					</a>
-				)}
+				<div className="case-actions">
+					{project.repository && (
+						<a
+							className="button primary"
+							href={project.repository}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{c.common.source}
+							<span className="sr-only">{c.common.newTab}</span>
+						</a>
+					)}
+					{project.demo && (
+						<a
+							className="button quiet"
+							href={project.demo}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{c.project.demo}
+							<span className="sr-only">{c.common.newTab}</span>
+						</a>
+					)}
+				</div>
 			</header>
 			<figure className="case-figure">
-				<img
-					src={imageUrl(project.image)}
-					alt={project.imageAlt}
-					width="1902"
-					height="880"
-				/>
+				<img src={imageUrl(project.image)} alt={project.imageAlt} />
 				<figcaption>
-					Captura do portfólio anterior. A interface pode ter mudado desde
-					então.
+					{project.imageSource === "repository"
+						? c.project.repositoryImage
+						: c.project.historical}
 				</figcaption>
 			</figure>
 			<div className="reading-layout">
-				<nav className="reading-nav" aria-label="Neste projeto">
-					<strong>Neste projeto</strong>
-					<a href="#overview">Visão geral</a>
-					<a href="#problem">Problema</a>
-					<a href="#solution">Solução</a>
+				<nav className="reading-nav" aria-label={c.project.toc}>
+					<strong>{c.project.toc}</strong>
+					{(["overview", "problem", "solution"] as const).map((key) => (
+						<a key={key} href={`#${key}`}>
+							{c.project[key]}
+						</a>
+					))}
 					{project.engineering.length > 0 && (
-						<a href="#engineering">Engenharia</a>
+						<a href="#engineering">{c.project.engineering}</a>
 					)}
-					<a href="#result">Resultado e fontes</a>
+					<a href="#result">{c.project.result}</a>
 				</nav>
 				<div className="prose">
 					<section id="overview">
-						<h2>Visão geral</h2>
+						<h2>{c.project.overview}</h2>
 						<p>{project.summary}</p>
+						{project.team && (
+							<>
+								<h3 className="contribution-heading">{c.project.scope}</h3>
+								<p>{project.team}</p>
+							</>
+						)}
 					</section>
 					<section id="problem">
-						<h2>O problema</h2>
+						<h2>{c.project.problem}</h2>
 						<p>{project.problem}</p>
 					</section>
 					<section id="solution">
-						<h2>A solução</h2>
+						<h2>{c.project.solution}</h2>
 						<p>{project.solution}</p>
 					</section>
 					{project.engineering.length > 0 && (
 						<section id="engineering">
-							<h2>Decisões de engenharia</h2>
+							<h2>{c.project.engineering}</h2>
 							<ul>
 								{project.engineering.map((item) => (
 									<li key={item}>{item}</li>
@@ -117,7 +139,7 @@ export default function ProjectPage() {
 						</section>
 					)}
 					<section id="result">
-						<h2>Resultado e fontes</h2>
+						<h2>{c.project.result}</h2>
 						<p>{project.result}</p>
 						<p className="source-note">{project.sourceNote}</p>
 						{project.repository && (
@@ -127,14 +149,14 @@ export default function ProjectPage() {
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									Conferir código e documentação{" "}
-									<span className="sr-only">(abre em nova aba)</span>
+									{c.project.source}
+									<span className="sr-only">{c.common.newTab}</span>
 								</a>
 							</p>
 						)}
 					</section>
 					<div className="case-next">
-						<span>Continue explorando</span>
+						<span>{c.common.next}</span>
 						<Link className="text-link" to={`/work/${next.slug}`}>
 							{next.title} ↗
 						</Link>

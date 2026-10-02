@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router";
 import type { Project } from "../content/projects";
+import { Link, useCopy } from "../i18n";
 
 export function imageUrl(name: string) {
 	return `${import.meta.env.BASE_URL}images/${name}`;
@@ -56,9 +56,15 @@ export function ProjectCard({
 	project: Project;
 	featured?: boolean;
 }) {
+	const c = useCopy();
 	return (
 		<article className={featured ? "project-card featured" : "project-card"}>
-			<Link className="project-visual" to={`/work/${project.slug}`}>
+			<Link
+				className="project-visual"
+				to={`/work/${project.slug}`}
+				aria-label={`${c.common.readProject}: ${project.title}`}
+				data-motion-enter
+			>
 				<img
 					src={imageUrl(project.image)}
 					alt={project.imageAlt}
@@ -66,19 +72,36 @@ export function ProjectCard({
 				/>
 			</Link>
 			<div className="project-card-copy">
-				<p className="eyebrow">{project.kind}</p>
+				<p className="eyebrow">{featured ? c.home.featured : project.kind}</p>
 				<h3>
 					<Link to={`/work/${project.slug}`}>{project.title}</Link>
 				</h3>
 				<p>{project.summary}</p>
-				<ul className="tag-list" aria-label="Temas do projeto">
+				<ul className="tag-list" aria-label={c.common.projectTopics}>
 					{project.tags.slice(0, 4).map((tag) => (
 						<li key={tag}>{tag}</li>
 					))}
 				</ul>
-				<Link className="text-link" to={`/work/${project.slug}`}>
-					Ler projeto <span aria-hidden="true">↗</span>
-				</Link>
+				<div className="project-card-actions">
+					<Link
+						className={featured ? "button primary" : "text-link"}
+						to={`/work/${project.slug}`}
+						aria-label={`${c.common.readProject}: ${project.title}`}
+					>
+						{c.common.readProject} <span aria-hidden="true">↗</span>
+					</Link>
+					{featured && project.demo && (
+						<a
+							className="text-link"
+							href={project.demo}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{c.project.demo}
+							<span className="sr-only"> {c.common.newTab}</span>
+						</a>
+					)}
+				</div>
 			</div>
 		</article>
 	);

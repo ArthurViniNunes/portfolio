@@ -1,47 +1,43 @@
-import { useState } from "react";
+import { useSearchParams } from "react-router";
 import { PageIntro, ProjectCard } from "../components/ui";
-import { projects } from "../content/projects";
-
-export function meta() {
-	return [
-		{ title: "Projetos — Arthur Nunes" },
-		{
-			name: "description",
-			content:
-				"Projetos de Arthur Nunes com contexto, decisões e fontes para explorar o código.",
-		},
-	];
-}
-
-const skills = ["Todos", "React", "TypeScript", "Node.js", ".NET"] as const;
-
+import { getProjects } from "../content/projects";
+import { pageMeta, useCopy, useHydrated, useLocale } from "../i18n";
+export const meta = (args: Parameters<typeof pageMeta>[1]) =>
+	pageMeta("work", args);
 export default function Work() {
-	const [skill, setSkill] = useState<string>("Todos");
-	const visible =
-		skill === "Todos"
-			? projects
-			: projects.filter((project) => project.tags.includes(skill));
-
+	const c = useCopy();
+	const projects = getProjects(useLocale());
+	const hydrated = useHydrated();
+	const [params, setParams] = useSearchParams();
+	const skill = hydrated ? (params.get("tech") ?? "") : "";
+	const skills = ["React", "TypeScript", "Node.js", ".NET", "PostgreSQL"];
+	const visible = !skills.includes(skill)
+		? projects
+		: projects.filter((project) => project.tags.includes(skill));
 	return (
 		<div className="shell page-wrap">
 			<PageIntro
-				eyebrow="Projetos"
-				title="Trabalhos com decisões à vista."
-				description="Cada projeto apresenta o problema, o que foi construído e o que pode ser conferido nas fontes disponíveis."
+				eyebrow={c.nav.work}
+				title={c.work.title}
+				description={c.work.description}
 			/>
 			<div className="filter-row">
-				<label htmlFor="skill-filter">Filtrar por tecnologia</label>
+				<label htmlFor="skill-filter">{c.work.filter}</label>
 				<select
 					id="skill-filter"
-					value={skill}
-					onChange={(event) => setSkill(event.target.value)}
+					value={skills.includes(skill) ? skill : ""}
+					onChange={(event) =>
+						setParams(event.target.value ? { tech: event.target.value } : {})
+					}
 				>
+					<option value="">{c.common.all}</option>
 					{skills.map((item) => (
 						<option key={item}>{item}</option>
 					))}
 				</select>
 				<span aria-live="polite">
-					{visible.length} {visible.length === 1 ? "projeto" : "projetos"}
+					{visible.length}{" "}
+					{visible.length === 1 ? c.common.project : c.common.projects}
 				</span>
 			</div>
 			<div className="work-list">

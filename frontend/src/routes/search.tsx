@@ -1,130 +1,113 @@
-import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
 import { PageIntro } from "../components/ui";
+import { localizedPath } from "../content/locale";
 import { type SearchKind, searchContent } from "../content/search";
-
-export function meta() {
-	return [
-		{ title: "Busca — Arthur Nunes" },
-		{
-			name: "description",
-			content:
-				"Busque projetos, documentos de engenharia e informações de carreira neste portfólio.",
-		},
-	];
-}
-
-const kinds: Array<{ label: string; value?: SearchKind }> = [
-	{ label: "Todos" },
-	{ label: "Projetos", value: "Projeto" },
-	{ label: "Engenharia", value: "Engenharia" },
-	{ label: "Carreira", value: "Carreira" },
-];
-
+import { Link, pageMeta, useCopy, useHydrated, useLocale } from "../i18n";
+export const meta = (args: Parameters<typeof pageMeta>[1]) =>
+	pageMeta("search", args);
 export default function Search() {
+	const c = useCopy();
+	const locale = useLocale();
+	const hydrated = useHydrated();
 	const [params, setParams] = useSearchParams();
-	const [hydrated, setHydrated] = useState(false);
-	useEffect(() => setHydrated(true), []);
 	const query = hydrated ? (params.get("q") ?? "").trim() : "";
-	const kindParam = hydrated ? params.get("tipo") : null;
-	const kind = kinds.find((item) => item.value === kindParam)?.value;
-	const results = searchContent(query, kind);
-
+	const kinds: SearchKind[] = ["project", "engineering", "career"];
+	const rawKind = hydrated ? params.get("tipo") : null;
+	const kind = kinds.find((item) => item === rawKind);
+	const results = searchContent(query, kind, locale);
 	return (
 		<div className="shell page-wrap search-page">
 			<PageIntro
-				eyebrow="Busca"
-				title="Encontre o conteúdo no contexto."
-				description="Pesquise títulos, tecnologias e texto de projetos, documentos e informações de carreira."
+				eyebrow={c.nav.search}
+				title={c.search.title}
+				description={c.search.description}
 			/>
 			<search>
 				<form
 					className="search-form"
 					method="get"
-					action={`${import.meta.env.BASE_URL}search/`}
+					action={localizedPath("/search", locale)}
 				>
-					<label htmlFor="site-search">O que você procura?</label>
+					<label htmlFor="site-search">{c.search.label}</label>
 					<div>
 						<input
 							id="site-search"
 							name="q"
 							type="search"
-							defaultValue={query}
 							key={query}
-							placeholder="Ex.: testes, React, arquitetura"
+							defaultValue={query}
+							placeholder={c.search.placeholder}
 						/>
 						<button className="button primary" type="submit">
-							Buscar
+							{c.search.button}
 						</button>
 					</div>
 				</form>
 			</search>
-			{query && (
+			<noscript>
+				<p className="section-note">{c.search.noJs}</p>
+			</noscript>
+			{query ? (
 				<>
 					<fieldset className="search-filters">
-						<legend className="sr-only">Filtrar resultados por tipo</legend>
-						{kinds.map((item) => (
+						<legend className="sr-only">{c.search.filter}</legend>
+						{[undefined, ...kinds].map((item) => (
 							<button
-								key={item.label}
+								key={item ?? "all"}
 								type="button"
-								aria-pressed={kind === item.value}
+								aria-pressed={kind === item}
 								onClick={() =>
 									setParams((current) => {
 										const next = new URLSearchParams(current);
-										if (item.value) next.set("tipo", item.value);
+										if (item) next.set("tipo", item);
 										else next.delete("tipo");
 										return next;
 									})
 								}
 							>
-								{item.label}
+								{item ? c.search.kinds[item] : c.common.all}
 							</button>
 						))}
 					</fieldset>
 					<p className="result-count" aria-live="polite">
-						{results.length} {results.length === 1 ? "resultado" : "resultados"}{" "}
-						para “{query}”
+						{results.length} {c.search.count} “{query}”
 					</p>
-					{results.length > 0 ? (
+					<Link to="/search" className="text-link">
+						{c.search.clear}
+					</Link>
+					{results.length ? (
 						<div className="index-list search-results">
 							{results.map((entry) => (
 								<article key={entry.href}>
 									<div>
-										<p className="eyebrow">{entry.kind}</p>
+										<p className="eyebrow">{c.search.kinds[entry.kind]}</p>
 										<h2>
 											<Link to={entry.href}>{entry.title}</Link>
 										</h2>
 										<p>{entry.summary}</p>
 									</div>
 									<Link className="text-link" to={entry.href}>
-										Abrir conteúdo ↗
+										{c.common.open}
 									</Link>
 								</article>
 							))}
 						</div>
 					) : (
 						<div className="empty-state">
-							<h2>Nenhum resultado encontrado</h2>
-							<p>
-								Tente outra palavra ou selecione “Todos”. Você também pode
-								navegar diretamente pelos projetos.
-							</p>
+							<h2>{c.search.none}</h2>
+							<p>{c.search.noneText}</p>
 							<Link className="text-link" to="/work">
-								Ver projetos
+								{c.common.allProjects}
 							</Link>
 						</div>
 					)}
 				</>
-			)}
-			{!query && (
+			) : (
 				<div className="empty-state">
-					<h2>Comece com uma palavra ou tema</h2>
-					<p>
-						A busca inclui o texto dos projetos e documentos publicados. Estudos
-						e experiências ainda não fornecidos não aparecem nos resultados.
-					</p>
+					<h2>{c.search.start}</h2>
+					<p>{c.search.startText}</p>
 					<Link className="text-link" to="/work">
-						Explorar projetos
+						{c.common.allProjects}
 					</Link>
 				</div>
 			)}

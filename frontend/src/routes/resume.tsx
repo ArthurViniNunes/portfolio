@@ -1,69 +1,60 @@
-import { Link } from "react-router";
 import { PageIntro } from "../components/ui";
-import { projects } from "../content/projects";
-import { site } from "../content/site";
-
-export function meta() {
-	return [
-		{ title: "Currículo — Arthur Nunes" },
-		{
-			name: "description",
-			content: "Resumo profissional, projetos e contato de Arthur Nunes.",
-		},
-	];
-}
-
+import { getResumes } from "../content/resumes";
+import { Link, pageMeta, useCopy, useLocale } from "../i18n";
+export const meta = (args: Parameters<typeof pageMeta>[1]) =>
+	pageMeta("resume", args);
 export default function Resume() {
+	const c = useCopy();
+	const resumes = getResumes(useLocale());
 	return (
 		<div className="shell page-wrap resume-page">
 			<PageIntro
-				eyebrow="Currículo"
-				title={site.fullName}
-				description="Resumo profissional baseado nos projetos públicos disponíveis nesta versão."
+				eyebrow={c.nav.resume}
+				title={c.resume.title}
+				description={c.resume.description}
 			/>
-			<div className="resume-contact">
-				<span>{site.role}</span>
-				<a href={`mailto:${site.email}`}>{site.email}</a>
-				<a href={site.linkedin} target="_blank" rel="noopener noreferrer">
-					LinkedIn <span className="sr-only">(abre em nova aba)</span>
-				</a>
+			<div className="resume-catalog">
+				{resumes.map((resume) => (
+					<article key={resume.id} id={resume.id} className="resume-card">
+						<div className="resume-document" aria-hidden="true">
+							<span />
+							<span />
+							<span />
+							<span />
+						</div>
+						<h2>{resume.title}</h2>
+						<p>{resume.summary}</p>
+						<ul className="tag-list" aria-label={c.resume.focus}>
+							{resume.focus.map((item) => (
+								<li key={item}>{item}</li>
+							))}
+						</ul>
+						<a
+							className="button quiet"
+							href={resume.href}
+							aria-describedby={
+								resume.status === "placeholder"
+									? `${resume.id}-status`
+									: undefined
+							}
+						>
+							{c.resume.download}
+							<span aria-hidden="true">↗</span>
+						</a>
+						{resume.status === "placeholder" && (
+							<p className="file-status" id={`${resume.id}-status`}>
+								{c.resume.pending}
+							</p>
+						)}
+					</article>
+				))}
 			</div>
-			<section>
-				<h2>Projetos com documentação pública</h2>
-				<div className="index-list">
-					{projects
-						.filter((project) => project.repository)
-						.map((project) => (
-							<article key={project.slug}>
-								<div>
-									<h3>
-										<Link to={`/work/${project.slug}`}>{project.title}</Link>
-									</h3>
-									<p>{project.summary}</p>
-									<ul className="tag-list" aria-label="Tecnologias do projeto">
-										{project.tags.slice(0, 4).map((tag) => (
-											<li key={tag}>{tag}</li>
-										))}
-									</ul>
-								</div>
-								<Link className="text-link" to={`/work/${project.slug}`}>
-									Ver projeto ↗
-								</Link>
-							</article>
-						))}
-				</div>
-			</section>
-			<section className="resume-note">
-				<h2>Experiência e formação</h2>
-				<p>
-					O histórico profissional, a formação e um PDF atualizado ainda não
-					foram fornecidos. Esta página não apresenta datas, cargos ou download
-					sem confirmação.
-				</p>
+			<div className="resume-footnote">
+				<p>{c.resume.note}</p>
 				<Link className="text-link" to="/contact">
-					Entrar em contato ↗
+					{c.common.talk}
 				</Link>
-			</section>
+			</div>
 		</div>
 	);
 }

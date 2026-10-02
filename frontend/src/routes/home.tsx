@@ -1,51 +1,38 @@
-import { Link } from "react-router";
+import { Hero } from "../components/hero";
+import { Recommendations } from "../components/recommendations";
+import { TrustSection } from "../components/trust";
 import { imageUrl, ProjectCard } from "../components/ui";
-import { projects } from "../content/projects";
+import { getProjects } from "../content/projects";
 import { site } from "../content/site";
-
-export function meta() {
-	return [
-		{ title: "Arthur Nunes — Desenvolvimento Full Stack" },
-		{
-			name: "description",
-			content:
-				"Projetos, decisões de engenharia, aprendizado e contato de Arthur Nunes.",
-		},
-	];
-}
-
+import { Link, pageMeta, useCopy, useLocale } from "../i18n";
+export const meta = (args: Parameters<typeof pageMeta>[1]) =>
+	pageMeta("home", args);
 export default function Home() {
+	const c = useCopy();
+	const projects = getProjects(useLocale());
 	return (
 		<>
-			<section className="hero">
-				<div className="hero-backdrop" aria-hidden="true">
-					<span className="hero-plane" />
-					<span className="hero-ring ring-one" />
-					<span className="hero-ring ring-two" />
-				</div>
+			<Hero>
 				<div className="shell hero-grid">
 					<div className="hero-copy">
-						<p className="eyebrow">
-							{site.name} / {site.role}
+						<p className="hero-introduction">
+							{site.name} / {c.common.role}
 						</p>
-						<h1>Produtos web, da interface à arquitetura.</h1>
-						<p className="lead">
-							Aqui estão projetos, decisões de implementação e caminhos para
-							conhecer meu trabalho em diferentes níveis de detalhe.
-						</p>
+						<h1 id="hero-title">{c.home.title}</h1>
+						<p className="lead">{c.home.description}</p>
 						<div className="actions">
 							<Link className="button primary" to="/work">
-								Conhecer projetos
+								{c.home.work}
 							</Link>
 							<Link className="button quiet" to="/resume">
-								Ver currículo
+								{c.home.resume}
 							</Link>
 						</div>
 					</div>
 					<div className="profile-panel">
 						<img
 							src={imageUrl("foto-perfil.webp")}
-							alt="Retrato de Arthur Nunes"
+							alt={c.common.portrait}
 							width="339"
 							height="346"
 							fetchPriority="high"
@@ -53,74 +40,61 @@ export default function Home() {
 						<div className="profile-caption">
 							<div>
 								<strong>{site.name}</strong>
-								<span>{site.role}</span>
+								<span>{c.common.role}</span>
 							</div>
-							<Link to="/contact">Contato</Link>
+							<Link to="/about">{c.nav.about}</Link>
 						</div>
 					</div>
 				</div>
-			</section>
-
-			<section className="shell section" aria-labelledby="work-title">
+			</Hero>
+			<section
+				className="shell section selected-section"
+				aria-labelledby="work-title"
+			>
 				<div className="section-head">
 					<div>
-						<p className="eyebrow">Projetos selecionados</p>
-						<h2 id="work-title">O trabalho em contexto.</h2>
+						<p className="eyebrow">{c.home.selected}</p>
+						<h2 id="work-title">{c.home.workTitle}</h2>
 					</div>
 					<Link className="text-link" to="/work">
-						Ver todos os projetos
+						{c.common.allProjects}
 					</Link>
 				</div>
 				<ProjectCard project={projects[0]} featured />
 				<div className="project-grid">
-					{projects.slice(1).map((project) => (
+					{projects.slice(1, 3).map((project) => (
 						<ProjectCard key={project.slug} project={project} />
 					))}
 				</div>
 			</section>
-
+			<TrustSection />
+			<Recommendations />
 			<section
 				className="shell section module-section"
 				aria-labelledby="explore-title"
 			>
 				<div className="section-head">
-					<div>
-						<p className="eyebrow">Outros caminhos</p>
-						<h2 id="explore-title">Explore por interesse.</h2>
-					</div>
+					<h2 id="explore-title">{c.home.explore}</h2>
 				</div>
 				<div className="module-list">
-					<Link to="/engineering">
-						<strong>Engenharia</strong>
-						<span>Decisões e documentação técnica</span>
-						<b aria-hidden="true">↗</b>
-					</Link>
-					<Link to="/learning">
-						<strong>Aprendizado</strong>
-						<span>Estudos e resolução de problemas</span>
-						<b aria-hidden="true">↗</b>
-					</Link>
-					<Link to="/about">
-						<strong>Trajetória</strong>
-						<span>Perfil profissional e evolução</span>
-						<b aria-hidden="true">↗</b>
-					</Link>
-					<Link to="/resume">
-						<strong>Currículo</strong>
-						<span>Resumo para avaliação rápida</span>
-						<b aria-hidden="true">↗</b>
-					</Link>
+					{(["engineering", "learning", "about", "resume"] as const).map(
+						(key) => (
+							<Link to={`/${key}`} key={key}>
+								<strong>{c.nav[key]}</strong>
+								<span>
+									{key === "resume" ? c.home.resumeDescription : c.home[key]}
+								</span>
+								<b aria-hidden="true">↗</b>
+							</Link>
+						),
+					)}
 				</div>
 			</section>
-
 			<section className="contact-band">
 				<div className="shell contact-band-inner">
-					<div>
-						<p className="eyebrow">Contato</p>
-						<h2>Vamos conversar sobre o próximo produto.</h2>
-					</div>
+					<h2>{c.home.contact}</h2>
 					<Link className="button primary" to="/contact">
-						Entrar em contato
+						{c.common.talk}
 					</Link>
 				</div>
 			</section>
