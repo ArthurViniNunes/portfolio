@@ -431,9 +431,10 @@ main:focus {
 }
 .profile-panel img {
 	width: 100%;
-	aspect-ratio: 1;
+	height: auto;
+	aspect-ratio: 4 / 5;
 	object-fit: cover;
-	object-position: center top;
+	object-position: center;
 	border-radius: 12px;
 }
 .profile-caption {
@@ -954,8 +955,10 @@ main:focus {
 }
 .about-portrait img {
 	width: 100%;
+	height: auto;
 	aspect-ratio: 1 / 1.1;
 	object-fit: cover;
+	object-position: 50% 35%;
 	border-radius: 48% 48% 8px 8px;
 }
 .about-portrait figcaption {
@@ -1401,6 +1404,10 @@ main:focus {
 .journey-list time {
 	color: var(--muted);
 	font-size: 0.84rem;
+}
+.journey-list h3 a {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 4px;
 }
 .journey-list h3 {
 	font-size: 1.4rem;

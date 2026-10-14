@@ -1,6 +1,7 @@
 import type { Locale } from "./locale.ts";
 
-// Sources: ARTHUR_CONTEXT.md and recommendations supplied by the author, 2026-10-01.
+// Sources: ARTHUR_CONTEXT.md and recommendations supplied by the author, 2026-10-01;
+// current DevOps role at IGEOS supplied by the author, 2026-10-14.
 // Publication scope and unresolved evidence: docs/content/fontes-do-perfil.md.
 const pt = {
 	pageNavigation: "Explore esta página",
@@ -10,7 +11,7 @@ const pt = {
 		comments: "Comentários",
 	},
 	intro:
-		"Sou Arthur Nunes, desenvolvedor Full Stack de Fortaleza e estudante de Ciência da Computação na UFC. Construo aplicações web e gosto de conectar código, pessoas e problemas reais.",
+		"Sou Arthur Nunes, de Fortaleza. Atualmente trabalho como DevOps na IGEOS e estudo Ciência da Computação na UFC. Minha experiência em desenvolvimento Full Stack me ajuda a conectar código, pessoas e problemas reais.",
 	storyTitle: "Construir software também é construir em equipe.",
 	story:
 		"Minha experiência passa por uma plataforma educacional na PC4 e por um sistema de telemarketing na TEVOS. Entre interfaces, APIs e bancos de dados, aprendi a olhar para o produto inteiro e a trabalhar com as pessoas que o constroem.",
@@ -19,6 +20,14 @@ const pt = {
 	education: "Ciência da Computação · UFC · 2023–2027 (em andamento)",
 	journeyTitle: "Onde venho construindo essa experiência.",
 	journey: [
+		{
+			organization: "IGEOS",
+			role: "DevOps",
+			period: "Desde out. 2026",
+			start: "2026-10",
+			text: "Atuo em DevOps na IGEOS, empresa de inteligência geoespacial e desenvolvimento de software.",
+			url: "https://www.igeos.com.br/",
+		},
 		{
 			organization: "Tatame Cidadão · UFC",
 			role: "Agente de tecnologia e inovação",
@@ -96,7 +105,7 @@ const en: typeof pt = {
 		comments: "Testimonials",
 	},
 	intro:
-		"I'm Arthur Nunes, a Full Stack developer from Fortaleza and a Computer Science student at UFC. I build web applications and enjoy connecting code, people and real problems.",
+		"I'm Arthur Nunes, from Fortaleza. I currently work in DevOps at IGEOS and study Computer Science at UFC. My Full Stack development experience helps me connect code, people and real problems.",
 	storyTitle: "Building software also means building as a team.",
 	story:
 		"My experience spans an education platform at PC4 and a telemarketing system at TEVOS. Working across interfaces, APIs and databases taught me to look at the whole product and collaborate with the people building it.",
@@ -105,6 +114,14 @@ const en: typeof pt = {
 	education: "Computer Science · UFC · 2023–2027 (in progress)",
 	journeyTitle: "Where I've been building that experience.",
 	journey: [
+		{
+			organization: "IGEOS",
+			role: "DevOps",
+			period: "Since Oct. 2026",
+			start: "2026-10",
+			text: "I work in DevOps at IGEOS, a geospatial intelligence and software development company.",
+			url: "https://www.igeos.com.br/",
+		},
 		{
 			organization: "Tatame Cidadão · UFC",
 			role: "Technology and innovation contributor",

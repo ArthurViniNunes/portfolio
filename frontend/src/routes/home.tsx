@@ -3,6 +3,7 @@ import { Recommendations } from "../components/recommendations";
 import { TrustSection } from "../components/trust";
 import { imageUrl, ProjectCard } from "../components/ui";
 import { getProjects } from "../content/projects";
+import { portraits } from "../content/portraits";
 import { site } from "../content/site";
 import { Link, pageMeta, useCopy, useLocale } from "../i18n";
 export const meta = (args: Parameters<typeof pageMeta>[1]) =>
@@ -31,11 +32,12 @@ export default function Home() {
 					</div>
 					<div className="profile-panel">
 						<img
-							src={imageUrl("foto-perfil.webp")}
+							src={imageUrl(portraits.main)}
 							alt={c.common.portrait}
-							width="339"
-							height="346"
+							width="1122"
+							height="1402"
 							fetchPriority="high"
+							decoding="async"
 						/>
 						<div className="profile-caption">
 							<div>

@@ -30,9 +30,13 @@ test("smash-or-pass abre a vitrine e preserva autoria em equipe", () => {
     assert(searchContent(locale === "pt" ? "receitas" : "recipes", "project", locale).some(entry => entry.title === "Smash or Pass"));
   }
 });
-test("Kanban distingue evolução planejada de funcionalidade entregue", () => {
+test("Kanban e Plateia refletem o escopo verificável dos repositórios", () => {
   const kanban = getProjects().find(project => project.slug === "kanban-realtime");
-  assert(kanban.engineering.some(item => item.includes("próximas evoluções")));
-  assert(kanban.result.includes("planejada"));
-  assert(getProjects("en").find(project => project.slug === "kanban-realtime").result.includes("planned"));
+  assert(kanban.engineering.some(item => item.includes("Socket.IO")));
+  assert(kanban.result.includes("colaboração em tempo real"));
+  assert(getProjects("en").find(project => project.slug === "kanban-realtime").result.includes("real-time"));
+  const plateia = getProjects().find(project => project.slug === "plateia-ingressos");
+  assert.equal(plateia.status, "documentado");
+  assert.equal(plateia.repository, "https://github.com/ArthurViniNunes/plateia");
+  assert(plateia.result.includes("pagamento real"));
 });

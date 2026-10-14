@@ -62,7 +62,7 @@ export const projects: Project[] = [
 		solution:
 			"A aplicação permite cadastrar pessoas e transações, filtrar movimentações e consultar totais gerais e individuais. A interface mantém os filtros após cadastro, edição ou exclusão.",
 		engineering: [
-			"Valores monetários são persistidos em centavos inteiros; as comparações dos filtros seguem a mesma representação.",
+			"Valores monetários são persistidos em centavos inteiros e convertidos em um ponto central. A escolha evita arredondamentos de ponto flutuante e mantém filtros e totais na mesma precisão, com o custo de converter os números na fronteira da API.",
 			"Regras como o bloqueio de receitas para menores de idade são protegidas pela API; a interface também valida os dados de entrada.",
 			"O repositório inclui testes do back-end e uma rotina de CI que verifica build, testes e lint.",
 		],
@@ -74,32 +74,32 @@ export const projects: Project[] = [
 		tags: ["React", "TypeScript", ".NET", "SQLite", "Testes"],
 		repository: "https://github.com/ArthurViniNunes/home-expense-control",
 		sourceNote:
-			"Descrição conferida no README público do projeto; imagem histórica do portfólio anterior.",
+			"Fontes: README e docs/architecture.md do repositório, revistos em 14/10/2026. Imagem histórica do portfólio anterior, ainda não comparada com a interface atual.",
 		status: "documentado",
 	},
 	{
 		slug: "kanban-realtime",
 		title: "Kanban Realtime",
-		kind: "Gestão de tarefas",
+		kind: "Gestão colaborativa de tarefas",
 		summary:
-			"Boards, colunas e cards em uma aplicação Full Stack voltada à organização de tarefas.",
+			"Boards, colunas e cards em uma aplicação Full Stack com atualização entre participantes do mesmo board.",
 		problem:
-			"Organizar trabalho em boards pessoais com acesso autenticado e operações previsíveis sobre colunas e cards.",
+			"Organizar trabalho em boards compartilhados, com acesso autorizado, ordem consistente dos cards e atualização para participantes conectados.",
 		solution:
-			"O projeto reúne cadastro e login, boards, colunas e cards. A interface usa componentes reutilizáveis e oferece feedback para operações do usuário.",
+			"O projeto reúne cadastro e login, boards com membros e papéis, colunas e cards arrastáveis. A página do board recebe eventos via Socket.IO e sincroniza o estado após a conexão.",
 		engineering: [
-			"O back-end separa controllers, serviços, repositórios e banco de dados.",
-			"O README registra testes de autorização, ownership e movimentação de cards.",
-			"A integração completa de Socket.IO no front-end e a sincronização em tempo real constam como próximas evoluções, não como funcionalidades concluídas.",
+			"A API verifica a participação no board antes de permitir acesso. Papéis de proprietário, administrador e membro delimitam a gestão de participantes; isso impede que conhecer o identificador de um board conceda acesso.",
+			"A movimentação de cards ocorre em uma transação: a API valida origem, destino e posição, reindexa as colunas e só depois emite o evento. Assim, outros clientes recebem a mudança após a persistência, sem aceitar movimentos entre boards.",
+			"O frontend usa Socket.IO para entrar na sala do board, recuperar um snapshot ao conectar e receber alterações de cards, colunas, membros e presença. O snapshot recompõe o estado quando uma conexão é retomada.",
 		],
 		result:
-			"O código e o README permitem verificar a estrutura e os testes. A colaboração em tempo real ainda está planejada.",
+			"O código inclui colaboração em tempo real no board e testes de acesso, membros e movimentação de cards. Não há métrica pública de uso nem validação de uma implantação hospedada.",
 		image: "kanban-realtime.webp",
 		imageAlt: "Board do Kanban Realtime em uma captura da versão anterior",
 		tags: ["React", "TypeScript", "Node.js", "PostgreSQL", "Autenticação"],
 		repository: "https://github.com/ArthurViniNunes/kanban-realtime",
 		sourceNote:
-			"Descrição conferida no README público do projeto; imagem histórica do portfólio anterior.",
+			"Fontes: README e código de BoardPage, Socket.IO, acesso e movimentação de cards, revistos em 14/10/2026. Imagem histórica ainda não comparada com a interface atual.",
 		status: "documentado",
 	},
 	{
@@ -107,21 +107,27 @@ export const projects: Project[] = [
 		title: "Plateia Ingressos",
 		kind: "Eventos e ingressos",
 		summary:
-			"Registro de um projeto de eventos apresentado no portfólio anterior. O conteúdo técnico está em revisão.",
+			"Plataforma de eventos e ingressos para um desafio técnico, da escolha de assentos à validação na portaria.",
 		problem:
-			"O portfólio anterior descrevia uma jornada de publicação de eventos, seleção de assentos e validação de ingressos.",
+			"Permitir que organizadores publiquem eventos e que clientes reservem lugares sem dupla ocupação, concluam uma compra simulada e apresentem um ingresso verificável na entrada.",
 		solution:
-			"A captura histórica mostra a interface de seleção de assentos. O alcance atual da implementação ainda precisa ser conferido antes de detalhar o caso.",
-		engineering: [],
+			"A aplicação React atende clientes, organizadores e portaria. Uma API em Node.js e PostgreSQL integra o catálogo da Ticketmaster, mantém reservas temporárias, simula pagamentos e emite ingressos com QR Code para validação manual ou por câmera.",
+		engineering: [
+			"Reservas bloqueiam até quatro assentos por dez minutos, com o PostgreSQL como fonte de disponibilidade. O prazo libera compras abandonadas, enquanto a transação e o bloqueio dos lugares impedem que reservas concorrentes ocupem o mesmo assento.",
+			"O pagamento é simulado, sem transação financeira real. Após aprovação, a API emite um ingresso por assento; recusa ou expiração devolve os lugares ao catálogo. Essa escolha entrega o fluxo exigido pelo desafio sem integrar um provedor financeiro.",
+			"O QR Code aponta para um ingresso compartilhável com código opaco. A portaria consulta o estado no servidor para rejeitar reutilização e ingressos de eventos cancelados.",
+		],
 		result:
-			"Sem resultado ou métrica publicados nesta versão. A documentação técnica será incluída após revisão do código e confirmação do escopo.",
+			"MVP com repositório, ADRs, testes e demonstração web publicados. Não há pagamento real nem métricas públicas de adoção; a captura exibida é histórica.",
 		image: "plateia.webp",
 		imageAlt:
 			"Interface de seleção de assentos do Plateia em uma captura histórica",
-		tags: ["Eventos", "Interface", "Em revisão"],
+		tags: ["React", "TypeScript", "Node.js", "PostgreSQL", "Ingressos"],
+		repository: "https://github.com/ArthurViniNunes/plateia",
+		demo: "https://plateia-ingressos.vercel.app/",
 		sourceNote:
-			"Registro baseado no portfólio anterior; funcionalidades e links ainda não foram verificados.",
-		status: "em revisão",
+			"Fontes: README, ADRs e testes do repositório Plateia, revistos em 14/10/2026; demonstração pública acessível nessa data. Captura do portfólio anterior, ainda não comparada com a interface atual.",
+		status: "documentado",
 	},
 ];
 
@@ -164,7 +170,7 @@ const english: Project[] = [
 		solution:
 			"The application manages people and transactions, filters entries and shows overall and individual totals. The interface preserves filters after creating, editing or deleting records.",
 		engineering: [
-			"Monetary values are stored as integer cents; filter comparisons use the same representation.",
+			"Monetary values are stored as integer cents and converted at one boundary. This avoids floating-point rounding and keeps filters and totals at the same precision, at the cost of converting values at the API boundary.",
 			"Rules such as preventing income entries for minors are enforced by the API; the interface also validates input.",
 			"The repository includes back-end tests and a CI routine for builds, tests and lint.",
 		],
@@ -173,45 +179,49 @@ const english: Project[] = [
 		imageAlt: "Home Expense Control dashboard from a previous version",
 		tags: ["React", "TypeScript", ".NET", "SQLite", "Testing"],
 		sourceNote:
-			"Description checked against the public README; historical image from the previous portfolio.",
+			"Sources: repository README and docs/architecture.md, reviewed on October 14, 2026. Historical image from the previous portfolio, not yet compared with the current interface.",
 	},
 	{
 		...baseProject("kanban-realtime"),
-		kind: "Task management",
+		kind: "Collaborative task management",
 		summary:
-			"Boards, columns and cards in a Full Stack application for organizing tasks.",
+			"Boards, columns and cards in a Full Stack application that updates across participants in the same board.",
 		problem:
-			"Organize work in personal boards with authenticated access and predictable operations on columns and cards.",
+			"Organize work in shared boards with authorized access, consistent card ordering and updates for connected participants.",
 		solution:
-			"The project includes registration, login, boards, columns and cards. Reusable interface components provide feedback for user actions.",
+			"The project includes registration, login, boards with members and roles, columns and draggable cards. The board page receives Socket.IO events and synchronizes state after connecting.",
 		engineering: [
-			"The back end separates controllers, services, repositories and the database.",
-			"The README describes authorization, ownership and card movement tests.",
-			"Full Socket.IO front-end integration and real-time synchronization are planned improvements, not completed features.",
+			"The API checks board membership before granting access. Owner, admin and member roles govern member management, so knowing a board ID does not grant access.",
+			"Card movement runs in a transaction: the API validates source, destination and position, reindexes columns and only then emits an event. Other clients receive the change after persistence, while cross-board moves are rejected.",
+			"The frontend uses Socket.IO to join a board room, fetch a snapshot on connection and receive card, column, member and presence updates. The snapshot restores state when a connection resumes.",
 		],
 		result:
-			"Code and the README document the structure and tests. Real-time collaboration is still planned.",
+			"The code includes real-time board collaboration and tests for access, members and card movement. No public usage metrics or hosted deployment validation are available.",
 		imageAlt: "Kanban Realtime board from a previous version",
 		tags: ["React", "TypeScript", "Node.js", "PostgreSQL", "Authentication"],
 		sourceNote:
-			"Description checked against the public README; historical image from the previous portfolio.",
+			"Sources: repository README and BoardPage, Socket.IO, access and card movement code, reviewed on October 14, 2026. Historical image not yet compared with the current interface.",
 	},
 	{
 		...baseProject("plateia-ingressos"),
 		kind: "Events and tickets",
 		summary:
-			"An event project featured in the previous portfolio. Its technical content is under review.",
+			"An events and tickets platform built for a technical challenge, from seat selection to gate validation.",
 		problem:
-			"The previous portfolio described publishing events, selecting seats and validating tickets.",
+			"Let organizers publish events and customers reserve seats without double booking, complete a simulated purchase and present a verifiable ticket at the gate.",
 		solution:
-			"The historical screenshot shows a seat selection interface. The current implementation scope needs verification before expanding the case study.",
-		engineering: [],
+			"The React application serves customers, organizers and gate staff. A Node.js and PostgreSQL API integrates the Ticketmaster catalog, holds temporary reservations, simulates payments and issues QR-code tickets for manual or camera-based validation.",
+		engineering: [
+			"Reservations hold up to four seats for ten minutes, with PostgreSQL as the source of availability. The deadline frees abandoned purchases, while transactions and seat locks prevent concurrent reservations from taking the same seat.",
+			"Payment is simulated, with no real financial transaction. On approval, the API issues one ticket per seat; rejection or expiry returns seats to the catalog. This meets the challenge's flow without integrating a payment provider.",
+			"The QR code points to a shareable ticket with an opaque code. Gate validation checks server state to reject reuse and tickets for canceled events.",
+		],
 		result:
-			"No outcome or metrics published in this version. Technical documentation will follow code review and scope confirmation.",
+			"An MVP with public repository, ADRs, tests and web demo. There are no real payments or public adoption metrics; the displayed screenshot is historical.",
 		imageAlt: "Historical screenshot of Plateia's seat selection interface",
-		tags: ["Events", "Interface", "Under review"],
+		tags: ["React", "TypeScript", "Node.js", "PostgreSQL", "Tickets"],
 		sourceNote:
-			"Based on the previous portfolio; features and links have not yet been verified.",
+			"Sources: Plateia repository README, ADRs and tests, reviewed on October 14, 2026; the public demo was accessible that day. Historical screenshot not yet compared with the current interface.",
 	},
 ];
 

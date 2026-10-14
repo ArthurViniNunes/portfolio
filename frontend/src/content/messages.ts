@@ -3,8 +3,8 @@ import type { Locale } from "./locale";
 const pt = {
 	meta: {
 		home: [
-			"Desenvolvimento Full Stack",
-			"Arthur Nunes: produtos web, decisões de engenharia e projetos em diferentes stacks.",
+			"DevOps e desenvolvimento Full Stack",
+			"Arthur Nunes: DevOps na IGEOS, produtos web e decisões de engenharia.",
 		],
 		work: [
 			"Projetos",
@@ -12,7 +12,7 @@ const pt = {
 		],
 		about: [
 			"Sobre",
-			"Conheça Arthur Nunes pelo seu trabalho, interesses técnicos e projetos.",
+			"Conheça a trajetória de Arthur Nunes, atualmente DevOps na IGEOS, e seus projetos.",
 		],
 		resume: [
 			"Currículos",
@@ -56,8 +56,9 @@ const pt = {
 	common: {
 		skip: "Pular para o conteúdo",
 		newTab: "(abre em nova aba)",
-		role: "Desenvolvedor Full Stack",
-		portrait: "Retrato de Arthur Nunes",
+		role: "DevOps na IGEOS",
+		portrait: "Arthur Nunes de frente, com camisa ameixa",
+		portraitSide: "Arthur Nunes em posição levemente lateral, com camisa ameixa",
 		readProject: "Explorar projeto",
 		allProjects: "Ver todos os projetos",
 		projectTopics: "Tecnologias e temas",
@@ -95,7 +96,7 @@ const pt = {
 	home: {
 		title: "Produtos web, da interface à arquitetura.",
 		description:
-			"Sou Arthur. Construo experiências na web e exploro as decisões que conectam interface, dados e produto.",
+			"Sou Arthur. Trabalho com DevOps na IGEOS e construo experiências web, conectando infraestrutura, código e produto.",
 		work: "Conhecer projetos",
 		resume: "Meus currículos",
 		selected: "Projetos selecionados",
@@ -127,7 +128,7 @@ const pt = {
 		documented: "Documentado",
 		review: "Em revisão",
 		team: "Projeto desenvolvido em equipe",
-		demo: "Ver demonstração em vídeo",
+		demo: "Ver demonstração",
 		source: "Conferir código e documentação",
 		missing: "Projeto não encontrado",
 		missingText: "Este endereço não corresponde a um projeto publicado.",
@@ -167,9 +168,9 @@ const pt = {
 				action: "Ler sobre engenharia",
 			},
 		],
-		career: "Trajetória em construção",
+		career: "Trajetória profissional",
 		careerText:
-			"O histórico profissional e a formação serão adicionados aqui. Enquanto isso, os projetos apresentam o trabalho disponível e os currículos estão organizados por área de atuação.",
+			"Atualmente trabalho com DevOps na IGEOS. Minha trajetória também inclui desenvolvimento Full Stack, monitoria de programação e formação em Ciência da Computação na UFC.",
 		careerAction: "Explorar currículos",
 		contact: "Quer saber mais sobre meu trabalho?",
 	},
@@ -258,8 +259,8 @@ const pt = {
 const en: typeof pt = {
 	meta: {
 		home: [
-			"Full Stack Development",
-			"Arthur Nunes: web products, engineering decisions and projects across different stacks.",
+			"DevOps and Full Stack Development",
+			"Arthur Nunes: DevOps at IGEOS, web products and engineering decisions.",
 		],
 		work: [
 			"Projects",
@@ -267,7 +268,7 @@ const en: typeof pt = {
 		],
 		about: [
 			"About",
-			"Get to know Arthur Nunes through his work, technical interests and projects.",
+			"Meet Arthur Nunes, currently in DevOps at IGEOS, through his experience and projects.",
 		],
 		resume: [
 			"Résumés",
@@ -311,8 +312,9 @@ const en: typeof pt = {
 	common: {
 		skip: "Skip to content",
 		newTab: "(opens in a new tab)",
-		role: "Full Stack Developer",
-		portrait: "Portrait of Arthur Nunes",
+		role: "DevOps at IGEOS",
+		portrait: "Arthur Nunes facing the camera, wearing a plum shirt",
+		portraitSide: "Arthur Nunes in a slight side pose, wearing a plum shirt",
 		readProject: "Explore project",
 		allProjects: "View all projects",
 		projectTopics: "Technologies and topics",
@@ -350,7 +352,7 @@ const en: typeof pt = {
 	home: {
 		title: "Web products, from interface to architecture.",
 		description:
-			"I'm Arthur. I build experiences on the web and explore the decisions that connect interfaces, data and products.",
+			"I'm Arthur. I work in DevOps at IGEOS and build web experiences, connecting infrastructure, code and products.",
 		work: "Explore projects",
 		resume: "My résumés",
 		selected: "Selected projects",
@@ -382,7 +384,7 @@ const en: typeof pt = {
 		documented: "Documented",
 		review: "Under review",
 		team: "Built as a team project",
-		demo: "Watch the video demo",
+		demo: "View demo",
 		source: "Explore code and documentation",
 		missing: "Project not found",
 		missingText: "This address does not match a published project.",
@@ -422,9 +424,9 @@ const en: typeof pt = {
 				action: "Read about engineering",
 			},
 		],
-		career: "A growing professional story",
+		career: "Professional experience",
 		careerText:
-			"Professional experience and education will be added here. For now, the projects show the available work, and résumés are organized by area of focus.",
+			"I currently work in DevOps at IGEOS. My experience also includes Full Stack development, programming teaching assistance and Computer Science studies at UFC.",
 		careerAction: "Explore résumés",
 		contact: "Want to know more about my work?",
 	},

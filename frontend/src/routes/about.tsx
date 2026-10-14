@@ -2,6 +2,7 @@ import { BrandMark } from "../components/brand";
 import { Recommendations } from "../components/recommendations";
 import { imageUrl } from "../components/ui";
 import { profile } from "../content/profile";
+import { portraits } from "../content/portraits";
 import { Link, pageMeta, useCopy, useLocale } from "../i18n";
 export const meta = (args: Parameters<typeof pageMeta>[1]) =>
 	pageMeta("about", args);
@@ -33,10 +34,12 @@ export default function About() {
 					<figure className="about-portrait" data-motion-enter>
 						<BrandMark className="portrait-signature" />
 						<img
-							src={imageUrl("foto-perfil.webp")}
-							alt={c.common.portrait}
-							width="339"
-							height="346"
+							src={imageUrl(portraits.about)}
+							alt={c.common.portraitSide}
+							width="1122"
+							height="1402"
+							loading="lazy"
+							decoding="async"
 						/>
 						<figcaption>{c.about.caption}</figcaption>
 					</figure>
@@ -61,7 +64,13 @@ export default function About() {
 						{biography.journey.map((item) => (
 							<li key={item.organization}>
 								<time dateTime={item.start}>{item.period}</time>
-								<h3>{item.organization}</h3>
+								<h3>
+									{"url" in item && item.url ? (
+										<a href={item.url}>{item.organization}</a>
+									) : (
+										item.organization
+									)}
+								</h3>
 								<p className="journey-role">{item.role}</p>
 								<p>{item.text}</p>
 							</li>

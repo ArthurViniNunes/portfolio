@@ -19,7 +19,7 @@ test("depoimentos usam excertos literais, fonte individual e data válida nos do
 
 test("biografia fornecida integra a busca sem perder o idioma da rota", () => {
   for (const locale of ["pt", "en"]) {
-    for (const term of ["Tatame", "PC4", "TEVOS"]) {
+    for (const term of ["IGEOS", "Tatame", "PC4", "TEVOS"]) {
       assert(searchContent(term, "career", locale).some(entry => entry.href === `${locale === "en" ? "/en" : ""}/about`));
     }
   }
