@@ -8,7 +8,7 @@ Base: documentação em `docs/pom/`.
 
 O repositório contém a especificação do produto, um [estudo visual exploratório em HTML/CSS/JS](estudo-visual-estatico/index.html) e uma aplicação React + TypeScript com Node.js no desenvolvimento e build. A [fundação técnica](../architecture/fundacao-tecnica.md) registra a arquitetura implementada; a [auditoria do POM](auditoria-pom.md) distingue entregas e pendências.
 
-O portfólio apresenta a identidade profissional de Arthur Vinicius Carneiro Nunes como Full Stack Software Engineer. Deve permitir tanto avaliação rápida por recrutadores quanto exploração técnica por lideranças e desenvolvedores.
+O portfólio apresenta a identidade profissional de Arthur Vinicius Carneiro Nunes, atualmente DevOps na IGEOS, e sua experiência em desenvolvimento Full Stack. Deve permitir tanto avaliação rápida por recrutadores quanto exploração técnica por lideranças e desenvolvedores.
 
 Diretrizes já estabelecidas no POM:
 
@@ -44,7 +44,7 @@ O tema claro observado combina fundo `#F4F4F1`, texto `#0A0A0A` e texto secundá
 | Explicação do trabalho | Resumo de problema, contribuição pessoal e resultado, com acesso ao estudo de caso completo |
 | Trajetória | Linha do tempo vertical em About, com experiências reais e detalhes expansíveis quando necessários |
 | Personalidade | Foto, texto autoral e, quando fornecido, um pequeno bloco de interesses ou estudo atual |
-| Identidade cromática | Grandes áreas claras, texto grafite, ameixa nas ações e amarelo concentrado na fotografia, caso ela seja mantida |
+| Identidade cromática | Grandes áreas claras, texto grafite, ameixa nas ações e mel pontual nos traços das fotografias atuais |
 
 A abertura usa uma composição vetorial de contornos sobrepostos e planos translúcidos, com um único movimento ambiente e resposta ao ponteiro. A escolha reforça a ideia de construção por camadas e preserva título e retrato como conteúdo principal. A referência de Enzo orienta presença e profundidade; a arte é própria. Não há player de áudio nem seleção obrigatória de tema.
 
@@ -92,11 +92,11 @@ Essas percepções são intenções de design a validar nas telas. As três opç
 | Fundo de destaque quente | `#F6EDD9` | `#F7EFDF` | `#F6EED9` |
 | Texto sobre destaque quente | `#765512` | `#73541B` | `#725616` |
 
-O acento quente é opcional e subordinado à cor principal, em linha com o uso limitado de cores secundárias previsto no POM-040. Ele pode identificar um projeto selecionado ou um detalhe da assinatura. Se o retrato com fundo amarelo for mantido, ele já fornece esse contraste: reduzir o dourado no restante da primeira dobra.
+O acento quente é opcional e subordinado à cor principal, em linha com o uso limitado de cores secundárias previsto no POM-040. Ele pode identificar um projeto selecionado ou um detalhe da assinatura. As fotografias atuais têm traços dourados discretos; evitar outros blocos amarelos na primeira dobra.
 
 ### Aplicação recomendada nas telas: opção A
 
-- **Home:** fundo marfim, nome e título inteiro em `#29232A`, links e botão principal em ameixa com texto branco no botão. A fotografia pode concentrar a presença do amarelo. A dimensão e a composição do título geram o destaque visual.
+- **Home:** fundo marfim, nome e título inteiro em `#29232A`, links e botão principal em ameixa com texto branco no botão. A foto frontal usa camisa ameixa e fundo claro, em continuidade com a paleta. A dimensão e a composição do título geram o destaque visual.
 - **Projetos:** imagens com suas cores originais, títulos escuros e links em ameixa. Separar os itens por espaço e divisores suaves. Reservar o fundo rosado `#F1E5EB` para seleção ou um destaque específico.
 - **Engineering e Learning:** superfícies claras e tipografia escura, com ameixa em links, item atual do sumário e controles. Os neutros dominam as páginas de leitura longa.
 - **About e Resume:** fundo marfim, texto escuro e marcadores de trajetória em ameixa. Usar o mesmo sistema de cores dos projetos.
@@ -336,7 +336,7 @@ As fases representam ordem de design, sem retirar funcionalidades do escopo defi
 
 - Português e inglês implementados, com botão PT/EN e URLs próprias. Revisão editorial das traduções continua possível.
 - Paleta A no tema claro e paleta escura em noite/rosa, com botão persistido. Os tokens de texto passaram na medição de contraste; inspeção visual em dispositivos reais permanece pendente.
-- Nome de apresentação e uso de retrato.
+- Nome de apresentação e aprovação final da seleção de retratos; foto frontal na Home e foto levemente lateral em Sobre já aplicadas.
 - Projetos e estudos disponíveis para o lançamento.
 - Revisão final da biografia fornecida em `ARTHUR_CONTEXT.md` e entrega dos PDFs de currículo. Canais profissionais já estão configurados.
 
@@ -346,7 +346,7 @@ As fases representam ordem de design, sem retirar funcionalidades do escopo defi
 - **Sobre:** saudação e apresentação, retrato, narrativa apoiada nos projetos e três perspectivas de trabalho ligadas a evidências. Trajetória sem datas ou cargos inventados aparece ao final, com encaminhamento para currículos.
 - **Currículos:** três documentos com a mesma hierarquia, sem sugerir que o nome do foco comprova experiência profissional. Links provisórios visíveis por escolha expressa do autor.
 - **Contato:** título amplo, área principal semelhante a uma carta, endereço selecionável, envio por e-mail e cópia com retorno acessível. LinkedIn, GitHub e currículos são caminhos secundários.
-- **Tema:** marfim #FAF7F2, grafite #29232A e ameixa #733C55 no claro; noite #19151C, texto #F5EDF2 e rosa #E9A9C8 no escuro. O amarelo do retrato mantém a assinatura pessoal. Syne concentra expressão nos títulos; fonte de sistema mantém leitura longa.
+- **Tema:** marfim #FAF7F2, grafite #29232A e ameixa #733C55 no claro; noite #19151C, texto #F5EDF2 e rosa #E9A9C8 no escuro. Syne concentra expressão nos títulos; fonte de sistema mantém leitura longa. A referência ao fundo amarelo da foto antiga foi substituída pelas fotos fornecidas em 14/10/2026.
 - **Idioma:** toda página, metadado, estado e descrição de projeto possui versão PT/EN. O botão mantém o destino e a consulta; screenshots dos produtos conservam seu conteúdo original.
 
 Revisão do plano: a personalidade fica concentrada na abertura e no retrato. Sobre evita uma sequência de estatísticas ou experiências sem fonte; Contato organiza uma ação principal em vez de repetir cartões equivalentes. A inspeção visual final ainda depende de navegador disponível.
@@ -357,9 +357,16 @@ O pedido de uma identidade mais própria e de movimento mais perceptível foi ap
 
 - A Home tem maior amplitude e contraste no fundo, marca ampliada, planos translúcidos, movimento do retrato e resposta ao ponteiro. Um controle global persistido aparece também no cabeçalho.
 - Imagens dos projetos entram brevemente ao aparecer na tela, e links, controles e menu têm feedback. Movimento reduzido desativa os efeitos. O texto não precisa esperar animações para ser lido.
-- Evidências de produto, decisões e colaboração dão caminhos concretos para avaliar o trabalho. Comentários de Rhyan e Marcos aparecem em Home e Sobre, com excerto, autoria, contexto, data e texto completo expansível. Fotos serão adicionadas depois; inglês identifica tradução e conserva o original.
+- Evidências de produto, decisões e colaboração dão caminhos concretos para avaliar o trabalho. Comentários de Rhyan e Marcos aparecem em Home e Sobre, com excerto, autoria, contexto, data e texto completo expansível. As fotos já foram adicionadas; inglês identifica tradução e conserva o original.
 - Sobre usa as memórias enviadas pelo autor: Fortaleza, Ciência da Computação na UFC, PC4, TEVOS, PID, Tatame Cidadão, ensino e pesquisa em andamento. A [proveniência](../content/fontes-do-perfil.md) explicita limites e divergências documentais.
 - Os [próximos aprimoramentos](recomendacoes-de-produto.md) priorizam contribuição individual nos casos, PDFs reais e QA em aparelhos.
+
+## 12. Aplicação dos novos retratos — 14/10/2026
+
+- **Home:** foto frontal como primeira apresentação de Arthur, em cartão compacto à direita do título. O enquadramento mantém cabeça, ombros e parte da camisa; a versão móvel usa o mesmo retrato em miniatura horizontal para não deslocar os projetos para muito abaixo da primeira dobra.
+- **Sobre:** foto levemente lateral, com o olhar voltado para a introdução à esquerda. O recorte alto acompanha a moldura em arco e mantém o monograma fora do rosto.
+- **Acessibilidade e carregamento:** descrições alternativas distintas em PT/EN, dimensões intrínsecas declaradas, foto principal priorizada e foto de Sobre carregada sob demanda. Cópias JPEG de 182 KB e 161 KB substituem os PNGs de cerca de 1,9 MB na interface; os originais permanecem em `frontend/public/images/`.
+- **Revisão visual:** enquadramentos conferidos no Chrome local em tema claro e escuro, desktop e 390 px. A QA completa de dispositivos, leitor de tela e desempenho continua aberta.
 
 ## Referências principais
 

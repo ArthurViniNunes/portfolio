@@ -2,7 +2,7 @@
 
 Este é o repositório do meu portfólio pessoal.
 
-Eu sou Arthur Nunes, desenvolvedor Full Stack e estudante de Ciência da Computação na UFC. Uso este projeto para mostrar o que construo, explicar as decisões por trás de cada produto e compartilhar um pouco de como gosto de trabalhar em equipe.
+Eu sou Arthur Nunes, atualmente DevOps na IGEOS, com experiência em desenvolvimento Full Stack e estudante de Ciência da Computação na UFC. Uso este projeto para mostrar o que construo, explicar as decisões por trás de cada produto e compartilhar um pouco de como gosto de trabalhar em equipe.
 
 O portfólio está sendo construído com React e TypeScript. A primeira versão tem português e inglês, tema claro e escuro, busca local, páginas de projetos, documentação de arquitetura e uma Home com movimento controlável.
 
@@ -84,10 +84,10 @@ O portfólio está funcional para desenvolvimento local e revisão de conteúdo.
 
 - os três PDFs de currículo são links provisórios até que os arquivos finais sejam adicionados;
 - Learning continua com estado vazio até haver estudos autorais prontos para publicação;
-- Plateia ainda precisa de revisão técnica antes de receber um estudo de caso completo;
+- as capturas históricas de Plateia, Home Expense Control e Kanban ainda precisam de comparação com as interfaces atuais;
 - a revisão visual foi feita em navegador conectado, mas Lighthouse em produção, leitor de tela e testes em aparelhos físicos continuam pendentes.
 
-Essas lacunas aparecem na [auditoria do POM](docs/design/auditoria-pom.md), em vez de serem preenchidas com métricas ou experiências inventadas. As próximas melhorias estão organizadas em [recomendações de produto](docs/design/recomendacoes-de-produto.md).
+Essas lacunas aparecem na [auditoria do POM](docs/design/auditoria-pom.md), em vez de serem preenchidas com métricas ou experiências inventadas. A [lista de pendências editoriais](docs/content/pendencias-editoriais.md) separa os textos e as evidências que ainda dependem de mim; as próximas melhorias do produto estão em [recomendações](docs/design/recomendacoes-de-produto.md).
 
 ## Links
 

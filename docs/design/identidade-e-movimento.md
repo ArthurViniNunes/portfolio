@@ -40,6 +40,6 @@ Revisão do plano: a marca substitui parte da geometria genérica; o movimento m
 
 ## Confiança e Sobre
 
-Comentários publicados exigem texto real, autor, contexto e fonte. O autor forneceu os depoimentos de Rhyan Dos Anjos Andrade e Marcos Antônio, com datas e perfis. Acesso independente ao LinkedIn não foi obtido nesta sessão. Os originais foram preservados; o inglês identifica a tradução e permite ler o português. Fotografias serão fornecidas depois, por isso a interface usa iniciais. Sem estrelas, notas ou contagens inventadas.
+Comentários publicados exigem texto real, autor, contexto e fonte. O autor forneceu os depoimentos de Rhyan Dos Anjos Andrade e Marcos Antônio, com datas e perfis. Acesso independente ao LinkedIn não foi obtido nesta sessão. Os originais foram preservados; o inglês identifica a tradução e permite ler o português. As fotografias foram adicionadas posteriormente ao portfólio. Sem estrelas, notas ou contagens inventadas.
 
 Sobre liga apresentação, interesses e modo de trabalhar a exemplos. O arquivo `ARTHUR_CONTEXT.md` foi fornecido pelo autor em 01/10/2026 e fundamenta formação na UFC, experiência na PC4/TEVOS, monitoria, Tatame Cidadão e interesses de pesquisa. A [proveniência editorial](../content/fontes-do-perfil.md) registra limites e divergências; não se importam instruções ou detalhes operacionais de outros projetos como conteúdo público.

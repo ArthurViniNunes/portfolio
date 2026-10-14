@@ -27,8 +27,8 @@ Data: 2026-10-01. Escopo: aplicação React em `frontend/src/`, documentação e
 | 020 — Busca | Parcial | Índice local por título, tags e texto, com tipos e teste automatizado; não há estudos de aprendizado para indexar. Busca dinâmica requer JavaScript. |
 | 021 — Documentação de projetos | Parcial | Casos seguem visão geral, problema, solução, engenharia quando verificada, resultado e fonte; performance, CI/CD e trade-offs específicos ainda exigem evidência. |
 | 022 — Learning Hub | Pendente | Rota e estado vazio honestos; o autor informou que ainda não há estudos para publicar. |
-| 023 — Carreira e timeline | Parcial | Sobre inclui formação e trajetória PC4, TEVOS, PID e Tatame Cidadão com base nas memórias fornecidas pelo autor. PDFs de currículo continuam provisórios. |
-| 024 — Estratégia de conteúdo | Parcial | Dados tipados, separação editorial, biografia e depoimentos com proveniência; faltam estudos e revisão técnica do Plateia. |
+| 023 — Carreira e timeline | Parcial | Sobre inclui IGEOS (DevOps desde outubro de 2026, conforme o autor), formação e trajetória PC4, TEVOS, PID e Tatame Cidadão. Entregas na IGEOS ainda não existem para detalhar; PDFs de currículo continuam provisórios. |
+| 024 — Estratégia de conteúdo | Parcial | Dados tipados, separação editorial, biografia e depoimentos com proveniência; Plateia revisto em repositório público, mas ainda faltam estudos de Learning e validações autorais. |
 | 025 — Escopo e princípios | Atendido | MVP evita blog, painel administrativo e recursos sem necessidade concreta; links têm destinos úteis. |
 | 026 — Filosofia UX | Parcial | Conteúdo e tarefas guiam telas; validação com usuários pendente. |
 | 027 — Restrição mobile first | Parcial | CSS responsivo implementado; inspeção visual em larguras e aparelhos reais pendente. |
@@ -43,7 +43,7 @@ Data: 2026-10-01. Escopo: aplicação React em `frontend/src/`, documentação e
 | 036 — Performance como UX | Parcial | Build estático e imagens WebP; métricas de carregamento em produção pendentes. |
 | 037 — Filosofia visual | Parcial | Direção clara e editorial aplicada; revisão visual final pendente. |
 | 038 — Linguagem de design | Parcial | Tokens e componentes próprios implementados; avaliação de consistência visual pendente. |
-| 039 — Marca pessoal | Parcial | Símbolo AN contínuo, favicon e variantes vetoriais, retrato e biografia implementados. Aprovação estética final e fotos dos depoimentos pendentes. |
+| 039 — Marca pessoal | Parcial | Símbolo AN contínuo, favicon e variantes vetoriais, retrato, fotos dos depoimentos e biografia implementados. Aprovação estética final pendente. |
 | 040 — Cores | Parcial | Temas claro/escuro com preferência persistida; tokens de texto passam no teste AA. Composição sobre todas as superfícies ainda exige inspeção visual. |
 | 041 — Tipografia | Parcial | Hierarquia e escala implementadas; inspeção de leitura em aparelhos pendente. |
 | 042 — Layout | Parcial | Grid, largura de leitura e ritmo responsivo implementados; QA visual pendente. |
@@ -54,9 +54,9 @@ Data: 2026-10-01. Escopo: aplicação React em `frontend/src/`, documentação e
 
 ## Bloqueios editoriais e de validação
 
-1. **Aprendizado e currículos:** Learning permanece sem estudos publicáveis e os PDFs ainda não foram fornecidos. A trajetória em Sobre passou a usar as memórias enviadas em 01/10/2026, com fontes registradas em `docs/content/fontes-do-perfil.md`.
-2. **Plateia:** há uma captura do portfólio anterior, mas o escopo técnico, os links e os resultados não foram confirmados. O caso e o estudo visual indicam a incerteza.
-3. **Imagens e apresentação:** revisar a nova marca, adicionar as fotos dos autores das recomendações e produzir capturas atuais dos projetos. Formação e experiências usam o contexto enviado pelo autor.
+1. **Aprendizado e currículos:** Learning permanece sem estudos publicáveis e os PDFs ainda não foram fornecidos. A trajetória em Sobre usa as memórias enviadas em 01/10/2026 e o vínculo atual com a IGEOS informado em 14/10/2026, com fontes registradas em `docs/content/fontes-do-perfil.md`. Ver também a [lista de pendências editoriais](../content/pendencias-editoriais.md).
+2. **Capturas de projetos:** Plateia, Home Expense Control e Kanban ainda exibem imagens históricas do portfólio anterior. Seus casos foram confrontados com os repositórios públicos em 14/10/2026; as imagens ainda precisam de comparação visual com as versões atuais. O estudo visual estático preserva seu estado histórico.
+3. **Imagens e apresentação:** revisar a nova marca e produzir capturas atuais dos projetos. As fotos dos autores das recomendações já foram adicionadas. Formação e experiências usam o contexto enviado pelo autor.
 4. **QA antes de publicar:** testar teclado, leitor de tela, contraste, 320/390/768/1440 px e fluxos de busca/contato; medir Lighthouse em hospedagem real e registrar os resultados frente às metas do POM-003.
 
 O build estático e os testes automatizados cobrem estrutura e conteúdo mínimo das páginas. Eles não substituem a avaliação visual, a auditoria de acessibilidade nem dados reais de uso.
