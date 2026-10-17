@@ -2,8 +2,8 @@ import { Hero } from "../components/hero";
 import { Recommendations } from "../components/recommendations";
 import { TrustSection } from "../components/trust";
 import { imageUrl, ProjectCard } from "../components/ui";
-import { getProjects } from "../content/projects";
 import { portraits } from "../content/portraits";
+import { getProjects } from "../content/projects";
 import { site } from "../content/site";
 import { Link, pageMeta, useCopy, useLocale } from "../i18n";
 export const meta = (args: Parameters<typeof pageMeta>[1]) =>

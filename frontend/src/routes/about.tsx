@@ -1,8 +1,8 @@
 import { BrandMark } from "../components/brand";
 import { Recommendations } from "../components/recommendations";
 import { imageUrl } from "../components/ui";
-import { profile } from "../content/profile";
 import { portraits } from "../content/portraits";
+import { profile } from "../content/profile";
 import { Link, pageMeta, useCopy, useLocale } from "../i18n";
 export const meta = (args: Parameters<typeof pageMeta>[1]) =>
 	pageMeta("about", args);
