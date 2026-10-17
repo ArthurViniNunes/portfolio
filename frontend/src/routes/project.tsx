@@ -93,7 +93,9 @@ export default function ProjectPage() {
 				<figcaption>
 					{project.imageSource === "repository"
 						? c.project.repositoryImage
-						: c.project.historical}
+						: project.imageSource === "production"
+							? c.project.productionImage
+							: c.project.historical}
 				</figcaption>
 			</figure>
 			<div className="reading-layout">

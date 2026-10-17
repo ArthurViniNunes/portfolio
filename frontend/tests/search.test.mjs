@@ -23,12 +23,23 @@ test("consulta vazia, múltiplos termos e filtros", () => {
 });
 test("smash-or-pass abre a vitrine e preserva autoria em equipe", () => {
   for (const locale of ["pt", "en"]) {
-    const project = getProjects(locale)[0];
+    const project = getProjects(locale).find(item => item.slug === "smash-or-pass");
     assert.equal(project.slug, "smash-or-pass");
     assert(project.team.includes("Samyra"));
     assert.equal(project.repository, "https://github.com/ArthurViniNunes/smash-or-pass/");
     assert(searchContent(locale === "pt" ? "receitas" : "recipes", "project", locale).some(entry => entry.title === "Smash or Pass"));
   }
+});
+test("plataforma de judô abre a vitrine com fontes e tradução", () => {
+  const [project] = getProjects();
+  const english = getProjects("en")[0];
+  assert.equal(project.slug, "judo-exam-platform");
+  assert.equal(project.imageSource, "production");
+  assert.equal(project.demo, "https://judo-exam-platform.judo-rogerio-cruz.workers.dev");
+  assert(project.engineering.some(item => item.includes("Cloudflare Workers")));
+  assert(english.solution.includes("kata assessment"));
+  assert(searchContent("exames de judô", "project").some(entry => entry.href === "/work/judo-exam-platform"));
+  assert(searchContent("role-based access", "project", "en").some(entry => entry.href === "/en/work/judo-exam-platform"));
 });
 test("Kanban e Plateia refletem o escopo verificável dos repositórios", () => {
   const kanban = getProjects().find(project => project.slug === "kanban-realtime");

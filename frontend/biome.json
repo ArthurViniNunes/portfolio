@@ -1,4 +1,7 @@
 {
+  "formatter": {
+    "lineEnding": "crlf"
+  },
   "linter": {
     "rules": {
       "style": {

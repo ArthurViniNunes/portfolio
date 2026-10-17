@@ -10,7 +10,14 @@ export default function Work() {
 	const hydrated = useHydrated();
 	const [params, setParams] = useSearchParams();
 	const skill = hydrated ? (params.get("tech") ?? "") : "";
-	const skills = ["React", "TypeScript", "Node.js", ".NET", "PostgreSQL"];
+	const skills = [
+		"React",
+		"TypeScript",
+		"Node.js",
+		"Cloudflare",
+		".NET",
+		"PostgreSQL",
+	];
 	const visible = !skills.includes(skill)
 		? projects
 		: projects.filter((project) => project.tags.includes(skill));

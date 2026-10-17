@@ -58,7 +58,8 @@ const pt = {
 		newTab: "(abre em nova aba)",
 		role: "DevOps na IGEOS",
 		portrait: "Arthur Nunes de frente, com camisa ameixa",
-		portraitSide: "Arthur Nunes em posição levemente lateral, com camisa ameixa",
+		portraitSide:
+			"Arthur Nunes em posição levemente lateral, com camisa ameixa",
 		readProject: "Explorar projeto",
 		allProjects: "Ver todos os projetos",
 		projectTopics: "Tecnologias e temas",
@@ -135,6 +136,8 @@ const pt = {
 		historical:
 			"Captura do portfólio anterior. A interface pode ter mudado desde então.",
 		repositoryImage: "Captura publicada no README do projeto.",
+		productionImage:
+			"Captura do ambiente de produção na data indicada nas fontes.",
 		scope: "Participação e contexto",
 	},
 	about: {
@@ -391,6 +394,8 @@ const en: typeof pt = {
 		historical:
 			"Screenshot from the previous portfolio. The interface may have changed since then.",
 		repositoryImage: "Screenshot published in the project's README.",
+		productionImage:
+			"Screenshot captured from production on the date listed in the sources.",
 		scope: "Contribution and context",
 	},
 	about: {

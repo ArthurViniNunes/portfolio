@@ -15,12 +15,42 @@ export type Project = {
 	repository?: string;
 	demo?: string;
 	team?: string;
-	imageSource?: "repository";
+	imageSource?: "repository" | "production";
 	sourceNote: string;
 	status: "documentado" | "em revisão";
 };
 
 export const projects: Project[] = [
+	{
+		slug: "judo-exam-platform",
+		title: "Plataforma de Exames de Judô",
+		kind: "Avaliação esportiva e gestão",
+		summary:
+			"Uma plataforma mobile-first para aplicar exames técnicos e de kata, registrar resultados e acompanhar a evolução dos alunos da Associação Judô Rogério Cruz.",
+		problem:
+			"Em um dia de exame, diferentes avaliadores precisam consultar matrizes extensas, pontuar cada técnica sem ambiguidade e preservar a autoria dos registros. Depois do evento, professores precisam enxergar histórico e evolução sem reunir fichas e planilhas dispersas.",
+		solution:
+			"A aplicação organiza avaliações práticas por faixa, sorteia técnicas de graduações anteriores, incorpora vídeos de referência e calcula o resultado conforme os critérios da associação. Também oferece avaliação de kata, contas individuais, perfil de avaliador e uma administração com alunos, indicadores, equipe e matrizes configuráveis.",
+		engineering: [
+			"O frontend estático usa Next.js e React; uma API modular em Cloudflare Workers persiste usuários, sessões, alunos, avaliações e matrizes no D1. Os serviços podem ser executados e publicados de forma independente.",
+			"O Super Admin autoriza e-mails, e a API aplica controle de acesso por papel. A autoria da avaliação vem da sessão autenticada, não de um nome enviado pelo navegador; tokens são armazenados no banco somente como hash e senhas usam PBKDF2 com salt individual.",
+			"Pontuação prática, penalidades de kata, sorteio e agregações administrativas foram isolados em funções de domínio. Testes de regressão cobrem critérios de reprovação, aplicação única do erro grave e ausência de duplicidade entre técnicas sorteadas e fixas.",
+			"GitHub Actions executa testes, lint, verificação de tipos e build antes de aplicar migrações D1 e publicar API e frontend na Cloudflare. ADRs, diagramas e um runbook registram decisões, operação e rollback.",
+		],
+		result:
+			"Produto publicado com aplicação e API operacionais, autenticação por avaliador e entrega contínua configurada. O repositório documenta arquitetura, regras e operação; ainda não há métricas públicas de adoção ou teste de carga publicado.",
+		team: "Idealizado por Paulo Victor R. Alexandre para a Associação Judô Rogério Cruz e desenvolvido por Arthur Vinicius C. Nunes, responsável pela implementação e pela estrutura técnica apresentada neste caso.",
+		image: "judo-exam-platform.png",
+		imageAlt:
+			"Tela de entrada da Plataforma de Exames de Judô em tema escuro, com apresentação do histórico dos alunos e formulário de acesso",
+		imageSource: "production",
+		tags: ["Next.js", "TypeScript", "Cloudflare", "D1", "CI/CD"],
+		repository: "https://github.com/ArthurViniNunes/judo-exam-platform",
+		demo: "https://judo-exam-platform.judo-rogerio-cruz.workers.dev",
+		sourceNote:
+			"Fontes: código, testes, ADRs, workflow de publicação e ambiente de produção do repositório, revistos em 17/10/2026. A captura foi gerada do ambiente publicado nessa data; não há métricas públicas de uso.",
+		status: "documentado",
+	},
 	{
 		slug: "smash-or-pass",
 		title: "Smash or Pass",
@@ -138,6 +168,29 @@ function baseProject(slug: string): Project {
 }
 
 const english: Project[] = [
+	{
+		...baseProject("judo-exam-platform"),
+		kind: "Sports assessment and management",
+		summary:
+			"A mobile-first platform for running technical and kata exams, recording results and following student progress at Associação Judô Rogério Cruz.",
+		problem:
+			"On exam day, multiple evaluators need to navigate large technique matrices, score each item unambiguously and preserve who authored each record. Afterwards, instructors need progress history without reconciling scattered paper forms and spreadsheets.",
+		solution:
+			"The application organizes practical exams by belt, draws techniques from earlier ranks, embeds reference videos and calculates outcomes using the association's criteria. It also supports kata assessment, individual accounts, evaluator profiles and an administration area for students, indicators, staff and configurable matrices.",
+		engineering: [
+			"The static frontend uses Next.js and React; a modular Cloudflare Workers API stores users, sessions, students, assessments and matrices in D1. Both services can run and deploy independently.",
+			"The Super Admin authorizes email addresses and the API enforces role-based access. Assessment authorship comes from the authenticated session rather than a browser-supplied name; only session token hashes are stored, while passwords use PBKDF2 with an individual salt.",
+			"Practical scoring, kata penalties, technique draws and administration aggregates are isolated in domain functions. Regression tests cover failure criteria, one-time application of severe kata errors and duplicate prevention between drawn and fixed techniques.",
+			"GitHub Actions runs tests, lint, type checking and the build before applying D1 migrations and deploying the API and frontend to Cloudflare. ADRs, diagrams and an operations runbook document decisions, operation and rollback.",
+		],
+		result:
+			"A deployed product with operational frontend and API, evaluator authentication and continuous delivery. The repository documents its architecture, rules and operations; no public adoption metrics or published load test are available yet.",
+		team: "Conceived by Paulo Victor R. Alexandre for Associação Judô Rogério Cruz and developed by Arthur Vinicius C. Nunes, who is responsible for the implementation and technical structure presented in this case study.",
+		imageAlt:
+			"Dark-theme sign-in screen for the Judo Exam Platform, with student history messaging and the access form",
+		sourceNote:
+			"Sources: repository code, tests, ADRs, deployment workflow and production environment, reviewed on October 17, 2026. The screenshot was captured from production on that date; no public usage metrics are available.",
+	},
 	{
 		...baseProject("smash-or-pass"),
 		kind: "Recipe discovery",

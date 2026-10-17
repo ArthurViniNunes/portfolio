@@ -1861,6 +1861,9 @@ main:focus {
 	.shell {
 		width: calc(100% - 28px);
 	}
+	.header-tools .motion-preference {
+		display: none;
+	}
 	.wordmark {
 		font-size: 1.02rem;
 	}
