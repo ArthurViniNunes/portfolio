@@ -30,11 +30,11 @@ export const projects: Project[] = [
 		problem:
 			"Em um dia de exame, diferentes avaliadores precisam consultar matrizes extensas, pontuar cada técnica sem ambiguidade e preservar a autoria dos registros. Depois do evento, professores precisam enxergar histórico e evolução sem reunir fichas e planilhas dispersas.",
 		solution:
-			"A aplicação organiza avaliações práticas por faixa, sorteia técnicas de graduações anteriores, incorpora vídeos de referência e calcula o resultado conforme os critérios da associação. Também oferece avaliação de kata, contas individuais, perfil de avaliador e uma administração com alunos, indicadores, equipe e matrizes configuráveis.",
+			"A aplicação organiza avaliações práticas por faixa, seleciona automaticamente técnicas de graduações anteriores, incorpora vídeos de referência e calcula o resultado conforme os critérios oficiais da associação. Também oferece avaliação contínua de kata, contas individuais, perfil de avaliador e uma administração com alunos, indicadores e equipe.",
 		engineering: [
-			"O frontend estático usa Next.js e React; uma API modular em Cloudflare Workers persiste usuários, sessões, alunos, avaliações e matrizes no D1. Os serviços podem ser executados e publicados de forma independente.",
+			"O frontend estático usa Next.js e React; uma API modular em Cloudflare Workers persiste usuários, sessões, alunos e avaliações no D1. Os serviços podem ser executados e publicados de forma independente.",
 			"O Super Admin autoriza e-mails, e a API aplica controle de acesso por papel. A autoria da avaliação vem da sessão autenticada, não de um nome enviado pelo navegador; tokens são armazenados no banco somente como hash e senhas usam PBKDF2 com salt individual.",
-			"Pontuação prática, penalidades de kata, sorteio e agregações administrativas foram isolados em funções de domínio. Testes de regressão cobrem critérios de reprovação, aplicação única do erro grave e ausência de duplicidade entre técnicas sorteadas e fixas.",
+			"Pontuação prática, médias das sequências de Renraku-Henka, penalidades de kata, seleção de técnicas anteriores e agregações administrativas foram isoladas em funções de domínio. O catálogo oficial é versionado e não pode ser alterado pelo painel.",
 			"GitHub Actions executa testes, lint, verificação de tipos e build antes de aplicar migrações D1 e publicar API e frontend na Cloudflare. ADRs, diagramas e um runbook registram decisões, operação e rollback.",
 		],
 		result:
@@ -176,11 +176,11 @@ const english: Project[] = [
 		problem:
 			"On exam day, multiple evaluators need to navigate large technique matrices, score each item unambiguously and preserve who authored each record. Afterwards, instructors need progress history without reconciling scattered paper forms and spreadsheets.",
 		solution:
-			"The application organizes practical exams by belt, draws techniques from earlier ranks, embeds reference videos and calculates outcomes using the association's criteria. It also supports kata assessment, individual accounts, evaluator profiles and an administration area for students, indicators, staff and configurable matrices.",
+			"The application organizes practical exams by belt, automatically selects techniques from earlier ranks, embeds reference videos and calculates outcomes using the association's official criteria. It also supports continuous kata assessment, individual accounts, evaluator profiles and an administration area for students, indicators and staff.",
 		engineering: [
-			"The static frontend uses Next.js and React; a modular Cloudflare Workers API stores users, sessions, students, assessments and matrices in D1. Both services can run and deploy independently.",
+			"The static frontend uses Next.js and React; a modular Cloudflare Workers API stores users, sessions, students and assessments in D1. Both services can run and deploy independently.",
 			"The Super Admin authorizes email addresses and the API enforces role-based access. Assessment authorship comes from the authenticated session rather than a browser-supplied name; only session token hashes are stored, while passwords use PBKDF2 with an individual salt.",
-			"Practical scoring, kata penalties, technique draws and administration aggregates are isolated in domain functions. Regression tests cover failure criteria, one-time application of severe kata errors and duplicate prevention between drawn and fixed techniques.",
+			"Practical scoring, Renraku-Henka sequence averages, kata penalties, earlier-rank selection and administration aggregates are isolated in domain functions. The official catalog is versioned and cannot be changed through the administration panel.",
 			"GitHub Actions runs tests, lint, type checking and the build before applying D1 migrations and deploying the API and frontend to Cloudflare. ADRs, diagrams and an operations runbook document decisions, operation and rollback.",
 		],
 		result:
