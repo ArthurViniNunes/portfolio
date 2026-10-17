@@ -32,7 +32,7 @@ O estudo em `docs/design/estudo-visual-estatico/` continua como registro explora
 
 ## Contratos
 
-- Projetos possuem slug estável, texto nos dois idiomas, imagem com descrição, fonte e estado editorial. O smash-or-pass é destaque por escolha do autor, com autoria em equipe explícita.
+- Projetos possuem slug estável, texto nos dois idiomas, imagem com descrição, fonte e estado editorial. A Plataforma de Exames de Judô abre a vitrine por possuir produto publicado, autoria individual verificável, documentação técnica e operação contínua; o smash-or-pass mantém sua autoria em equipe explícita.
 - Documentos técnicos possuem contexto, decisão e consequências, além de referência à ADR completa.
 - A busca deriva dos catálogos e consulta título, tags e texto no idioma atual. Consulta/filtro ficam na URL; resultados não dependem de serviço externo.
 - Currículos têm três focos e links provisórios quebrados por pedido explícito do autor. Somente entradas `placeholder` recebem essa exceção no verificador; arquivos disponíveis precisam existir.

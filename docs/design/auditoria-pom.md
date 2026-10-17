@@ -72,3 +72,9 @@ Implementados PT/EN com páginas pré-renderizadas, seletor de tema claro/escuro
 O histórico profissional foi enriquecido com `ARTHUR_CONTEXT.md`; comentários usam os dois textos integrais fornecidos pelo autor, com versões inglesas identificadas como traduções. A descrição do caso smash-or-pass mantém as fontes do repositório; a liderança técnica declarada nas memórias aparece na biografia sem atribuir toda a implementação a Arthur. Os estudos permanecem pendentes. Por pedido explícito, os três PDFs de currículo possuem **links provisórios quebrados**; isso é uma exceção temporária documentada na ADR-007, não uma falha silenciosa do verificador. A interface informa a ausência dos arquivos.
 
 Os testes cobrem paridade de idiomas, URLs, busca, catálogo, script de tema e contraste dos tokens. O navegador de revisão não estava disponível nesta sessão; inspeção visual, fluxos reais por teclado e Lighthouse não foram declarados concluídos.
+
+## Evolução de 17/10/2026
+
+A Plataforma de Exames de Judô passou a abrir a vitrine. O estudo de caso usa uma captura real do ambiente publicado e apresenta versões PT/EN de problema, solução, autoria, decisões de engenharia, resultado e limitações. O projeto foi escolhido por combinar produto em produção, interface mobile-first, backend e banco gerenciados, autenticação por papéis, testes, documentação arquitetural e entrega contínua. Smash or Pass permanece publicado com autoria em equipe explícita.
+
+A busca e o filtro de projetos reconhecem o novo conteúdo; testes verificam sua prioridade editorial, URLs, tradução e termos técnicos. Nenhuma métrica de uso ou desempenho foi inferida.

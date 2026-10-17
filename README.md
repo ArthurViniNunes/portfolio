@@ -14,7 +14,7 @@ O portfólio está sendo construído com React e TypeScript. A primeira versão 
 - **Currículos:** entradas para as versões DevOps, Full Stack e Engenharia de Software.
 - **Contato:** e-mail, GitHub e LinkedIn, sem formulário ou API intermediária.
 
-O projeto em destaque é o [Smash or Pass](https://github.com/ArthurViniNunes/smash-or-pass/), uma aplicação para descobrir e compartilhar receitas. Ele reúne interface, regras de negócio, autenticação, moderação e uma API documentada. Também há uma [demonstração em vídeo](https://youtu.be/u6gNtyVILso).
+O projeto em destaque é a [Plataforma de Exames de Judô](https://github.com/ArthurViniNunes/judo-exam-platform), um produto publicado para aplicar avaliações técnicas e de kata, preservar a autoria dos avaliadores e acompanhar a evolução dos alunos. O case reúne interface mobile-first, regras de negócio testadas, autenticação, D1, ADRs e CI/CD na Cloudflare. A [aplicação está disponível online](https://judo-exam-platform.judo-rogerio-cruz.workers.dev/).
 
 ## Como executar
 

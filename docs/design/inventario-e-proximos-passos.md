@@ -1,11 +1,12 @@
 # Inventário e próximos passos do design
 
-Atualizado em 2026-10-14. A [auditoria do POM](auditoria-pom.md) apresenta o estado de cada requisito. Este arquivo concentra o material editorial e as próximas validações.
+Atualizado em 2026-10-17. A [auditoria do POM](auditoria-pom.md) apresenta o estado de cada requisito. Este arquivo concentra o material editorial e as próximas validações.
 
 | Item | Fonte atual | Estado |
 | --- | --- | --- |
 | Nome, cargo e retrato | Portfólio anterior, memórias e duas fotos fornecidas pelo autor em 14/10/2026 | Foto frontal na Home e foto levemente lateral em Sobre; cargo atual de DevOps na IGEOS desde outubro de 2026. Confirmar a frase profissional final. |
-| Smash or Pass | [README e documentação](https://github.com/ArthurViniNunes/smash-or-pass/) | Produto em destaque por escolha do autor. Captura `docs/home-image.png` recuperada; contexto acadêmico e autoria em equipe indicados. Detalhar contribuição individual posteriormente. |
+| Plataforma de Exames de Judô | [Código, ADRs, testes e produção](https://github.com/ArthurViniNunes/judo-exam-platform) | Abre a vitrine por reunir produto publicado, autoria verificável, arquitetura documentada e operação contínua. Captura de produção conferida em 17/10/2026; métricas de adoção não foram publicadas. |
+| Smash or Pass | [README e documentação](https://github.com/ArthurViniNunes/smash-or-pass/) | Continua no acervo com captura do repositório, contexto acadêmico e autoria em equipe indicados. Detalhar contribuição individual posteriormente. |
 | Plateia Ingressos | [Repositório, ADRs e testes](https://github.com/ArthurViniNunes/plateia); [demonstração](https://plateia-ingressos.vercel.app/) | Escopo, stack e decisões técnicas revistos em 14/10/2026; MVP documentado. Captura histórica ainda requer comparação visual. |
 | Kanban Realtime | [Repositório público](https://github.com/ArthurViniNunes/kanban-realtime) | Frontend usa Socket.IO para sincronizar boards e receber eventos; acesso por membros e movimentação de cards conferidos no código. Captura histórica pendente. |
 | Home Expense Control | [Repositório público](https://github.com/ArthurViniNunes/home-expense-control) | Decisão sobre centavos e filtros conferida na documentação de arquitetura; confirmar captura atual. |
