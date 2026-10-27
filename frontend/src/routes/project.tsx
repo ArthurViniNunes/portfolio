@@ -109,6 +109,9 @@ export default function ProjectPage() {
 					{project.engineering.length > 0 && (
 						<a href="#engineering">{c.project.engineering}</a>
 					)}
+					{project.architecture && (
+						<a href="#architecture">{c.project.architecture}</a>
+					)}
 					<a href="#result">{c.project.result}</a>
 				</nav>
 				<div className="prose">
@@ -136,6 +139,48 @@ export default function ProjectPage() {
 							<ul>
 								{project.engineering.map((item) => (
 									<li key={item}>{item}</li>
+								))}
+							</ul>
+						</section>
+					)}
+					{project.architecture && (
+						<section id="architecture" className="case-architecture">
+							<h2>{c.project.architecture}</h2>
+							<p>{project.architecture.intro}</p>
+							<h3>{c.project.architectureIntro}</h3>
+							<div className="case-decision-list">
+								{project.architecture.decisions.map((decision) => (
+									<article key={decision.href}>
+										<h4>{decision.title}</h4>
+										<p>{decision.description}</p>
+										<a
+											href={decision.href}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{c.project.openDecision}
+											<span className="sr-only">{c.common.newTab}</span>
+										</a>
+									</article>
+								))}
+							</div>
+							<h3>{c.project.evidence}</h3>
+							<ul className="case-evidence-list">
+								{project.architecture.evidence.map((item) => (
+									<li key={item.href}>
+										<div>
+											<strong>{item.title}</strong>
+											<span>{item.description}</span>
+										</div>
+										<a
+											href={item.href}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{c.project.openEvidence}
+											<span className="sr-only">{c.common.newTab}</span>
+										</a>
+									</li>
 								))}
 							</ul>
 						</section>

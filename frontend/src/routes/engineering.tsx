@@ -17,7 +17,7 @@ export default function Engineering() {
 				{documents.map((doc) => (
 					<article key={doc.slug}>
 						<div>
-							<p className="eyebrow">{c.engineering.portfolio}</p>
+							<p className="eyebrow">{doc.project}</p>
 							<h2>
 								<Link to={`/engineering/${doc.slug}`}>{doc.title}</Link>
 							</h2>

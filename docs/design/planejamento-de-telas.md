@@ -342,7 +342,7 @@ As fases representam ordem de design, sem retirar funcionalidades do escopo defi
 
 ## 10. Plano executado em 01/10/2026
 
-- **Home:** destaque concentrado em um desenho de contornos e planos; manter título à esquerda, retrato lateral e leitura estável. Smash or Pass abre a vitrine, seguido por Home Expense Control e Kanban; Plateia continua disponível em Work.
+- **Home:** destaque concentrado em um desenho de contornos e planos; manter título à esquerda, retrato lateral e leitura estável. A Plataforma de Exames de Judô abre a vitrine como produto principal, seguida pelos demais casos; o acervo completo continua disponível em Work.
 - **Sobre:** saudação e apresentação, retrato, narrativa apoiada nos projetos e três perspectivas de trabalho ligadas a evidências. Trajetória sem datas ou cargos inventados aparece ao final, com encaminhamento para currículos.
 - **Currículos:** três documentos com a mesma hierarquia, sem sugerir que o nome do foco comprova experiência profissional. Links provisórios visíveis por escolha expressa do autor.
 - **Contato:** título amplo, área principal semelhante a uma carta, endereço selecionável, envio por e-mail e cópia com retorno acessível. LinkedIn, GitHub e currículos são caminhos secundários.
@@ -370,7 +370,7 @@ O pedido de uma identidade mais própria e de movimento mais perceptível foi ap
 
 ## Referências principais
 
-Revisão posterior no Chrome conectado: [resultados, correções responsivas e capturas](revisao-visual/README.md). O destaque de Smash or Pass passou a oferecer demonstração direta; Sobre ganhou atalhos de leitura. O reflow em 320 px foi corrigido sem esconder o transbordamento com `overflow: hidden`.
+Revisão posterior no Chrome conectado: [resultados, correções responsivas e capturas](revisao-visual/README.md). A Plataforma de Exames de Judô passou a ocupar o destaque principal, com acesso ao produto e às decisões de arquitetura; Sobre ganhou atalhos de leitura. O reflow em 320 px foi corrigido sem esconder o transbordamento com `overflow: hidden`.
 
 - [Enzo Esmeraldo — referência principal de composição, tipografia e apresentação de projetos](https://enzoesmeraldo.dev/)
 - [Portfólio anterior — referência de identidade e tema claro](https://arthurvininunes.github.io/portfolio/)

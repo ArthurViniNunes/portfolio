@@ -124,6 +124,11 @@ const pt = {
 		problem: "O problema",
 		solution: "A solução",
 		engineering: "Decisões de engenharia",
+		architecture: "Arquitetura e decisões registradas",
+		architectureIntro: "Decisões selecionadas",
+		evidence: "Documentação para aprofundar",
+		openDecision: "Ler ADR completa",
+		openEvidence: "Abrir documento",
 		result: "Resultado e fontes",
 		toc: "Neste projeto",
 		documented: "Documentado",
@@ -147,7 +152,7 @@ const pt = {
 		caption: "Arthur Vinicius Carneiro Nunes",
 		storyTitle: "O código conta parte da história.",
 		story:
-			"Meus projetos passam por interfaces React, APIs e organização de dados. No smash-or-pass, participo de um produto desenvolvido em equipe para descobrir e compartilhar receitas. No Home Expense Control e no Kanban, os desafios mudam: regras de negócio, acesso e organização de informações.",
+			"Meus projetos passam por interfaces React, APIs e organização de dados. Na Plataforma de Exames de Judô, transformei regras de avaliação em um produto completo, com jornadas para alunos e avaliadores, operação em eventos e decisões de arquitetura registradas. Em outros projetos, exploro colaboração, finanças e organização de informações.",
 		story2:
 			"Aqui você pode entrar pela experiência de uso e avançar até a documentação técnica. É assim que prefiro apresentar meu trabalho: com contexto e algo concreto para explorar.",
 		focusTitle: "Três perspectivas sobre o mesmo produto.",
@@ -155,8 +160,8 @@ const pt = {
 			{
 				title: "A experiência",
 				text: "Interfaces, fluxos e feedback que ajudam a entender o que fazer.",
-				link: "/work/smash-or-pass",
-				action: "Explorar smash-or-pass",
+				link: "/work/judo-exam-platform",
+				action: "Explorar a Plataforma de Exames de Judô",
 			},
 			{
 				title: "As regras",
@@ -215,7 +220,7 @@ const pt = {
 	engineering: {
 		title: "Decisões que sustentam o produto.",
 		description:
-			"Contexto, escolhas e consequências. Um olhar por dentro da construção deste portfólio.",
+			"Contexto, escolhas e consequências dos produtos que construo.",
 		portfolio: "Este portfólio",
 		read: "Ler decisão",
 		context: "Contexto",
@@ -225,8 +230,8 @@ const pt = {
 		toc: "Nesta decisão",
 		decision: "Decisão de arquitetura",
 		evidenceText:
-			"A implementação e as ADRs completas estão no repositório do portfólio.",
-		source: "Abrir código-fonte",
+			"A implementação e a ADR completa estão no repositório do projeto.",
+		source: "Abrir repositório do projeto",
 	},
 	search: {
 		title: "Encontre o conteúdo no contexto.",
@@ -382,6 +387,11 @@ const en: typeof pt = {
 		problem: "The problem",
 		solution: "The solution",
 		engineering: "Engineering decisions",
+		architecture: "Architecture and recorded decisions",
+		architectureIntro: "Selected decisions",
+		evidence: "Documentation for a deeper look",
+		openDecision: "Read the full ADR",
+		openEvidence: "Open document",
 		result: "Outcome and sources",
 		toc: "In this project",
 		documented: "Documented",
@@ -405,7 +415,7 @@ const en: typeof pt = {
 		caption: "Arthur Vinicius Carneiro Nunes",
 		storyTitle: "Code tells part of the story.",
 		story:
-			"My projects span React interfaces, APIs and data organization. In smash-or-pass, I contribute to a team-built product for discovering and sharing recipes. Home Expense Control and Kanban bring different challenges: business rules, access and organizing information.",
+			"My projects span React interfaces, APIs and data organization. In the Judo Exam Platform, I turned assessment rules into a complete product with student and evaluator journeys, live-event operations and recorded architecture decisions. Other projects explore collaboration, finance and information organization.",
 		story2:
 			"Here, you can start with the user experience and go deeper into technical documentation. That is how I prefer to present my work: with context and something concrete to explore.",
 		focusTitle: "Three perspectives on the same product.",
@@ -413,8 +423,8 @@ const en: typeof pt = {
 			{
 				title: "The experience",
 				text: "Interfaces, flows and feedback that help people understand what to do.",
-				link: "/work/smash-or-pass",
-				action: "Explore smash-or-pass",
+				link: "/work/judo-exam-platform",
+				action: "Explore the Judo Exam Platform",
 			},
 			{
 				title: "The rules",
@@ -471,8 +481,7 @@ const en: typeof pt = {
 	},
 	engineering: {
 		title: "Decisions that support the product.",
-		description:
-			"Context, choices and consequences. A look inside the making of this portfolio.",
+		description: "Context, choices and consequences from the products I build.",
 		portfolio: "This portfolio",
 		read: "Read decision",
 		context: "Context",
@@ -482,8 +491,8 @@ const en: typeof pt = {
 		toc: "In this decision",
 		decision: "Architecture decision",
 		evidenceText:
-			"The implementation and full ADRs are available in the portfolio repository.",
-		source: "Open source code",
+			"The implementation and full ADR are available in the project repository.",
+		source: "Open project repository",
 	},
 	search: {
 		title: "Find content in context.",

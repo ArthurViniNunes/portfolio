@@ -31,6 +31,19 @@ export function getSearchEntries(locale: Locale = "pt"): SearchEntry[] {
 				project.problem,
 				project.solution,
 				...project.engineering,
+				...(project.architecture
+					? [
+							project.architecture.intro,
+							...project.architecture.decisions.flatMap((decision) => [
+								decision.title,
+								decision.description,
+							]),
+							...project.architecture.evidence.flatMap((item) => [
+								item.title,
+								item.description,
+							]),
+						]
+					: []),
 				project.result,
 				project.team,
 				project.sourceNote,

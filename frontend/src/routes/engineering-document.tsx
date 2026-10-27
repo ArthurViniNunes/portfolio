@@ -34,7 +34,7 @@ export default function EngineeringDocument() {
 			</nav>
 			<header className="case-intro">
 				<p className="eyebrow">
-					{c.engineering.decision} / {c.engineering.portfolio}
+					{c.engineering.decision} / {doc.project}
 				</p>
 				<h1>{doc.title}</h1>
 				<p className="lead">{doc.summary}</p>
@@ -61,13 +61,12 @@ export default function EngineeringDocument() {
 						<h2>{c.engineering.evidence}</h2>
 						<p>{c.engineering.evidenceText}</p>
 						<p>
-							<code>{doc.adr}</code>
+							<a href={doc.adrUrl} target="_blank" rel="noopener noreferrer">
+								<code>{doc.adr}</code>
+								<span className="sr-only">{c.common.newTab}</span>
+							</a>
 						</p>
-						<a
-							href="https://github.com/ArthurViniNunes/portfolio"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
+						<a href={doc.repository} target="_blank" rel="noopener noreferrer">
 							{c.engineering.source}
 							<span className="sr-only">{c.common.newTab}</span>
 						</a>

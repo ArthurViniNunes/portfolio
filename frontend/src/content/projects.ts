@@ -18,38 +18,100 @@ export type Project = {
 	imageSource?: "repository" | "production";
 	sourceNote: string;
 	status: "documentado" | "em revisão";
+	architecture?: {
+		intro: string;
+		decisions: ProjectReference[];
+		evidence: ProjectReference[];
+	};
+};
+
+export type ProjectReference = {
+	title: string;
+	description: string;
+	href: string;
 };
 
 export const projects: Project[] = [
 	{
 		slug: "judo-exam-platform",
 		title: "Plataforma de Exames de Judô",
-		kind: "Avaliação esportiva e gestão",
+		kind: "Produto principal · avaliação esportiva",
 		summary:
-			"Uma plataforma mobile-first para aplicar exames técnicos e de kata, registrar resultados e acompanhar a evolução dos alunos da Associação Judô Rogério Cruz.",
+			"Produto mobile-first que conduz a jornada completa do exame de judô — teórico, técnico e kata — e coordena alunos, avaliadores e eventos da Associação Judô Rogério Cruz.",
 		problem:
-			"Em um dia de exame, diferentes avaliadores precisam consultar matrizes extensas, pontuar cada técnica sem ambiguidade e preservar a autoria dos registros. Depois do evento, professores precisam enxergar histórico e evolução sem reunir fichas e planilhas dispersas.",
+			"O exame reunia matrizes extensas, fichas dispersas e decisões difíceis de consolidar. Em um mesmo dia, vários avaliadores precisam trabalhar pelo celular, preservar autoria, lidar com conexão instável e acompanhar candidatos — inclusive menores sem e-mail — sem confundir presença, execução, nota e resultado final.",
 		solution:
-			"A aplicação organiza avaliações práticas por faixa, seleciona automaticamente técnicas de graduações anteriores, incorpora vídeos de referência e calcula o resultado conforme os critérios oficiais da associação. Também oferece avaliação contínua de kata, contas individuais, perfil de avaliador e uma administração com alunos, indicadores e equipe.",
+			"A plataforma reúne provas teóricas versionadas, avaliação técnica por faixa, kata contínuo, eventos com múltiplos avaliadores, matrícula por QR Code, chamada, relatórios e portal do aluno. Regras oficiais calculam notas e critérios; o judoca consulta correções, evolução, carteirinha, certificado e um catálogo de estudo com 100 técnicas.",
 		engineering: [
-			"O frontend estático usa Next.js e React; uma API modular em Cloudflare Workers persiste usuários, sessões, alunos e avaliações no D1. Os serviços podem ser executados e publicados de forma independente.",
-			"O Super Admin autoriza e-mails, e a API aplica controle de acesso por papel. A autoria da avaliação vem da sessão autenticada, não de um nome enviado pelo navegador; tokens são armazenados no banco somente como hash e senhas usam PBKDF2 com salt individual.",
-			"Pontuação prática, médias das sequências de Renraku-Henka, penalidades de kata, seleção de técnicas anteriores e agregações administrativas foram isoladas em funções de domínio. O catálogo oficial é versionado e não pode ser alterado pelo painel.",
-			"GitHub Actions executa testes, lint, verificação de tipos e build antes de aplicar migrações D1 e publicar API e frontend na Cloudflare. ADRs, diagramas e um runbook registram decisões, operação e rollback.",
+			"O frontend estático usa Next.js e React; a API modular roda em Cloudflare Workers e acessa o D1 por binding. Frontend e backend têm execução, migração e publicação independentes.",
+			"O código segue um monólito modular por capacidade. Identidade, teoria, avaliações, eventos e administração possuem rotas, casos de uso e repositórios próprios; regras de pontuação permanecem em funções puras e testáveis.",
+			"Autenticação separa os contextos de aluno e profissional sobre uma mesma identidade. A API deriva a autoria da sessão, aplica RBAC, armazena apenas hashes de tokens e usa PBKDF2 com salt individual para senhas.",
+			"A operação de evento combina atribuição de tarefas, escrita idempotente e fila offline no aparelho. O catálogo oficial é versionado no código, e correções preservam revisões e auditoria em vez de sobrescrever silenciosamente o histórico.",
+			"GitHub Actions executa testes, lint, tipos e build antes das migrações D1 e do deploy. Um conjunto de 21 ADRs, diagramas C4 e ER, documentação de produto e runbook registra decisões, alternativas, riscos, operação e rollback.",
 		],
 		result:
-			"Produto publicado com aplicação e API operacionais, autenticação por avaliador e entrega contínua configurada. O repositório documenta arquitetura, regras e operação; ainda não há métricas públicas de adoção ou teste de carga publicado.",
+			"Produto publicado e em evolução com frontend, API, autenticação, exames, administração e entrega contínua operacionais. O case demonstra construção de produto, domínio complexo, arquitetura no edge e documentação viva; ainda não há métricas públicas de adoção nem teste de carga publicado.",
 		team: "Idealizado por Paulo Victor R. Alexandre para a Associação Judô Rogério Cruz e desenvolvido por Arthur Vinicius C. Nunes, responsável pela implementação e pela estrutura técnica apresentada neste caso.",
 		image: "judo-exam-platform.png",
 		imageAlt:
 			"Tela de entrada da Plataforma de Exames de Judô em tema escuro, com apresentação do histórico dos alunos e formulário de acesso",
 		imageSource: "production",
-		tags: ["Next.js", "TypeScript", "Cloudflare", "D1", "CI/CD"],
+		tags: ["Next.js", "TypeScript", "Cloudflare Workers", "D1", "Arquitetura"],
 		repository: "https://github.com/ArthurViniNunes/judo-exam-platform",
 		demo: "https://judo-exam-platform.judo-rogerio-cruz.workers.dev",
 		sourceNote:
-			"Fontes: código, testes, ADRs, workflow de publicação e ambiente de produção do repositório, revistos em 17/10/2026. A captura foi gerada do ambiente publicado nessa data; não há métricas públicas de uso.",
+			"Fontes: código, testes, 21 ADRs, diagramas, documentação de produto, runbook e workflow de publicação, revistos em 27/10/2026. A captura veio do ambiente publicado e foi conferida em 17/10/2026; não há métricas públicas de uso.",
 		status: "documentado",
+		architecture: {
+			intro:
+				"As decisões não aparecem apenas como descrição final da stack. O repositório preserva o contexto, as alternativas rejeitadas e as consequências que orientaram cada mudança de produto.",
+			decisions: [
+				{
+					title: "Workers e D1 como plataforma de baixo custo",
+					description:
+						"Frontend estático e API no edge reduzem operação própria; o D1 mantém dados relacionais e migrações versionadas.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/001-cloudflare-workers-d1.md",
+				},
+				{
+					title: "Monólito modular antes de microserviços",
+					description:
+						"Capacidades de negócio têm limites explícitos sem pagar antecipadamente o custo operacional de serviços distribuídos.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/003-monolito-modular.md",
+				},
+				{
+					title: "Avaliação offline e sincronização idempotente",
+					description:
+						"O rascunho permanece no aparelho durante falhas de rede e pode ser reenviado sem criar avaliações duplicadas.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/006-offline-first-sync.md",
+				},
+				{
+					title: "Identidade estudantil sem exigir e-mail",
+					description:
+						"Nome normalizado e senha atendem crianças e homônimos, enquanto a entrada profissional preserva e-mail e autorização própria.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/018-identidade-estudantil-sem-email.md",
+				},
+			],
+			evidence: [
+				{
+					title: "Arquitetura e diagramas",
+					description:
+						"Contexto C4, contêineres, sequência da avaliação e modelo de dados.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/README.md",
+				},
+				{
+					title: "Índice das 21 ADRs",
+					description:
+						"Decisões aceitas, propostas e substituídas, sem apagar o histórico.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/README.md",
+				},
+				{
+					title: "Runbook operacional",
+					description:
+						"Deploy, migrações, secrets, backup, recuperação e diagnóstico.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/operations/runbook.md",
+				},
+			],
+		},
 	},
 	{
 		slug: "smash-or-pass",
@@ -170,26 +232,78 @@ function baseProject(slug: string): Project {
 const english: Project[] = [
 	{
 		...baseProject("judo-exam-platform"),
-		kind: "Sports assessment and management",
+		kind: "Flagship product · sports assessment",
 		summary:
-			"A mobile-first platform for running technical and kata exams, recording results and following student progress at Associação Judô Rogério Cruz.",
+			"A mobile-first product that covers the full judo exam journey — theory, technique and kata — while coordinating students, evaluators and events at Associação Judô Rogério Cruz.",
 		problem:
-			"On exam day, multiple evaluators need to navigate large technique matrices, score each item unambiguously and preserve who authored each record. Afterwards, instructors need progress history without reconciling scattered paper forms and spreadsheets.",
+			"The exam process combined large matrices, scattered forms and results that were hard to consolidate. On the same day, multiple evaluators need to work from their phones, preserve authorship, tolerate unstable connectivity and follow candidates — including minors without email — without mixing up attendance, execution, scores and final outcomes.",
 		solution:
-			"The application organizes practical exams by belt, automatically selects techniques from earlier ranks, embeds reference videos and calculates outcomes using the association's official criteria. It also supports continuous kata assessment, individual accounts, evaluator profiles and an administration area for students, indicators and staff.",
+			"The platform brings together versioned theory exams, belt-specific technical assessment, continuous kata scoring, multi-evaluator events, QR enrollment, attendance, reports and a student portal. Official rules calculate scores and criteria; students can review corrections, progress, their digital card, certificates and a study catalog with 100 techniques.",
 		engineering: [
-			"The static frontend uses Next.js and React; a modular Cloudflare Workers API stores users, sessions, students and assessments in D1. Both services can run and deploy independently.",
-			"The Super Admin authorizes email addresses and the API enforces role-based access. Assessment authorship comes from the authenticated session rather than a browser-supplied name; only session token hashes are stored, while passwords use PBKDF2 with an individual salt.",
-			"Practical scoring, Renraku-Henka sequence averages, kata penalties, earlier-rank selection and administration aggregates are isolated in domain functions. The official catalog is versioned and cannot be changed through the administration panel.",
-			"GitHub Actions runs tests, lint, type checking and the build before applying D1 migrations and deploying the API and frontend to Cloudflare. ADRs, diagrams and an operations runbook document decisions, operation and rollback.",
+			"The static frontend uses Next.js and React; the modular API runs on Cloudflare Workers and accesses D1 through a binding. Frontend and backend have independent local, migration and deployment workflows.",
+			"The code follows a capability-oriented modular monolith. Identity, theory, assessments, events and administration each own routes, use cases and repositories, while scoring rules remain pure and testable.",
+			"Authentication separates student and professional contexts over one identity. The API derives authorship from the session, enforces RBAC, stores session token hashes only and protects passwords with PBKDF2 and an individual salt.",
+			"Event operations combine task ownership, idempotent writes and an offline queue on the device. The official catalog is versioned in code, and corrections preserve revisions and audit history instead of silently overwriting records.",
+			"GitHub Actions runs tests, lint, type checks and builds before D1 migrations and deployment. A set of 21 ADRs, C4 and ER diagrams, product documentation and a runbook records decisions, alternatives, risks, operations and rollback.",
 		],
 		result:
-			"A deployed product with operational frontend and API, evaluator authentication and continuous delivery. The repository documents its architecture, rules and operations; no public adoption metrics or published load test are available yet.",
+			"A deployed, evolving product with an operational frontend, API, authentication, exams, administration and continuous delivery. The case demonstrates product building, a complex domain, edge architecture and living documentation; no public adoption metrics or published load test are available yet.",
 		team: "Conceived by Paulo Victor R. Alexandre for Associação Judô Rogério Cruz and developed by Arthur Vinicius C. Nunes, who is responsible for the implementation and technical structure presented in this case study.",
+		tags: ["Next.js", "TypeScript", "Cloudflare Workers", "D1", "Architecture"],
 		imageAlt:
 			"Dark-theme sign-in screen for the Judo Exam Platform, with student history messaging and the access form",
 		sourceNote:
-			"Sources: repository code, tests, ADRs, deployment workflow and production environment, reviewed on October 17, 2026. The screenshot was captured from production on that date; no public usage metrics are available.",
+			"Sources: code, tests, 21 ADRs, diagrams, product documentation, runbook and deployment workflow, reviewed on October 27, 2026. The production screenshot was checked on October 17, 2026; no public usage metrics are available.",
+		architecture: {
+			intro:
+				"Decisions are not presented as a final stack description alone. The repository keeps the context, rejected alternatives and consequences that guided each product change.",
+			decisions: [
+				{
+					title: "Workers and D1 as a low-operations platform",
+					description:
+						"A static frontend and edge API reduce owned infrastructure; D1 provides relational data and versioned migrations.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/001-cloudflare-workers-d1.md",
+				},
+				{
+					title: "A modular monolith before microservices",
+					description:
+						"Business capabilities have explicit boundaries without paying the operational cost of distributed services too early.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/003-monolito-modular.md",
+				},
+				{
+					title: "Offline assessment and idempotent synchronization",
+					description:
+						"Drafts remain on the device during network failures and can be retried without creating duplicate assessments.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/006-offline-first-sync.md",
+				},
+				{
+					title: "Student identity without mandatory email",
+					description:
+						"A normalized name and password support children and namesakes, while professional access keeps its own email authorization.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/018-identidade-estudantil-sem-email.md",
+				},
+			],
+			evidence: [
+				{
+					title: "Architecture and diagrams",
+					description:
+						"C4 context, containers, assessment sequence and data model.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/README.md",
+				},
+				{
+					title: "Index of all 21 ADRs",
+					description:
+						"Accepted, proposed and superseded decisions without erasing history.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/architecture/adr/README.md",
+				},
+				{
+					title: "Operations runbook",
+					description:
+						"Deployment, migrations, secrets, backup, recovery and diagnostics.",
+					href: "https://github.com/ArthurViniNunes/judo-exam-platform/blob/main/docs/operations/runbook.md",
+				},
+			],
+		},
 	},
 	{
 		...baseProject("smash-or-pass"),

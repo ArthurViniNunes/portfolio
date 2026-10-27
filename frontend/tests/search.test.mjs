@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { getProjects } from "../src/content/projects.ts";
 import { searchContent } from "../src/content/search.ts";
+import { getEngineering } from "../src/content/site.ts";
 
 test("busca títulos, tags e texto sem depender de acentos ou caixa", () => {
   assert(searchContent("ARQUITETURA").some(entry => entry.kind === "engineering"));
@@ -21,7 +22,7 @@ test("consulta vazia, múltiplos termos e filtros", () => {
   assert.deepEqual(searchContent("integer cents", "career", "en"), []);
   assert.deepEqual(searchContent("React palavra-inexistente"), []);
 });
-test("smash-or-pass abre a vitrine e preserva autoria em equipe", () => {
+test("smash-or-pass preserva autoria em equipe", () => {
   for (const locale of ["pt", "en"]) {
     const project = getProjects(locale).find(item => item.slug === "smash-or-pass");
     assert.equal(project.slug, "smash-or-pass");
@@ -33,13 +34,20 @@ test("smash-or-pass abre a vitrine e preserva autoria em equipe", () => {
 test("plataforma de judô abre a vitrine com fontes e tradução", () => {
   const [project] = getProjects();
   const english = getProjects("en")[0];
+  const [engineering] = getEngineering();
   assert.equal(project.slug, "judo-exam-platform");
+  assert.equal(engineering.slug, "judo-modular-edge");
+  assert(engineering.adrUrl.includes("003-monolito-modular.md"));
   assert.equal(project.imageSource, "production");
   assert.equal(project.demo, "https://judo-exam-platform.judo-rogerio-cruz.workers.dev");
   assert(project.engineering.some(item => item.includes("Cloudflare Workers")));
-  assert(english.solution.includes("kata assessment"));
+  assert.equal(project.architecture.decisions.length, 4);
+  assert(project.architecture.decisions.some(item => item.href.includes("003-monolito-modular.md")));
+  assert(english.solution.includes("kata scoring"));
+  assert(english.architecture.decisions.some(item => item.title.includes("modular monolith")));
   assert(searchContent("exames de judô", "project").some(entry => entry.href === "/work/judo-exam-platform"));
-  assert(searchContent("role-based access", "project", "en").some(entry => entry.href === "/en/work/judo-exam-platform"));
+  assert(searchContent("monólito modular", "project").some(entry => entry.href === "/work/judo-exam-platform"));
+  assert(searchContent("RBAC", "project", "en").some(entry => entry.href === "/en/work/judo-exam-platform"));
 });
 test("Kanban e Plateia refletem o escopo verificável dos repositórios", () => {
   const kanban = getProjects().find(project => project.slug === "kanban-realtime");

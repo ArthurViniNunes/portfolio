@@ -1,9 +1,10 @@
 # Pendências editoriais do portfólio
 
-Atualizado em 14/10/2026. Este checklist separa o que já foi resolvido com fontes públicas do que depende de informação, material ou validação de Arthur. Textos publicáveis devem permanecer em português e inglês.
+Atualizado em 27/10/2026. Este checklist separa o que já foi resolvido com fontes públicas do que depende de informação, material ou validação de Arthur. Textos publicáveis devem permanecer em português e inglês.
 
 ## Resolvido nesta revisão
 
+- [x] **Plataforma de Exames de Judô:** promovida a produto principal da vitrine. O estudo de caso agora cobre as jornadas atuais, explicita o monólito modular no edge e oferece acesso direto a ADRs selecionadas, diagramas e runbook, sem inventar métricas de adoção.
 - [x] **Plateia:** repositório, README, ADRs, testes e endereço da demonstração encontrados. O estudo de caso agora descreve o MVP, o pagamento simulado, as reservas temporárias e a validação dos ingressos; não atribui métricas de uso. A captura continua identificada como histórica.
 - [x] **Kanban Realtime:** código atual conferido. O frontend já recebe eventos Socket.IO, sincroniza o board ao conectar e mostra participantes; a movimentação de cards valida acesso e ordem em uma transação. O texto antigo que tratava toda a colaboração em tempo real como plano foi corrigido.
 - [x] **Home Expense Control:** o caso explica por que o projeto persiste dinheiro em centavos, a consequência para filtros e totais e a conversão necessária na API.

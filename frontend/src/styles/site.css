@@ -878,6 +878,66 @@ main:focus {
 	margin-block: 26px 12px;
 	font-size: 1.3rem;
 }
+.case-architecture > h3 {
+	margin: 34px 0 12px;
+	font-size: 1.3rem;
+}
+.case-decision-list {
+	border-top: 1px solid var(--line);
+}
+.case-decision-list article {
+	padding: 22px 0;
+	border-bottom: 1px solid var(--line);
+}
+.case-decision-list h4 {
+	margin: 0;
+	font-family: "Syne", "Segoe UI", sans-serif;
+	font-size: 1.2rem;
+	line-height: 1.25;
+}
+.case-decision-list p {
+	margin: 7px 0 10px;
+	font-size: 0.98rem;
+}
+.case-decision-list a,
+.case-evidence-list a {
+	font-size: 0.9rem;
+	font-weight: 700;
+}
+.case-evidence-list {
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid var(--line);
+	list-style: none;
+}
+.case-evidence-list li {
+	padding: 15px 0;
+	border-bottom: 1px solid var(--line);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+.case-evidence-list li + li {
+	margin-top: 0;
+}
+.case-evidence-list div {
+	min-width: 0;
+	display: grid;
+	gap: 3px;
+}
+.case-evidence-list strong {
+	color: var(--text);
+	font-size: 0.98rem;
+}
+.case-evidence-list span:not(.sr-only) {
+	color: var(--muted);
+	font-size: 0.9rem;
+	line-height: 1.5;
+}
+.case-evidence-list a {
+	flex: 0 0 auto;
+}
 .case-next {
 	display: flex;
 	flex-direction: column;
@@ -1807,6 +1867,11 @@ main:focus {
 	}
 	.reading-nav strong {
 		width: 100%;
+	}
+	.case-evidence-list li {
+		align-items: start;
+		flex-direction: column;
+		gap: 8px;
 	}
 	.index-list article {
 		display: block;
