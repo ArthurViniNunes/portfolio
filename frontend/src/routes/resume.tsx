@@ -42,11 +42,8 @@ export default function Resume() {
 								<a
 									className="button quiet"
 									href={resume.href}
-									download={
-										locale === "pt" && resume.id === "full-stack"
-											? "arthur-nunes-full-stack.pdf"
-											: undefined
-									}
+									target="_blank"
+									rel="noopener noreferrer"
 								>
 									{action}
 								</a>
