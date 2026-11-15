@@ -44,6 +44,6 @@ test("catálogo mantém o Full Stack disponível e os demais PDFs provisórios",
   assert.equal(resumes[1].href, "/resumes/arthur-nunes-full-stack.pdf");
   assert(resumes.filter(item => item.id !== "full-stack").every(item => item.status === "placeholder" && /^\/resumes\/.+\.pdf$/.test(item.href)));
   const englishResumes = getResumes("en");
-  assert.equal(englishResumes[1].status, "placeholder");
+  assert.equal(englishResumes[1].status, "available");
   assert.equal(englishResumes[1].href, "/resumes/arthur-nunes-full-stack-en.pdf");
 });

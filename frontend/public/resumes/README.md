@@ -4,10 +4,9 @@ O currículo Full Stack está disponível aqui:
 
 - `arthur-nunes-full-stack.pdf`
 
-O currículo Full Stack em inglês e os demais currículos permanecem provisórios até que os PDFs sejam fornecidos:
+Os demais currículos permanecem provisórios até que os PDFs sejam fornecidos:
 
-- `arthur-nunes-full-stack-en.pdf`
 - `arthur-nunes-devops.pdf`
 - `arthur-nunes-software-engineer.pdf`
 
-Atualizar `src/content/resumes.ts` de `placeholder` para `available` ao adicionar cada arquivo. Não criar PDFs fictícios. As interfaces PT/EN usam arquivos próprios; o Full Stack em português é aberto em uma nova aba.
+Atualizar `src/content/resumes.ts` de `placeholder` para `available` ao adicionar cada arquivo. Não criar PDFs fictícios. As interfaces PT/EN usam arquivos próprios; os dois currículos Full Stack são abertos em novas abas.

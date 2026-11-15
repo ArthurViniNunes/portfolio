@@ -51,7 +51,7 @@ const en: Resume[] = [
 			"A version focused on building products, from interfaces to APIs and data.",
 		focus: ["Frontend", "Backend", "Product"],
 		href: "/resumes/arthur-nunes-full-stack-en.pdf",
-		status: "placeholder",
+		status: "available",
 	},
 	{
 		...pt[2],
