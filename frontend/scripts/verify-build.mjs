@@ -100,15 +100,22 @@ for (const locale of ["pt", "en"]) {
 	const route = localizedPath("/resume", locale);
 	const html = readFileSync(resolve(root, `.${route}/index.html`), "utf8");
 	for (const item of getResumes(locale)) {
-		assert(
-			html.includes(`href="${item.href}"`),
-			`Currículo sem link: ${item.id}`,
-		);
-		if (item.status === "available")
+		if (item.status === "available") {
+			assert(
+				html.includes(`href="${item.href}"`),
+				`Currículo sem link: ${item.id}`,
+			);
 			assert(
 				existsSync(resolve(root, `.${item.href}`)),
 				`PDF indisponível: ${item.href}`,
 			);
+		} else {
+			assert(
+				!html.includes(`href="${item.href}"`) &&
+					html.includes(`disabled="" aria-describedby="${item.id}-status"`),
+				`Currículo provisório deveria estar desabilitado: ${item.id}`,
+			);
+		}
 	}
 }
 console.log(

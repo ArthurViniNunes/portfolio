@@ -178,6 +178,12 @@ main:focus {
 .button.quiet:hover {
 	background: var(--soft);
 }
+.button:disabled {
+	border-color: var(--control-line);
+	color: var(--muted);
+	background: var(--surface);
+	cursor: not-allowed;
+}
 .actions,
 .case-actions {
 	display: flex;

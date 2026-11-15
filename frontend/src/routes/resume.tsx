@@ -15,45 +15,59 @@ export default function Resume() {
 				description={c.resume.description}
 			/>
 			<div className="resume-catalog">
-				{resumes.map((resume) => (
-					<article key={resume.id} id={resume.id} className="resume-card">
-						<div className="resume-document" aria-hidden="true">
-							<span />
-							<span />
-							<span />
-							<span />
-						</div>
-						<h2>{resume.title}</h2>
-						<p>{resume.summary}</p>
-						<ul className="tag-list" aria-label={c.resume.focus}>
-							{resume.focus.map((item) => (
-								<li key={item}>{item}</li>
-							))}
-						</ul>
-						<a
-							className="button quiet"
-							href={resume.href}
-							download={
-								locale === "pt" && resume.id === "full-stack"
-									? "arthur-nunes-full-stack.pdf"
-									: undefined
-							}
-							aria-describedby={
-								resume.status === "placeholder"
-									? `${resume.id}-status`
-									: undefined
-							}
-						>
+				{resumes.map((resume) => {
+					const isAvailable = resume.status === "available";
+					const action = (
+						<>
 							{c.resume.download}
 							<span aria-hidden="true">↗</span>
-						</a>
-						{resume.status === "placeholder" && (
-							<p className="file-status" id={`${resume.id}-status`}>
-								{c.resume.pending}
-							</p>
-						)}
-					</article>
-				))}
+						</>
+					);
+					return (
+						<article key={resume.id} id={resume.id} className="resume-card">
+							<div className="resume-document" aria-hidden="true">
+								<span />
+								<span />
+								<span />
+								<span />
+							</div>
+							<h2>{resume.title}</h2>
+							<p>{resume.summary}</p>
+							<ul className="tag-list" aria-label={c.resume.focus}>
+								{resume.focus.map((item) => (
+									<li key={item}>{item}</li>
+								))}
+							</ul>
+							{isAvailable ? (
+								<a
+									className="button quiet"
+									href={resume.href}
+									download={
+										locale === "pt" && resume.id === "full-stack"
+											? "arthur-nunes-full-stack.pdf"
+											: undefined
+									}
+								>
+									{action}
+								</a>
+							) : (
+								<button
+									className="button quiet"
+									type="button"
+									disabled
+									aria-describedby={`${resume.id}-status`}
+								>
+									{action}
+								</button>
+							)}
+							{!isAvailable && (
+								<p className="file-status" id={`${resume.id}-status`}>
+									{c.resume.pending}
+								</p>
+							)}
+						</article>
+					);
+				})}
 			</div>
 			<div className="resume-footnote">
 				<p>{c.resume.note}</p>
