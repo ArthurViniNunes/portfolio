@@ -17,7 +17,7 @@ docs/
   architecture/adr/            decisões arquiteturais
 frontend/
   public/images/               capturas e retrato
-  public/resumes/              destino previsto dos três PDFs
+  public/resumes/              destino dos três PDFs
   src/root.tsx                 documento HTML e layout global
   src/routes.ts                declaração de rotas
   src/routes/                  páginas React
@@ -35,7 +35,7 @@ O estudo em `docs/design/estudo-visual-estatico/` continua como registro explora
 - Projetos possuem slug estável, texto nos dois idiomas, imagem com descrição, fonte e estado editorial. A Plataforma de Exames de Judô abre a vitrine por possuir produto publicado, autoria individual verificável, documentação técnica e operação contínua; o smash-or-pass mantém sua autoria em equipe explícita.
 - Documentos técnicos possuem contexto, decisão e consequências, além de referência à ADR completa.
 - A busca deriva dos catálogos e consulta título, tags e texto no idioma atual. Consulta/filtro ficam na URL; resultados não dependem de serviço externo.
-- Currículos têm três focos e links provisórios quebrados por pedido explícito do autor. Somente entradas `placeholder` recebem essa exceção no verificador; arquivos disponíveis precisam existir.
+- Currículos têm três focos. O PDF Full Stack disponível fica em `public/resumes/`; os demais links permanecem provisórios. Somente entradas `placeholder` recebem essa exceção no verificador; arquivos disponíveis precisam existir.
 - Tema usa tokens CSS, `data-theme` e preferência local. Loops decorativos ficam na Home; entradas de imagens, menu e feedback de interação aparecem nas demais páginas. Controle global persistido e movimento reduzido governam todos os efeitos, conforme ADR-010.
 - A geometria da marca é única e gera componente SVG, favicon e variantes exportáveis no build.
 - Perfil e comentários usam catálogos PT/EN com fontes registradas. Depoimentos completos estão no HTML inicial, com divulgação progressiva, tradução identificada e original preservado. Ver ADR-011.

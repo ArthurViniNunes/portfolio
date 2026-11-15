@@ -11,9 +11,11 @@ import { getEngineering } from "../src/content/site.ts";
 
 const root = resolve("build/client");
 const placeholders = new Set(
-	getResumes()
-		.filter((item) => item.status === "placeholder")
-		.map((item) => item.href),
+	["pt", "en"].flatMap((locale) =>
+		getResumes(locale)
+			.filter((item) => item.status === "placeholder")
+			.map((item) => item.href),
+	),
 );
 let count = 0;
 for (const locale of ["pt", "en"]) {

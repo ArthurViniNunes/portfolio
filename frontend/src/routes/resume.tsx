@@ -5,7 +5,8 @@ export const meta = (args: Parameters<typeof pageMeta>[1]) =>
 	pageMeta("resume", args);
 export default function Resume() {
 	const c = useCopy();
-	const resumes = getResumes(useLocale());
+	const locale = useLocale();
+	const resumes = getResumes(locale);
 	return (
 		<div className="shell page-wrap resume-page">
 			<PageIntro
@@ -32,6 +33,11 @@ export default function Resume() {
 						<a
 							className="button quiet"
 							href={resume.href}
+							download={
+								locale === "pt" && resume.id === "full-stack"
+									? "arthur-nunes-full-stack.pdf"
+									: undefined
+							}
 							aria-describedby={
 								resume.status === "placeholder"
 									? `${resume.id}-status`

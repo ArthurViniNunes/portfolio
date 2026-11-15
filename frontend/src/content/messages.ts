@@ -188,7 +188,7 @@ const pt = {
 			"Escolha o currículo mais próximo da oportunidade: infraestrutura, desenvolvimento de produto ou engenharia de software.",
 		download: "Abrir PDF",
 		pending: "PDF ainda não adicionado — link provisório.",
-		note: "Os três documentos estão sendo preparados. Para conversar sobre uma oportunidade, entre em contato.",
+		note: "As versões de DevOps e Engenharia de Software ainda estão sendo preparadas. Para conversar sobre uma oportunidade, entre em contato.",
 		focus: "Foco do currículo",
 	},
 	contact: {
@@ -451,7 +451,7 @@ const en: typeof pt = {
 			"Choose the résumé that fits the opportunity: infrastructure, product development or software engineering.",
 		download: "Open PDF",
 		pending: "PDF not added yet — temporary link.",
-		note: "The three documents are being prepared. Get in touch to discuss an opportunity.",
+		note: "The English Full Stack, DevOps and Software Engineering versions are still being prepared. Get in touch to discuss an opportunity.",
 		focus: "Résumé focus",
 	},
 	contact: {

@@ -25,7 +25,7 @@ const pt: Resume[] = [
 			"Uma versão voltada à construção de produtos, da interface às APIs e aos dados.",
 		focus: ["Frontend", "Backend", "Produto"],
 		href: "/resumes/arthur-nunes-full-stack.pdf",
-		status: "placeholder",
+		status: "available",
 	},
 	{
 		id: "software-engineer",
@@ -50,6 +50,8 @@ const en: Resume[] = [
 		summary:
 			"A version focused on building products, from interfaces to APIs and data.",
 		focus: ["Frontend", "Backend", "Product"],
+		href: "/resumes/arthur-nunes-full-stack-en.pdf",
+		status: "placeholder",
 	},
 	{
 		...pt[2],

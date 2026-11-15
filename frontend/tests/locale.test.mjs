@@ -37,9 +37,13 @@ test("catálogos têm os mesmos identificadores e traduções completas", () => 
   }
   assert.deepEqual(shape(messages.pt), shape(messages.en));
 });
-test("catálogo mantém exatamente os três PDFs provisórios solicitados", () => {
+test("catálogo mantém o Full Stack disponível e os demais PDFs provisórios", () => {
   const resumes = getResumes();
   assert.deepEqual(resumes.map(item => item.id), ["devops", "full-stack", "software-engineer"]);
-  assert(resumes.every(item => item.status === "placeholder" && /^\/resumes\/.+\.pdf$/.test(item.href)));
-  assert.deepEqual(resumes.map(item => item.href), getResumes("en").map(item => item.href));
+  assert.equal(resumes[1].status, "available");
+  assert.equal(resumes[1].href, "/resumes/arthur-nunes-full-stack.pdf");
+  assert(resumes.filter(item => item.id !== "full-stack").every(item => item.status === "placeholder" && /^\/resumes\/.+\.pdf$/.test(item.href)));
+  const englishResumes = getResumes("en");
+  assert.equal(englishResumes[1].status, "placeholder");
+  assert.equal(englishResumes[1].href, "/resumes/arthur-nunes-full-stack-en.pdf");
 });
