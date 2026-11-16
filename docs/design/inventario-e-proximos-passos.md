@@ -11,7 +11,7 @@ Atualizado em 2026-10-17. A [auditoria do POM](auditoria-pom.md) apresenta o est
 | Kanban Realtime | [Repositório público](https://github.com/ArthurViniNunes/kanban-realtime) | Frontend usa Socket.IO para sincronizar boards e receber eventos; acesso por membros e movimentação de cards conferidos no código. Captura histórica pendente. |
 | Home Expense Control | [Repositório público](https://github.com/ArthurViniNunes/home-expense-control) | Decisão sobre centavos e filtros conferida na documentação de arquitetura; confirmar captura atual. |
 | E-mail, GitHub e LinkedIn | Portfólio anterior | Links usados; confirmar canais preferidos antes da publicação. |
-| Currículos, histórico e certificações | Memórias do autor e atualização sobre a IGEOS; PDFs ainda não fornecidos | Trajetória inicial publicada em Sobre. Índice de DevOps, Full Stack e Engenharia de Software com links provisórios quebrados por pedido explícito do autor; não oferecer PDF antigo. |
+| Currículos, histórico e certificações | Memórias do autor, atualização sobre a IGEOS e seis PDFs PT/EN fornecidos | Trajetória inicial publicada em Sobre. Índice de DevOps, Full Stack e Engenharia de Software com documentos próprios por idioma. |
 | Estudos de algoritmos | Não fornecidos nesta versão | Estado vazio em Learning. |
 
 O [estudo visual estático](estudo-visual-estatico/index.html) continua como referência histórica e não acompanha automaticamente as revisões editoriais do React. A aplicação React usa uma composição própria com contornos SVG e planos translúcidos, pausa e movimento reduzido, conforme exceção autorizada na revisão do [POM-044](../pom/08-visual-design-system/POM-044-motion-system.md).
@@ -21,5 +21,5 @@ O [estudo visual estático](estudo-visual-estatico/index.html) continua como ref
 1. Revisar com o autor nome profissional, cargo, frase de apresentação e canais de contato. Os dois retratos já têm função definida nas páginas.
 2. Confirmar com o autor as contribuições individuais no Smash or Pass; manter distinção entre decisões documentadas do projeto e autoria pessoal.
 3. Substituir capturas históricas por imagens atuais e consistentes dos projetos.
-4. Quando houver entregas publicáveis, detalhar o escopo da atuação na IGEOS; revisar continuidade das demais atividades e fornecer os três currículos. Publicar estudos de algoritmos quando houver material autoral, preservando a estrutura de conteúdo separada dos componentes. Ver [pendências editoriais](../content/pendencias-editoriais.md).
+4. Quando houver entregas publicáveis, detalhar o escopo da atuação na IGEOS; revisar continuidade das demais atividades. Publicar estudos de algoritmos quando houver material autoral, preservando a estrutura de conteúdo separada dos componentes. Ver [pendências editoriais](../content/pendencias-editoriais.md).
 5. Fazer QA visual em 320, 390, 768 e 1440 px; percorrer as rotas por teclado e leitor de tela; medir contraste e Lighthouse no site hospedado. Registrar problemas e corrigir antes de considerar as metas do POM atendidas.

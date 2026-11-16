@@ -16,7 +16,7 @@ const pt: Resume[] = [
 			"Uma versão direcionada a infraestrutura, automação e operação de software.",
 		focus: ["Infraestrutura", "Automação", "CI/CD"],
 		href: "/resumes/arthur-nunes-devops.pdf",
-		status: "placeholder",
+		status: "available",
 	},
 	{
 		id: "full-stack",
@@ -34,7 +34,7 @@ const pt: Resume[] = [
 			"Uma versão com foco em arquitetura, qualidade e evolução de sistemas.",
 		focus: ["Arquitetura", "Qualidade", "Sistemas"],
 		href: "/resumes/arthur-nunes-software-engineer.pdf",
-		status: "placeholder",
+		status: "available",
 	},
 ];
 const en: Resume[] = [
@@ -43,6 +43,8 @@ const en: Resume[] = [
 		summary:
 			"A version focused on infrastructure, automation and software operations.",
 		focus: ["Infrastructure", "Automation", "CI/CD"],
+		href: "/resumes/arthur-nunes-devops-en.pdf",
+		status: "available",
 	},
 	{
 		...pt[1],
@@ -59,6 +61,8 @@ const en: Resume[] = [
 		summary:
 			"A version focused on architecture, quality and the evolution of systems.",
 		focus: ["Architecture", "Quality", "Systems"],
+		href: "/resumes/arthur-nunes-software-engineer-en.pdf",
+		status: "available",
 	},
 ];
 export function getResumes(locale: Locale = "pt") {

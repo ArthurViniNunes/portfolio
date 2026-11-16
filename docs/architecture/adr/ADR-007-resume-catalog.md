@@ -5,9 +5,9 @@ Status: aceita. Data: 2026-10-01.
 O autor quer indexar currículos para DevOps, Full Stack e Engenharia de Software. O POM-025 exclui um gerador automático de CV; o histórico completo e os arquivos ainda precisam ser fornecidos.
 
 ## Decisão
-A rota Resume é um catálogo com três entradas fixas, descrição de foco e caminho de PDF. Um contrato tipado registra identificador, título, resumo, temas, caminho e estado do arquivo. **Após o fornecimento do arquivo pelo autor, o PDF Full Stack está disponível** em `frontend/public/resumes/arthur-nunes-full-stack.pdf` e é aberto em uma nova aba pela interface em português. Os links de DevOps e Engenharia de Software permanecem provisórios em `frontend/public/resumes/`.
+A rota Resume é um catálogo com três entradas fixas por idioma, descrição de foco e caminho de PDF. Um contrato tipado registra identificador, título, resumo, temas, caminho e estado do arquivo. Os três PDFs em português e os três PDFs em inglês estão disponíveis em `frontend/public/resumes/` e são abertos em novas abas pela interface correspondente.
 
-A interface é traduzida e cada idioma aponta para seu próprio PDF Full Stack. A língua ou a data de revisão de um PDF não é presumida enquanto ele não existir.
+A interface é traduzida e cada idioma aponta para seus próprios PDFs. Os seis arquivos foram fornecidos pelo autor e registrados como `available`.
 
 ## Alternativas
 Gerar PDFs de dados incompletos inventaria um currículo. Um único documento não atende aos três focos solicitados. Links de armazenamento externo só entram quando fornecidos e verificados.

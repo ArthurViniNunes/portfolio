@@ -5,7 +5,7 @@ Atualizado em 14/10/2026. Priorização editorial e de produto baseada no estado
 | Prioridade | Evolução | Resultado esperado e critério de conclusão |
 | --- | --- | --- |
 | 1 | Tornar explícita a contribuição individual no smash-or-pass | Acrescentar responsabilidades de Arthur, duas decisões difíceis e evidências correspondentes, mantendo crédito da equipe. Memórias apontam liderança técnica; relacionar implementações a código ou documentação antes de atribuir autoria individual. |
-| 1 | Concluir o caminho de recrutamento | Substituir os três PDFs provisórios quando Arthur fornecer as versões. Conferir idioma, data e download antes do lançamento. Os links quebrados permanecem intencionais nesta etapa. |
+| 1 | Concluir o caminho de recrutamento | PDFs PT/EN dos três focos disponíveis. Conferir idioma, data e conteúdo antes do lançamento; os documentos abrem em novas abas. |
 | 1 | Revisar no navegador e em celular real | Conferir 320, 390, 768 e 1440 px, texto ampliado, teclado, menu, troca PT/EN, tema, pausa persistida e movimento reduzido. Medir Lighthouse e fluidez; registrar resultados, sem confundir testes unitários com QA visual. |
 | 2 | Mostrar uma demonstração curta do produto principal | Adicionar um fluxo compreensível de descoberta até criação de receita, com capa, duração e legendas. Não usar autoplay; preservar o vídeo completo como aprofundamento. |
 | 2 | Completar a identidade nos pontos de compartilhamento | Aprovar o símbolo, definir domínio e criar imagem social coerente. Só depois preencher URLs canônicas absolutas e metadados de compartilhamento com destinos reais. |

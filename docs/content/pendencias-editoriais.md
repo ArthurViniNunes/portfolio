@@ -15,7 +15,7 @@ Atualizado em 27/10/2026. Este checklist separa o que já foi resolvido com font
 
 ### Prioridade alta
 
-- [ ] **Currículos:** enviar os PDFs finais de DevOps, Full Stack e Engenharia de Software. Conferir datas, contatos, experiências e competências de cada versão. Os três links em `frontend/src/content/resumes.ts` seguem quebrados por escolha explícita do autor; depois, colocar os arquivos em `frontend/public/resumes/` e mudar o status para `available`.
+- [x] **Currículos:** PDFs finais de DevOps, Full Stack e Engenharia de Software em português e inglês fornecidos e registrados em `frontend/public/resumes/`. Conferir datas, contatos, experiências e competências de cada versão continua sendo uma revisão editorial manual.
 - [ ] **Smash or Pass:** listar suas contribuições individuais em 2–4 pontos concretos: o que você liderou, implementou e decidiu, com arquivos, PRs ou registros que sustentem cada ponto. Se houver resultado verificável, indicar a fonte; se não, manter o estado de produto em desenvolvimento. A autoria em equipe permanece explícita.
 - [ ] **Trajetória:** confirmar se a monitoria PID e o Tatame Cidadão continuam ativos, as datas de PC4 e TEVOS e a previsão de conclusão da Ciência da Computação na UFC. Informar qualquer mudança desde o CV de 25/09/2026.
 

@@ -27,7 +27,7 @@ Data: 2026-10-01. Escopo: aplicação React em `frontend/src/`, documentação e
 | 020 — Busca | Parcial | Índice local por título, tags e texto, com tipos e teste automatizado; não há estudos de aprendizado para indexar. Busca dinâmica requer JavaScript. |
 | 021 — Documentação de projetos | Parcial | Casos seguem visão geral, problema, solução, engenharia quando verificada, resultado e fonte; performance, CI/CD e trade-offs específicos ainda exigem evidência. |
 | 022 — Learning Hub | Pendente | Rota e estado vazio honestos; o autor informou que ainda não há estudos para publicar. |
-| 023 — Carreira e timeline | Parcial | Sobre inclui IGEOS (DevOps desde outubro de 2026, conforme o autor), formação e trajetória PC4, TEVOS, PID e Tatame Cidadão. Entregas na IGEOS ainda não existem para detalhar; PDFs de currículo continuam provisórios. |
+| 023 — Carreira e timeline | Parcial | Sobre inclui IGEOS (DevOps desde outubro de 2026, conforme o autor), formação e trajetória PC4, TEVOS, PID e Tatame Cidadão. Entregas na IGEOS ainda não existem para detalhar; os seis PDFs de currículo estão disponíveis. |
 | 024 — Estratégia de conteúdo | Parcial | Dados tipados, separação editorial, biografia e depoimentos com proveniência; Plateia revisto em repositório público, mas ainda faltam estudos de Learning e validações autorais. |
 | 025 — Escopo e princípios | Atendido | MVP evita blog, painel administrativo e recursos sem necessidade concreta; links têm destinos úteis. |
 | 026 — Filosofia UX | Parcial | Conteúdo e tarefas guiam telas; validação com usuários pendente. |
@@ -54,7 +54,7 @@ Data: 2026-10-01. Escopo: aplicação React em `frontend/src/`, documentação e
 
 ## Bloqueios editoriais e de validação
 
-1. **Aprendizado e currículos:** Learning permanece sem estudos publicáveis e os PDFs ainda não foram fornecidos. A trajetória em Sobre usa as memórias enviadas em 01/10/2026 e o vínculo atual com a IGEOS informado em 14/10/2026, com fontes registradas em `docs/content/fontes-do-perfil.md`. Ver também a [lista de pendências editoriais](../content/pendencias-editoriais.md).
+1. **Aprendizado e currículos:** Learning permanece sem estudos publicáveis. Os seis PDFs de currículo foram fornecidos e estão disponíveis em versões PT/EN. A trajetória em Sobre usa as memórias enviadas em 01/10/2026 e o vínculo atual com a IGEOS informado em 14/10/2026, com fontes registradas em `docs/content/fontes-do-perfil.md`. Ver também a [lista de pendências editoriais](../content/pendencias-editoriais.md).
 2. **Capturas de projetos:** Plateia, Home Expense Control e Kanban ainda exibem imagens históricas do portfólio anterior. Seus casos foram confrontados com os repositórios públicos em 14/10/2026; as imagens ainda precisam de comparação visual com as versões atuais. O estudo visual estático preserva seu estado histórico.
 3. **Imagens e apresentação:** revisar a nova marca e produzir capturas atuais dos projetos. As fotos dos autores das recomendações já foram adicionadas. Formação e experiências usam o contexto enviado pelo autor.
 4. **QA antes de publicar:** testar teclado, leitor de tela, contraste, 320/390/768/1440 px e fluxos de busca/contato; medir Lighthouse em hospedagem real e registrar os resultados frente às metas do POM-003.
@@ -69,7 +69,7 @@ Foi realizada uma [revisão visual amostral](revisao-visual/README.md) em 320, 3
 
 Implementados PT/EN com páginas pré-renderizadas, seletor de tema claro/escuro, Home com composição animada controlável, smash-or-pass como destaque e reformulação de Sobre, Currículos e Contato. As onze ADRs estão indexadas em `docs/architecture/adr/README.md`.
 
-O histórico profissional foi enriquecido com `ARTHUR_CONTEXT.md`; comentários usam os dois textos integrais fornecidos pelo autor, com versões inglesas identificadas como traduções. A descrição do caso smash-or-pass mantém as fontes do repositório; a liderança técnica declarada nas memórias aparece na biografia sem atribuir toda a implementação a Arthur. Os estudos permanecem pendentes. Por pedido explícito, os três PDFs de currículo possuem **links provisórios quebrados**; isso é uma exceção temporária documentada na ADR-007, não uma falha silenciosa do verificador. A interface informa a ausência dos arquivos.
+O histórico profissional foi enriquecido com `ARTHUR_CONTEXT.md`; comentários usam os dois textos integrais fornecidos pelo autor, com versões inglesas identificadas como traduções. A descrição do caso smash-or-pass mantém as fontes do repositório; a liderança técnica declarada nas memórias aparece na biografia sem atribuir toda a implementação a Arthur. Os estudos permanecem pendentes. Os seis PDFs de currículo estão disponíveis em versões PT/EN e são abertos em novas abas.
 
 Os testes cobrem paridade de idiomas, URLs, busca, catálogo, script de tema e contraste dos tokens. O navegador de revisão não estava disponível nesta sessão; inspeção visual, fluxos reais por teclado e Lighthouse não foram declarados concluídos.
 
